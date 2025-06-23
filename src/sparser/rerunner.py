@@ -27,7 +27,7 @@ def batch_run(samples):
     for i, sample in enumerate(samples, start=1):
         config = {
             "length": 100,
-            "location": "delhi",  # Or get from SIMULATION config
+            "location": "barnsdall",  # Default location
             **sample
         }
         print(f"[+] Running run_{i:03}")

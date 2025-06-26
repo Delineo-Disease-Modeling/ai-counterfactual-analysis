@@ -1,11 +1,18 @@
+"""
+For generating logs for simulation with different parameters. 
+Steps to use this script: 
+1. Run the dmp (from the simulation repo by running `uvicorn api.dmp_api:app --reload`)
+2. Run simulator by running `python app.py` in the simulation repo
+3. Run this script, logs will be saved to data/raw/runX/ where X is the run number in the AI-counterfactual-analysis repo. 
+"""
 import os
 import requests
 import shutil
 import time
 
 # Configurable variables
-SIM_URL = "http://192.168.29.175:1880/simulation/"  # adjust port if needed
-SIM_LOG_DIR = "../../../Simulation/simulation_logs/"            # where simulator writes CSVs
+SIM_URL = "http://192.168.29.175:1880/simulation/"  
+SIM_LOG_DIR = "../../../Simulation/simulation_logs/"  # where simulator writes CSVs
 TARGET_DIR = "../../data/raw/"                     # where to store organized results
 
 # List of intervention dictionaries to test
@@ -15,7 +22,7 @@ PARAMETER_SETS = [
     # Add more if needed
 ]
 
-# You can set optional fixed values if you want
+
 DEFAULTS = {
     "location": "barnsdall",  # optional, will use config default if omitted
     "length": 720                # 12 hours * 60 minutes
@@ -45,7 +52,7 @@ def run_simulation(interventions, run_id):
     print(f"✅ Simulation {run_id} succeeded. Waiting for logs...")
 
     # Give simulator time to write logs
-    time.sleep(5)  # adjust based on how long your sim takes
+    time.sleep(5)  
 
     run_folder = os.path.join(TARGET_DIR, f"run{run_id}")
     os.makedirs(run_folder, exist_ok=True)

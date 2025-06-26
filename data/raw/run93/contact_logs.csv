@@ -1,0 +1,2 @@
+timestep,person1_id,person2_id,location_id,location_type,contact_duration,person1_infectious,person2_infectious,person1_masked,person2_masked,both_masked,age_diff,same_household
+540,139,109,14,facility,1,False,False,False,False,False,59,False

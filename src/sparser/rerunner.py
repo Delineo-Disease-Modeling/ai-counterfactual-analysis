@@ -1,102 +1,66 @@
-import requests
-import json
 import os
+import requests
+import shutil
+import time
 
-SIM_URL = os.environ.get('VITE_SIM_URL', 'http://127.0.0.1:1870/')
-ALG_URL = os.environ.get('VITE_ALG_URL', 'http://127.0.0.1:1880/')
-DB_URL  = os.environ.get('VITE_DB_URL',  'http://127.0.0.1:1890/')
+# Configurable variables
+SIM_URL = "http://192.168.29.175:1880/simulation/"  # adjust port if needed
+SIM_LOG_DIR = "../../../Simulation/simulation_logs/"            # where simulator writes CSVs
+TARGET_DIR = "../../data/raw/"                     # where to store organized results
 
+# List of intervention dictionaries to test
+PARAMETER_SETS = [
+    {'mask': 65.48696, 'vaccine': 80.45091, 'capacity': 58.07661, 'lockdown': 56.87906, 'selfiso': 30.24854},
+    {'mask': 20.1, 'vaccine': 50.5, 'capacity': 40.0, 'lockdown': 60.0, 'selfiso': 70.0},
+    # Add more if needed
+]
 
-def make_post_request(reqdata, use_cache=True):
-    """
-    Sends POST request to simulation server or fetches cached data if available.
-    Returns (sim_data, move_patterns)
-    """
-    if use_cache:
-        try:
-            cache_resp = requests.get(f"{DB_URL}simdata/{reqdata['czone_id']}")
-            if cache_resp.status_code == 200 and 'data' in cache_resp.json():
-                print("Using cached data!")
-                cached = json.loads(cache_resp.json()['data'])
-                movement = cached.get('movement', {})
+# You can set optional fixed values if you want
+DEFAULTS = {
+    "location": "barnsdall",  # optional, will use config default if omitted
+    "length": 720                # 12 hours * 60 minutes
+}
 
-                # Truncate movement data beyond simulation length
-                movement = {
-                    k: v for k, v in movement.items()
-                    if int(k) <= reqdata['length']
-                }
+def run_simulation(interventions, run_id):
+    print(f"Running simulation {run_id} with interventions: {interventions}")
 
-                return cached['result'], movement
-        except Exception as e:
-            print(f"Cache error: {e}")
-
-    # If no cache or error, do POST request
-    try:
-        response = requests.post(f"{SIM_URL}simulation/", json=reqdata)
-        response.raise_for_status()
-        data = response.json()
-
-        if 'result' not in data:
-            raise ValueError("Invalid JSON (missing 'result')")
-
-        return data['result'], data['movement']
-    except Exception as e:
-        print(f"Simulation request error: {e}")
-        return None, None
-
-
-def send_simulator_data(
-    matrices, location, hours, pmask, pvaccine, capacity, lockdown,
-    selfiso, randseed, zone, use_cache=True
-):
-    """
-    Sends full simulation data and pattern request.
-    Returns (sim_data, move_patterns, pap_data)
-    """
-    # Fetch PAP data
-    pap_data = None
-    try:
-        resp = requests.get(f"{DB_URL}patterns/{zone['id']}")
-        resp.raise_for_status()
-        pap_data = resp.json().get('data', {}).get('papdata', None)
-    except Exception as e:
-        print(f"PAP data fetch error: {e}")
-
-    # Prepare request data
-    reqdata = {
-        'czone_id': zone['id'],
-        'matrices': matrices,
-        'location': location,
-        'length': hours * 60,
-        'mask': pmask,
-        'vaccine': pvaccine,
-        'capacity': capacity,
-        'lockdown': lockdown,
-        'selfiso': selfiso,
-        'randseed': randseed
+    # Combine defaults with current intervention parameters
+    scaled = {k: v / 100 for k, v in interventions.items()}
+    payload = {
+        **DEFAULTS,
+        **scaled
     }
 
-    sim_data, move_patterns = make_post_request(reqdata, use_cache)
-    return sim_data, move_patterns, pap_data
+    print("Sending payload to simulator:", payload)
+
+
+
+    try:
+        response = requests.post(SIM_URL, json=payload)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Simulation {run_id} failed: {e}")
+        return
+
+    print(f"✅ Simulation {run_id} succeeded. Waiting for logs...")
+
+    # Give simulator time to write logs
+    time.sleep(5)  # adjust based on how long your sim takes
+
+    run_folder = os.path.join(TARGET_DIR, f"run{run_id}")
+    os.makedirs(run_folder, exist_ok=True)
+
+    # Move CSVs from SIM_LOG_DIR to the new run folder
+    for filename in os.listdir(SIM_LOG_DIR):
+        if filename.endswith(".csv"):
+            src = os.path.join(SIM_LOG_DIR, filename)
+            dst = os.path.join(run_folder, filename)
+            shutil.copy(src, dst)
+
+    print(f"📁 Logs for run {run_id} saved in {run_folder}\n")
 
 if __name__ == "__main__":
-    zone = {
-    "id": "cz123",
-    "name": "Downtown Zone",
-    "created_at": "2024-06-15T12:00:00"
-    }
+    os.makedirs(TARGET_DIR, exist_ok=True)
 
-    sim_data, move_patterns, pap_data = send_simulator_data(
-        matrices={"contacts": [[1, 2], [3, 4]]},
-        location="City Center",
-        hours=24,
-        pmask=0.7,
-        pvaccine=0.8,
-        capacity=0.5,
-        lockdown=True,
-        selfiso=True,
-        randseed=42,
-        zone=zone,
-        use_cache=True
-    )
-  
+    for idx, param_set in enumerate(PARAMETER_SETS, start=1):
+        run_simulation(param_set, idx)

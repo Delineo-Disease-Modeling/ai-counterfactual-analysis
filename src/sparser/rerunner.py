@@ -9,6 +9,8 @@ import os
 import requests
 import shutil
 import time
+from scenario_selector import load_parameter_space, latin_hypercube_scaled
+import json
 
 # Configurable variables
 SIM_URL = "http://192.168.29.175:1880/simulation/"  
@@ -16,11 +18,12 @@ SIM_LOG_DIR = "../../../Simulation/simulation_logs/"  # where simulator writes C
 TARGET_DIR = "../../data/raw/"                     # where to store organized results
 
 # List of intervention dictionaries to test
-PARAMETER_SETS = [
-    {'mask': 65.48696, 'vaccine': 80.45091, 'capacity': 58.07661, 'lockdown': 56.87906, 'selfiso': 30.24854},
-    {'mask': 20.1, 'vaccine': 50.5, 'capacity': 40.0, 'lockdown': 60.0, 'selfiso': 70.0},
-    # Add more if needed
-]
+
+param_space = load_parameter_space('params.json')
+
+# Latin Hypercube sampling
+
+PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 200)
 
 
 DEFAULTS = {
@@ -46,16 +49,20 @@ def run_simulation(interventions, run_id):
         response = requests.post(SIM_URL, json=payload)
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
-        print(f"❌ Simulation {run_id} failed: {e}")
+        print(f"Simulation {run_id} failed: {e}")
         return
 
-    print(f"✅ Simulation {run_id} succeeded. Waiting for logs...")
+    print(f"Simulation {run_id} succeeded. Waiting for logs...")
 
     # Give simulator time to write logs
     time.sleep(5)  
 
     run_folder = os.path.join(TARGET_DIR, f"run{run_id}")
     os.makedirs(run_folder, exist_ok=True)
+
+    with open(os.path.join(run_folder, "interventions.json"), "w") as f:
+        json.dump(interventions, f, indent=2)
+
 
     # Move CSVs from SIM_LOG_DIR to the new run folder
     for filename in os.listdir(SIM_LOG_DIR):
@@ -64,7 +71,9 @@ def run_simulation(interventions, run_id):
             dst = os.path.join(run_folder, filename)
             shutil.copy(src, dst)
 
-    print(f"📁 Logs for run {run_id} saved in {run_folder}\n")
+    print(f"Logs for run {run_id} saved in {run_folder}\n")
+
+    
 
 if __name__ == "__main__":
     os.makedirs(TARGET_DIR, exist_ok=True)

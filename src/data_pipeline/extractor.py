@@ -1,7 +1,10 @@
+# extractor.py
 # to convert simulator logs to structured format for clustering
+
 import argparse
 import json
 import os
+import re
 from collections import Counter
 
 import networkx as nx
@@ -19,11 +22,23 @@ def shannon_entropy(items):
 
 
 def longest_path_length_dag(G, source):
-    lengths = {source: 0}
-    for node in nx.topological_sort(G):
-        for succ in G.successors(node):
-            lengths[succ] = max(lengths.get(succ, 0), lengths[node] + 1)
-    return max(lengths.values())
+    try:
+        lengths = {source: 0}
+        for node in nx.topological_sort(G):
+            for succ in G.successors(node):
+                lengths[succ] = max(lengths.get(succ, 0), lengths[node] + 1)
+        return max(lengths.values())
+    except nx.NetworkXUnfeasible:
+        # cyclic component: fall back to BFS depth from source
+        lengths = {source: 0}
+        queue = [source]
+        while queue:
+            u = queue.pop()
+            for v in G.successors(u):
+                if v not in lengths:
+                    lengths[v] = lengths[u] + 1
+                    queue.append(v)
+        return max(lengths.values())
 
 
 def build_tables(input_dir: str, run_id: str):
@@ -32,8 +47,35 @@ def build_tables(input_dir: str, run_id: str):
     infect = pd.read_csv(os.path.join(input_dir, "infection_logs.csv"))
     facility = pd.read_csv(os.path.join(input_dir, "location_logs.csv"))
 
+    if (
+    infect.empty
+    or "infector_person_id" not in infect.columns
+    or infect["infector_person_id"].notna().sum() == 0      # <-- add this
+):
+        chains_csv = os.path.join(input_dir, "infection_chains.csv")
+        if os.path.exists(chains_csv):
+            print(f"[i] {run_id}: using infection_chains.csv as infection log")
+            infect = (
+                pd.read_csv(chains_csv)
+                .rename(
+                    columns={
+                        "infector_id":        "infector_person_id",
+                        "infected_person_id": "infected_person_id",
+                        "location_id":        "infection_location_id",
+                        "variant":            "variant",
+                        "timestep":           "timestep",
+                    }
+                )
+                .assign(
+                    infection_location_type=None,
+                    infector_masked=None,
+                    infected_masked=None,
+                    transmission_pair_age_diff=None,
+                )
+            )
+
     agents = (
-        person[person.timestep == 0]
+        person.sort_values("timestep")
         .drop_duplicates("person_id")
         .loc[
             :,
@@ -116,6 +158,24 @@ def build_tables(input_dir: str, run_id: str):
 
     chains_json = build_infection_chains(infections, run_id)
 
+    missing_ids = set(infect["infector_person_id"].dropna()) \
+                | set(infect["infected_person_id"].dropna())
+    missing_ids -= set(agents["person_id"])
+
+    if missing_ids:
+        print(f"[i] {run_id}: adding {len(missing_ids)} stub agents from fallback log")
+        stub = pd.DataFrame({
+            "simulation_run_id": run_id,
+            "person_id": list(missing_ids),
+            "age": np.nan,
+            "sex": np.nan,
+            "household_id": np.nan,
+            "vaccination_status": np.nan,
+            "vaccination_doses": np.nan,
+            "initial_infected": False,
+        })
+        agents = pd.concat([agents, stub], ignore_index=True)
+
     return agents, agent_ts, infections, facilities, chains_json
 
 
@@ -193,16 +253,48 @@ def write_outputs(
         json.dump(chains_json, f, indent=2)
 
 
+def process_all_runs(raw_dir: str, output_base: str):
+    """
+    Iterate over every subdirectory in `raw_dir` named run<digits>,
+    extract & standardize, and write each to `output_base/extracted_<run_id>/`.
+    """
+    if not os.path.isdir(raw_dir):
+        raise ValueError(f"{raw_dir} is not a directory")
+    os.makedirs(output_base, exist_ok=True)
+
+    pattern = re.compile(r"^run\d+$")
+    for run_folder in sorted(os.listdir(raw_dir)):
+        if not pattern.match(run_folder):
+            # skip anything not named like run1, run2, ...
+            continue
+
+        run_path = os.path.join(raw_dir, run_folder)
+        print(f"[+] Processing {run_folder} …")
+        agents, agent_ts, infections, facilities, chains_json = build_tables(run_path, run_folder)
+        out_dir = os.path.join(output_base, f"extracted_{run_folder}")
+        write_outputs(agents, agent_ts, infections, facilities, chains_json, output_dir=out_dir)
+        print(f"[✓] Written to {out_dir}")
+
+    print(f"[✔] All runs processed into {output_base}/")
+
+
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input_dir", required=True)
-    parser.add_argument("--output_dir", default="processed")
-    parser.add_argument("--run_id", required=True)
+    parser = argparse.ArgumentParser(
+        description="Batch-extract all simulator runs under a raw/ directory"
+    )
+    parser.add_argument(
+        "--raw_dir",
+        default="raw",
+        help="Path to directory containing run1/, run2/, …"
+    )
+    parser.add_argument(
+        "--output_base",
+        default="all_extracted_logs",
+        help="Where to write extracted_<run_id>/ subfolders"
+    )
     args = parser.parse_args()
 
-    tables = build_tables(args.input_dir, args.run_id)
-    write_outputs(*tables, output_dir=args.output_dir)
-    print(f"Processed tables written to {args.output_dir}")
+    process_all_runs(args.raw_dir, args.output_base)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
 # Script to add infection parameters to infection_logs.csv for each run in the simulation logs.
 # This script goes through every run folder in data > raw and adds infection parameters from interventions.json to infection_logs.csv
+# this can be run after the simulation runs are complete to ensure that all infection parameters are included in the logs.
+
 import json 
 import pandas as pd 
 import os

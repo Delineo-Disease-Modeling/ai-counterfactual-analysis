@@ -2,8 +2,12 @@
 
 Objective: To identify and quantify how much a change in a treatment variable (intervention parameter) will affect the outcome. 
 
+Steps in double machine learning: 
+1. Identify the outcome from studying data 
+2. Identify the treatment effect of a certain treatment. 
+
 To answer questions like: 
-    # What is the effect of making 50% of people masked? 
+    # What is the average treatment effect of increasing masking by 50% to the outcome variable, total number of infections, given the covariate age? 
 
 S (shock) = infection 
 A (attribute / treatment) = treatment parameters

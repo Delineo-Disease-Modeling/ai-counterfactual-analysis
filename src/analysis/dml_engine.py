@@ -24,6 +24,7 @@ for run in all_runs:
 
     try: 
         df = pd.read_csv(file_path)
+        
     except Exception as e: 
         print(f"Skipping {run}: {e}")
 

@@ -1,7 +1,7 @@
 {
-  "mask": 1.83032,
-  "vaccine": 67.51412,
-  "capacity": 71.32803,
-  "lockdown": 21.11895,
-  "selfiso": 10.2404
+  "mask": 0.0183,
+  "vaccine": 0.67514,
+  "capacity": 0.71328,
+  "lockdown": 0.21119,
+  "selfiso": 0.1024
 }

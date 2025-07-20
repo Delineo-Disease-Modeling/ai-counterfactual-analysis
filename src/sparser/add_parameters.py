@@ -10,7 +10,7 @@ for (root, dirs, files) in os.walk("../../data/raw/"):
     for dir_name in dirs:
         run_folder = os.path.join(root, dir_name)
         interventions_file = os.path.join(run_folder, "interventions.json")
-        infection_logs_file = os.path.join(run_folder, "infection_logs.csv")
+        infection_logs_file = os.path.join(run_folder, "infection_chains.csv")
 
         if not os.path.exists(infection_logs_file):
             print(f"Skipping {run_folder} - no infection logs found.")

@@ -23,7 +23,7 @@ param_space = load_parameter_space('params.json')
 
 # Latin Hypercube sampling
 
-PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 200)
+PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 50)
 
 
 DEFAULTS = {

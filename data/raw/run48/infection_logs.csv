@@ -1,3 +1,3 @@
-timestep,infected_person_id,infected_age,infected_sex,infected_masked,infected_vaccination_doses,infector_person_id,infector_age,infector_sex,infector_masked,infector_vaccination_doses,infection_location_id,infection_location_type,location_occupancy,location_capacity,variant,transmission_pair_age_diff,mask,vaccine,capacity,lockdown,selfiso
-0,11,23,0,False,0,,,,False,0,4,household,1,-1,Omicron,,69.92639,28.56049,38.9253,8.27623,53.0992
-0,43,12,1,False,0,,,,False,0,14,household,1,-1,Delta,,69.92639,28.56049,38.9253,8.27623,53.0992
+timestep,infected_person_id,infected_age,infected_sex,infected_masked,infected_vaccination_doses,infector_person_id,infector_age,infector_sex,infector_masked,infector_vaccination_doses,infection_location_id,infection_location_type,location_occupancy,location_capacity,variant,transmission_pair_age_diff
+0,43,12,1,False,0,,,,False,0,14,household,1,-1,Omicron,
+0,160,55,1,False,0,,,,False,0,51,household,3,-1,Delta,

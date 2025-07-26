@@ -29,7 +29,7 @@ def generate_param_combinations(param_space):
 
 # random sampling from parameter grid 
 def sample_random(grid, k = 20, seed = 40): 
-    random.seed(seed)
+    # random.seed(seed)
     return random.sample(grid, min(k, len(grid)))
 
 # Latin Hypercube sampling is a sampling technique that ensures we explore parameter space evenly and efficiently. 

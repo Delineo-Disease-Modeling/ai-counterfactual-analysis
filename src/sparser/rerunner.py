@@ -23,19 +23,20 @@ param_space = load_parameter_space('params.json')
 
 # Latin Hypercube sampling
 
-PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 50)
+PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 200)
 
 
 DEFAULTS = {
     "location": "barnsdall",  # optional, will use config default if omitted
-    "length": 1440                # 12 hours * 60 minutes
+    "length": 1440, # 12 hours * 60 minutes
+    "randseed": True 
 }
 
 def run_simulation(interventions, run_id):
     print(f"Running simulation {run_id} with interventions: {interventions}")
 
     # Combine defaults with current intervention parameters
-    scaled = {k: v / 100 for k, v in interventions.items()}
+    scaled = {k: v for k, v in interventions.items()}
     payload = {
         **DEFAULTS,
         **scaled
@@ -80,3 +81,4 @@ if __name__ == "__main__":
 
     for idx, param_set in enumerate(PARAMETER_SETS, start=1):
         run_simulation(param_set, idx)
+

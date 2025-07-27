@@ -1,0 +1,16 @@
+{
+  "original_interventions": {
+    "mask_compliance": 0.5
+  },
+  "scaled_parameters": {
+    "mask_compliance": 0.5
+  },
+  "final_payload": {
+    "location": "barnsdall",
+    "length": 1440,
+    "mask_compliance": 0.5
+  },
+  "masking_keys_found": [
+    "mask_compliance"
+  ]
+}

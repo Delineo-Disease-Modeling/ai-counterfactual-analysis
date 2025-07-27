@@ -1,0 +1,2 @@
+infected_person_id,infector_id,location_id,variant,timestep,masking_percentage
+116,27,12,Delta,1380,50

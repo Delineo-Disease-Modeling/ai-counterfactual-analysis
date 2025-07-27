@@ -33,7 +33,7 @@ for run in all_runs:
         df = df[df['infected_person_id'].notna()]
         num_infections = len(df) 
         avg_age = random.randint(10, 90)
-        mask_rate = float(df['mask'].dropna().iloc[0]) / 100
+        mask_rate = float(df['mask'].dropna().iloc[0])
         mask_rate = min(mask_rate, 1)
         records.append({
             "run_id": run,

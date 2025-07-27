@@ -1,0 +1,16 @@
+{
+  "original_interventions": {
+    "masking_percentage": 100
+  },
+  "scaled_parameters": {
+    "masking_percentage": 100
+  },
+  "final_payload": {
+    "location": "barnsdall",
+    "length": 1440,
+    "masking_percentage": 100
+  },
+  "masking_keys_found": [
+    "masking_percentage"
+  ]
+}

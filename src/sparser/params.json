@@ -1,27 +1,27 @@
 {
     "mask": {
-        "min": 0,
-        "max": 100,
-        "step": 10
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
     }, 
     "vaccine": {
-        "min": 0,
-        "max": 100,
-        "step": 10
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
     }, 
     "capacity": {
-        "min": 0,
-        "max": 100,
-        "step": 10
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
     }, 
     "lockdown": {
-        "min": 0,
-        "max": 100,
-        "step": 10
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
     }, 
     "selfiso": {
-        "min": 0,
-        "max": 100,
-        "step": 10
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.1
     }
 }

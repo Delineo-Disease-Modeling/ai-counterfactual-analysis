@@ -1,0 +1,28 @@
+{
+  "original_interventions": {
+    "mask": 0.54997,
+    "vaccine": 0.87118,
+    "capacity": 0.81954,
+    "lockdown": 0.32179,
+    "selfiso": 0.3042
+  },
+  "scaled_parameters": {
+    "mask": 0.54997,
+    "vaccine": 0.008711799999999999,
+    "capacity": 0.0081954,
+    "lockdown": 0.0032179,
+    "selfiso": 0.0030420000000000004
+  },
+  "final_payload": {
+    "location": "barnsdall",
+    "length": 1440,
+    "mask": 0.54997,
+    "vaccine": 0.008711799999999999,
+    "capacity": 0.0081954,
+    "lockdown": 0.0032179,
+    "selfiso": 0.0030420000000000004
+  },
+  "masking_keys_found": [
+    "mask"
+  ]
+}

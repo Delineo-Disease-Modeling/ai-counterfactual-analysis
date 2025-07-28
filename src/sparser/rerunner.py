@@ -19,11 +19,11 @@ TARGET_DIR = "../../data/raw/"                     # where to store organized re
 
 # List of intervention dictionaries to test
 
-param_space = load_parameter_space('params.json')
+param_space = load_parameter_space('params_fixed.json')
 
 # Latin Hypercube sampling
 
-PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 200)
+PARAMETER_SETS = latin_hypercube_scaled(param_space, n_samples = 50)
 
 
 DEFAULTS = {
@@ -79,6 +79,6 @@ def run_simulation(interventions, run_id):
 if __name__ == "__main__":
     os.makedirs(TARGET_DIR, exist_ok=True)
 
-    for idx, param_set in enumerate(PARAMETER_SETS, start=1):
+    for idx, param_set in enumerate(PARAMETER_SETS, start=201):
         run_simulation(param_set, idx)
 

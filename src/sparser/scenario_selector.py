@@ -61,7 +61,7 @@ def latin_hypercube_scaled(param_space, n_samples = 50, seed = 30):
     return samples # samples is a list of dictionaries, each representing a sample configuration with parameter values
 
 if __name__ == "__main__":
-    param_space = load_parameter_space('params.json')
+    param_space = load_parameter_space('params_fixed.json')
 
     # Latin Hypercube sampling
     lhs_samples = latin_hypercube_scaled(param_space, n_samples = 50)

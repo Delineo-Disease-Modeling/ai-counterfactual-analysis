@@ -111,7 +111,7 @@ for run in all_runs:
     try:
         # Only include runs from run201 to run250
         run_num = int(run.replace("run", ""))
-        if 201 <= run_num <= 250:
+        if 251 <= run_num <= 300:
             run_path = os.path.join(base_path, run)
             file_path = os.path.join(run_path, "infection_chains.csv")
 

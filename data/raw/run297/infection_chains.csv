@@ -1,0 +1,3 @@
+infected_person_id,infector_id,location_id,variant,timestep,mask
+36,43,32,Omicron,240,0.44092
+43,36,32,Delta,240,0.44092

@@ -1,0 +1,2 @@
+infected_person_id,infector_id,location_id,variant,timestep,mask
+10,6,11,Delta,360,0.54435

@@ -1,0 +1,3 @@
+infected_person_id,infector_id,location_id,variant,timestep
+160,11,17,Omicron,65640
+11,160,17,Delta,65640

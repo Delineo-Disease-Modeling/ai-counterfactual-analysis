@@ -1,0 +1,2 @@
+infected_person_id,infector_id,location_id,variant,timestep,mask
+24,36,12,Omicron,960,0.85345

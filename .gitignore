@@ -1,0 +1,4 @@
+# .gitignore
+data/raw/run251/contact_logs.csv
+data/raw/run211/contact_logs.csv
+data/raw/run211/location_logs.csv

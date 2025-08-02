@@ -1,2 +1,2 @@
-infected_person_id,infector_id,location_id,variant,timestep
-7,22,4,Omicron,900
+infected_person_id,infector_id,location_id,variant,timestep,vaccine
+7,22,4,Omicron,900,0.95142

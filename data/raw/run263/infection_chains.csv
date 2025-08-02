@@ -1,2 +1,2 @@
-infected_person_id,infector_id,location_id,variant,timestep,mask
-14,15,6,Omicron,0,0.52195
+infected_person_id,infector_id,location_id,variant,timestep,vaccine
+16,27,13,Delta,120,0.52195

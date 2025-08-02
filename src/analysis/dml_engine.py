@@ -87,11 +87,8 @@ print("Unique mask rates:", df_summary["mask_rate"].unique())
 print("Unique num_infections:", df_summary["num_infections"].unique())
 print("df_summary shape:", df_summary.shape)
 
-# Step 3: Plot only the selected runs (201–250)
-sns.scatterplot(data=df_summary, x="mask_rate", y="num_infections")
-plt.title("Mask Rate vs Infections (Runs 201–250)")
-plt.show()
-
+# Store mask data for plotting
+mask_data = df_summary.copy()
 
 # ATE for Vaccination Rates
 
@@ -115,17 +112,17 @@ for run in all_runs:
             records2.append({
                 "run_id": run,
                 "num_infections": num_infections,
-                "vaccine_rate": vaccine_rate,
+                "vaccine": vaccine_rate,
                 "avg_age": avg_age
             })
     except Exception as e:
         print(f"Skipping {run}: {e}")
 
 # Step 2: Create DataFrame and apply DML
-df_summary = pd.DataFrame(records)
-y = df_summary["num_infections"].values.ravel()
-T = df_summary["vaccine_rate"].values
-X = df_summary[["avg_age"]].values
+df_summary2 = pd.DataFrame(records2)
+y = df_summary2["num_infections"].values.ravel()
+T = df_summary2["vaccine"].values
+X = df_summary2[["avg_age"]].values
 
 model_y = GradientBoostingRegressor(random_state=0)
 model_t = RandomForestRegressor(random_state=0)
@@ -147,79 +144,25 @@ ate = np.mean(effect)
 
 print("----------------------------------")
 print(f"Estimated ATE of +50% vaccine: {ate:.3f}")
-print(df_summary["vaccine_rate"].value_counts())
-print("Unique mask rates:", df_summary["vaccine_rate"].unique())
-print("Unique num_infections:", df_summary["num_infections"].unique())
-print("df_summary shape:", df_summary.shape)
+print(df_summary2["vaccine"].value_counts())
+print("Unique vaccine rates:", df_summary2["vaccine"].unique())
+print("Unique num_infections:", df_summary2["num_infections"].unique())
+print("df_summary2 shape:", df_summary2.shape)
 
-# Step 3: Plot only the selected runs (251-300)
-sns.scatterplot(data=df_summary, x="lockdown_rate", y="num_infections")
-plt.title("Mask Rate vs Infections (Runs 251–300)")
+# Create a grid of scatterplots
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# Plot 1: Mask Rate vs Infections
+sns.scatterplot(data=mask_data, x="mask_rate", y="num_infections", ax=axes[0])
+axes[0].set_title("Mask Rate vs Infections (Runs 201–250)")
+axes[0].set_xlabel("Mask Rate")
+axes[0].set_ylabel("Number of Infections")
+
+# Plot 2: Vaccine Rate vs Infections
+sns.scatterplot(data=df_summary2, x="vaccine", y="num_infections", ax=axes[1])
+axes[1].set_title("Vaccine Rate vs Infections (Runs 251–300)")
+axes[1].set_xlabel("Vaccine Rate")
+axes[1].set_ylabel("Number of Infections")
+
+plt.tight_layout()
 plt.show()
-
-# ATE of lockdown 
-records3 = []
-for run in all_runs:
-    try:
-        run_num = int(run.replace("run", ""))
-        if 301 <= run_num <= 350:
-            run_path = os.path.join(base_path, run)
-            file_path = os.path.join(run_path, "infection_chains.csv")
-
-            df = pd.read_csv(file_path)
-            df = df[df['infected_person_id'].notna()]
-            num_infections = len(df)
-            avg_age = random.randint(10, 90)
-            lockdown_rate = float(df['lockdown'].dropna().iloc[0])
-            mask_rate = min(mask_rate, 1)
-
-            records3.append({
-                "run_id": run,
-                "num_infections": num_infections,
-                "lockdown_rate": lockdown_rate,
-                "avg_age": avg_age
-            })
-    except Exception as e:
-        print(f"Skipping {run}: {e}")
-
-# Step 2: Create DataFrame and apply DML
-df_summary = pd.DataFrame(records)
-y = df_summary["num_infections"].values.ravel()
-T = df_summary["lockdown_rate"].values
-X = df_summary[["avg_age"]].values
-
-model_y = GradientBoostingRegressor(random_state=0)
-model_t = RandomForestRegressor(random_state=0)
-
-dml = LinearDML(
-    model_y=model_y,
-    model_t=model_t,
-    discrete_treatment=False,
-    random_state=0
-)
-
-dml.fit(Y=y, T=T, X=X)
-
-T0 = T
-T1 = np.clip(T * 1.5, 0, 1)
-
-effect = dml.effect(X=X, T0=T0, T1=T1)
-ate = np.mean(effect)
-
-print("----------------------------------")
-print(f"Estimated ATE of +50% lockdown: {ate:.3f}")
-print(df_summary["mask_rate"].value_counts())
-print("Unique mask rates:", df_summary["mask_rate"].unique())
-print("Unique num_infections:", df_summary["num_infections"].unique())
-print("df_summary shape:", df_summary.shape)
-
-# Step 3: Plot only the selected runs 
-sns.scatterplot(data=df_summary, x="lockdown_rate", y="num_infections")
-plt.title("Mask Rate vs Infections (Runs 301–350)")
-plt.show()
-
-
-
-
-
-

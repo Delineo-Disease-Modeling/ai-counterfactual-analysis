@@ -79,6 +79,6 @@ def run_simulation(interventions, run_id):
 if __name__ == "__main__":
     os.makedirs(TARGET_DIR, exist_ok=True)
 
-    for idx, param_set in enumerate(PARAMETER_SETS, start=251):
+    for idx, param_set in enumerate(PARAMETER_SETS, start=401):
         run_simulation(param_set, idx)
 

@@ -1,0 +1,3 @@
+infected_person_id,infector_id,location_id,variant,timestep,lockdown
+36,43,32,Omicron,240,0.70142
+43,36,32,Delta,240,0.70142

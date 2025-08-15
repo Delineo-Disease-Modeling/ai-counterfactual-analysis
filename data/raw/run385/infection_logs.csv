@@ -1,0 +1,13 @@
+timestep,infected_person_id,infected_age,infected_sex,infected_masked,infected_vaccination_doses,infector_person_id,infector_age,infector_sex,infector_masked,infector_vaccination_doses,infection_location_id,infection_location_type,location_occupancy,location_capacity,variant,transmission_pair_age_diff
+0,11,23,0,False,0,,,,False,0,4,household,1,-1,Omicron,
+0,36,50,1,False,0,,,,False,0,12,household,0,-1,Delta,
+780,5,78,0,False,0,36,50.0,1.0,False,0,13,facility,19,-1,Delta,28.0
+780,85,25,1,False,0,36,50.0,1.0,False,0,13,facility,19,-1,Delta,25.0
+840,129,38,0,False,0,36,50.0,1.0,False,0,13,facility,24,-1,Delta,12.0
+900,69,40,0,False,0,36,50.0,1.0,False,0,30,facility,12,-1,Delta,10.0
+900,70,25,0,False,0,36,50.0,1.0,False,0,30,facility,12,-1,Delta,25.0
+900,78,18,1,False,0,36,50.0,1.0,False,0,30,facility,12,-1,Delta,32.0
+900,145,27,0,False,0,36,50.0,1.0,False,0,30,facility,12,-1,Delta,23.0
+960,148,43,1,False,0,36,50.0,1.0,False,0,12,facility,10,-1,Delta,7.0
+1380,15,53,1,False,0,36,50.0,1.0,False,0,16,facility,9,-1,Delta,3.0
+1380,85,25,1,False,0,36,50.0,1.0,False,0,16,facility,9,-1,Delta,25.0

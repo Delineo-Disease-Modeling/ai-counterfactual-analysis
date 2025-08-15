@@ -1,0 +1,10 @@
+infected_person_id,infector_id,location_id,variant,timestep,mask
+5,36,13,Omicron,780,0.87403
+85,36,16,Omicron,1380,0.87403
+129,36,13,Omicron,840,0.87403
+69,36,30,Omicron,900,0.87403
+70,36,30,Omicron,900,0.87403
+78,36,30,Omicron,900,0.87403
+145,36,30,Omicron,900,0.87403
+148,36,12,Omicron,960,0.87403
+15,36,16,Omicron,1380,0.87403

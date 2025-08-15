@@ -1,0 +1,12 @@
+timestep,person_id,intervention_type,effect,person_age,person_sex,person_infectious,person_symptomatic,location_id,location_type,location_occupancy,location_capacity
+60,140,lockdown,stayed_home,79,0,False,False,13,facility,16,-1
+360,151,lockdown,stayed_home,31,0,False,False,4,facility,5,-1
+360,5,lockdown,stayed_home,78,0,False,False,25,facility,5,-1
+420,130,lockdown,stayed_home,18,1,False,False,22,facility,2,-1
+600,69,lockdown,stayed_home,40,0,False,False,11,facility,10,-1
+780,124,lockdown,stayed_home,40,1,False,False,36,facility,6,-1
+840,3,lockdown,stayed_home,24,1,False,False,10,facility,15,-1
+840,105,lockdown,stayed_home,36,1,False,False,12,facility,2,-1
+900,9,lockdown,stayed_home,18,0,False,False,14,facility,9,-1
+960,62,lockdown,stayed_home,20,0,False,False,17,facility,4,-1
+1200,45,lockdown,stayed_home,76,0,False,False,2,facility,13,-1

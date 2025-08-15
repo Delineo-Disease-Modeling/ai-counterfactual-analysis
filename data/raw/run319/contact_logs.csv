@@ -1,0 +1,12 @@
+timestep,person1_id,person2_id,location_id,location_type,contact_duration,person1_infectious,person2_infectious,person1_masked,person2_masked,both_masked,age_diff,same_household
+300,87,3,13,facility,1,False,False,False,False,False,1,False
+540,68,78,2,facility,1,False,False,False,False,False,25,False
+540,26,107,11,facility,1,False,False,False,False,False,40,False
+600,68,78,2,facility,1,False,False,False,False,False,25,False
+600,26,107,11,facility,1,False,False,False,False,False,40,False
+660,26,107,11,facility,1,False,False,False,False,False,40,False
+720,107,134,11,facility,1,False,False,False,False,False,28,False
+960,123,176,10,facility,1,False,False,False,False,False,28,False
+1020,123,176,10,facility,1,False,False,False,False,False,28,False
+1080,123,176,10,facility,1,False,False,False,False,False,28,False
+1260,13,176,10,facility,1,False,False,False,False,False,11,False

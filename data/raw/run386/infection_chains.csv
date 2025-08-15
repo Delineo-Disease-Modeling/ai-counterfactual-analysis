@@ -1,0 +1,10 @@
+infected_person_id,infector_id,location_id,variant,timestep,mask
+5,36,13,Delta,780,0.79475
+85,36,16,Delta,1380,0.79475
+129,36,13,Delta,840,0.79475
+69,36,30,Delta,900,0.79475
+70,36,30,Delta,900,0.79475
+78,36,30,Delta,900,0.79475
+145,36,30,Delta,900,0.79475
+148,36,12,Delta,960,0.79475
+15,36,16,Delta,1380,0.79475

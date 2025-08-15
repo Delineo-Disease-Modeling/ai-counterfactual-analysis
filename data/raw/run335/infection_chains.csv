@@ -1,0 +1,3 @@
+infected_person_id,infector_id,location_id,variant,timestep,lockdown
+3,26,13,Omicron,720,0.85345
+26,3,13,Delta,720,0.85345

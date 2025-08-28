@@ -16,6 +16,7 @@ import json
 SIM_URL = "http://127.0.0.1:1880/simulation/"  
 SIM_LOG_DIR = "../../../Simulation/simulation_logs/"  # where simulator writes CSVs
 TARGET_DIR = "../../data/raw/"                     # where to store organized results
+START_DIR = "../start_params.json"                 # json with the start parameter
 
 # List of intervention dictionaries to test
 
@@ -79,6 +80,10 @@ def run_simulation(interventions, run_id):
 if __name__ == "__main__":
     os.makedirs(TARGET_DIR, exist_ok=True)
 
-    for idx, param_set in enumerate(PARAMETER_SETS, start=401):
+    
+
+    for idx, param_set in enumerate(PARAMETER_SETS, start=START_DIR['start']):
         run_simulation(param_set, idx)
+
+    START_DIR['start'] += 1    
 

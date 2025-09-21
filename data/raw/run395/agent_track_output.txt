@@ -1,3 +1,4 @@
+Tracking of agent 36
 Your agent didn't move at time 0.
 At time 0, your agent was infected with Omicron at the start of the experiment.
 Your agent didn't infect anyone at time 0.
@@ -78,6 +79,6 @@ Your agent did not catch any new diseases at time 1380.
 At time 1440, your agent moved from facility 16 to facility 16.
 Your agent didn't infect anyone at time 1440.
 Your agent did not catch any new diseases at time 1440.
-In total, your agent moved 24 times,
-directly infected 10 people,
+In total, your agent moved 24 time(s),
+directly infected 10 person(s),
 and caught 1 disease(s).

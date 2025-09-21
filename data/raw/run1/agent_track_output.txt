@@ -1,3 +1,4 @@
+Tracking of agent 54
 Your agent didn't move at time 0.
 Your agent didn't infect anyone at time 0.
 Your agent did not catch any new diseases at time 0.
@@ -76,6 +77,6 @@ Your agent did not catch any new diseases at time 1380.
 At time 1440, your agent moved from household 17 to household 17.
 Your agent didn't infect anyone at time 1440.
 Your agent did not catch any new diseases at time 1440.
-In total, your agent moved 24 times,
-directly infected 9 people,
+In total, your agent moved 24 time(s),
+directly infected 9 person(s),
 and caught 1 disease(s).

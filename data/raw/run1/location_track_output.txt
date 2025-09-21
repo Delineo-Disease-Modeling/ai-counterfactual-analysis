@@ -1,0 +1,300 @@
+Tracking of household 12
+Nobody entered this location at time 0.
+Nobody exited this location at time 0.
+At time 0, agent  infected 36 with disease Deltaat your location.
+At time 0, agent 36 infected 37 with disease Deltaat your location.
+At time 0, agent 36 infected 38 with disease Deltaat your location.
+At time 0, agent 36 infected 39 with disease Deltaat your location.
+At time 60, agent 24 entered this location.
+At time 60, agent 37 exited this location.
+At time 60, agent 39 entered this location.
+At time 60, agent 39 exited this location.
+At time 60, agent 13 entered this location.
+At time 60, agent 36 entered this location.
+At time 60, agent 36 exited this location.
+At time 60, agent 38 entered this location.
+At time 60, agent 38 exited this location.
+At time 60, agent 36 infected 24 with disease Deltaat your location.
+At time 120, agent 13 entered this location.
+At time 120, agent 13 exited this location.
+At time 120, agent 114 entered this location.
+At time 120, agent 24 exited this location.
+At time 120, agent 39 entered this location.
+At time 120, agent 39 exited this location.
+At time 120, agent 36 entered this location.
+At time 120, agent 36 exited this location.
+At time 120, agent 38 entered this location.
+At time 120, agent 38 exited this location.
+Your agent didn't infect anyone at time 120.
+At time 180, agent 38 entered this location.
+At time 180, agent 38 exited this location.
+At time 180, agent 114 entered this location.
+At time 180, agent 114 exited this location.
+At time 180, agent 68 entered this location.
+At time 180, agent 39 entered this location.
+At time 180, agent 39 exited this location.
+At time 180, agent 36 entered this location.
+At time 180, agent 36 exited this location.
+At time 180, agent 13 exited this location.
+Your agent didn't infect anyone at time 180.
+At time 240, agent 27 entered this location.
+At time 240, agent 25 entered this location.
+At time 240, agent 114 exited this location.
+At time 240, agent 38 entered this location.
+At time 240, agent 38 exited this location.
+At time 240, agent 66 entered this location.
+At time 240, agent 100 entered this location.
+At time 240, agent 39 entered this location.
+At time 240, agent 39 exited this location.
+At time 240, agent 36 entered this location.
+At time 240, agent 36 exited this location.
+At time 240, agent 68 exited this location.
+At time 240, agent 36 infected 25 with disease Deltaat your location.
+At time 240, agent 36 infected 27 with disease Deltaat your location.
+At time 300, agent 25 entered this location.
+At time 300, agent 25 exited this location.
+At time 300, agent 36 exited this location.
+At time 300, agent 66 exited this location.
+At time 300, agent 38 entered this location.
+At time 300, agent 38 exited this location.
+At time 300, agent 27 exited this location.
+At time 300, agent 100 entered this location.
+At time 300, agent 100 exited this location.
+At time 300, agent 39 entered this location.
+At time 300, agent 39 exited this location.
+Your agent didn't infect anyone at time 300.
+At time 360, agent 25 exited this location.
+At time 360, agent 38 entered this location.
+At time 360, agent 38 exited this location.
+At time 360, agent 14 entered this location.
+At time 360, agent 100 entered this location.
+At time 360, agent 100 exited this location.
+At time 360, agent 39 entered this location.
+At time 360, agent 39 exited this location.
+At time 360, agent 36 entered this location.
+At time 360, agent 37 entered this location.
+At time 360, agent 36 infected 37 with disease Deltaat your location.
+At time 360, agent 36 infected 38 with disease Deltaat your location.
+At time 360, agent 36 infected 39 with disease Deltaat your location.
+At time 420, agent 100 entered this location.
+At time 420, agent 100 exited this location.
+At time 420, agent 39 entered this location.
+At time 420, agent 39 exited this location.
+At time 420, agent 38 exited this location.
+At time 420, agent 36 entered this location.
+At time 420, agent 36 exited this location.
+At time 420, agent 37 entered this location.
+At time 420, agent 37 exited this location.
+At time 420, agent 14 exited this location.
+Your agent didn't infect anyone at time 420.
+At time 480, agent 53 entered this location.
+At time 480, agent 100 entered this location.
+At time 480, agent 100 exited this location.
+At time 480, agent 39 entered this location.
+At time 480, agent 39 exited this location.
+At time 480, agent 37 exited this location.
+At time 480, agent 36 entered this location.
+At time 480, agent 36 exited this location.
+Your agent didn't infect anyone at time 480.
+At time 540, agent 53 exited this location.
+At time 540, agent 100 entered this location.
+At time 540, agent 100 exited this location.
+At time 540, agent 90 entered this location.
+At time 540, agent 39 entered this location.
+At time 540, agent 39 exited this location.
+At time 540, agent 36 entered this location.
+At time 540, agent 36 exited this location.
+Your agent didn't infect anyone at time 540.
+At time 600, agent 27 entered this location.
+At time 600, agent 17 entered this location.
+At time 600, agent 100 entered this location.
+At time 600, agent 100 exited this location.
+At time 600, agent 90 entered this location.
+At time 600, agent 90 exited this location.
+At time 600, agent 37 entered this location.
+At time 600, agent 36 entered this location.
+At time 600, agent 36 exited this location.
+At time 600, agent 39 entered this location.
+At time 600, agent 39 exited this location.
+At time 600, agent 36 infected 27 with disease Deltaat your location.
+At time 660, agent 39 entered this location.
+At time 660, agent 39 exited this location.
+At time 660, agent 27 exited this location.
+At time 660, agent 17 exited this location.
+At time 660, agent 120 entered this location.
+At time 660, agent 100 entered this location.
+At time 660, agent 100 exited this location.
+At time 660, agent 90 entered this location.
+At time 660, agent 90 exited this location.
+At time 660, agent 37 entered this location.
+At time 660, agent 37 exited this location.
+At time 660, agent 36 exited this location.
+Your agent didn't infect anyone at time 660.
+At time 720, agent 100 exited this location.
+At time 720, agent 39 entered this location.
+At time 720, agent 39 exited this location.
+At time 720, agent 90 entered this location.
+At time 720, agent 90 exited this location.
+At time 720, agent 22 entered this location.
+At time 720, agent 37 entered this location.
+At time 720, agent 37 exited this location.
+At time 720, agent 120 exited this location.
+Your agent didn't infect anyone at time 720.
+At time 780, agent 25 entered this location.
+At time 780, agent 39 entered this location.
+At time 780, agent 39 exited this location.
+At time 780, agent 22 entered this location.
+At time 780, agent 22 exited this location.
+At time 780, agent 36 entered this location.
+At time 780, agent 37 entered this location.
+At time 780, agent 37 exited this location.
+At time 780, agent 90 exited this location.
+At time 780, agent 36 infected 37 with disease Deltaat your location.
+At time 780, agent 36 infected 39 with disease Deltaat your location.
+At time 840, agent 27 entered this location.
+At time 840, agent 26 entered this location.
+At time 840, agent 39 entered this location.
+At time 840, agent 39 exited this location.
+At time 840, agent 22 exited this location.
+At time 840, agent 91 entered this location.
+At time 840, agent 36 entered this location.
+At time 840, agent 36 exited this location.
+At time 840, agent 25 exited this location.
+At time 840, agent 37 entered this location.
+At time 840, agent 37 exited this location.
+At time 840, agent 36 infected 26 with disease Deltaat your location.
+At time 840, agent 36 infected 27 with disease Deltaat your location.
+At time 900, agent 25 entered this location.
+At time 900, agent 39 entered this location.
+At time 900, agent 39 exited this location.
+At time 900, agent 126 entered this location.
+At time 900, agent 91 entered this location.
+At time 900, agent 91 exited this location.
+At time 900, agent 26 exited this location.
+At time 900, agent 37 entered this location.
+At time 900, agent 37 exited this location.
+At time 900, agent 36 entered this location.
+At time 900, agent 36 exited this location.
+At time 900, agent 27 exited this location.
+Your agent didn't infect anyone at time 900.
+At time 960, agent 126 exited this location.
+At time 960, agent 91 exited this location.
+At time 960, agent 39 entered this location.
+At time 960, agent 39 exited this location.
+At time 960, agent 118 entered this location.
+At time 960, agent 36 entered this location.
+At time 960, agent 36 exited this location.
+At time 960, agent 38 entered this location.
+At time 960, agent 37 entered this location.
+At time 960, agent 37 exited this location.
+At time 960, agent 25 exited this location.
+At time 960, agent 36 infected 38 with disease Deltaat your location.
+At time 1020, agent 39 exited this location.
+At time 1020, agent 118 entered this location.
+At time 1020, agent 118 exited this location.
+At time 1020, agent 88 entered this location.
+At time 1020, agent 36 entered this location.
+At time 1020, agent 36 exited this location.
+At time 1020, agent 136 entered this location.
+At time 1020, agent 38 entered this location.
+At time 1020, agent 38 exited this location.
+At time 1020, agent 37 entered this location.
+At time 1020, agent 37 exited this location.
+Your agent didn't infect anyone at time 1020.
+At time 1080, agent 24 entered this location.
+At time 1080, agent 36 exited this location.
+At time 1080, agent 118 exited this location.
+At time 1080, agent 105 entered this location.
+At time 1080, agent 136 entered this location.
+At time 1080, agent 136 exited this location.
+At time 1080, agent 88 exited this location.
+At time 1080, agent 38 entered this location.
+At time 1080, agent 38 exited this location.
+At time 1080, agent 39 entered this location.
+At time 1080, agent 37 entered this location.
+At time 1080, agent 37 exited this location.
+Your agent didn't infect anyone at time 1080.
+At time 1140, agent 24 exited this location.
+At time 1140, agent 105 entered this location.
+At time 1140, agent 105 exited this location.
+At time 1140, agent 136 entered this location.
+At time 1140, agent 136 exited this location.
+At time 1140, agent 38 entered this location.
+At time 1140, agent 38 exited this location.
+At time 1140, agent 39 entered this location.
+At time 1140, agent 39 exited this location.
+At time 1140, agent 37 entered this location.
+At time 1140, agent 37 exited this location.
+At time 1140, agent 36 entered this location.
+At time 1140, agent 36 infected 37 with disease Deltaat your location.
+At time 1140, agent 36 infected 38 with disease Deltaat your location.
+At time 1140, agent 36 infected 39 with disease Deltaat your location.
+At time 1200, agent 24 entered this location.
+At time 1200, agent 105 entered this location.
+At time 1200, agent 105 exited this location.
+At time 1200, agent 136 entered this location.
+At time 1200, agent 136 exited this location.
+At time 1200, agent 37 exited this location.
+At time 1200, agent 38 entered this location.
+At time 1200, agent 38 exited this location.
+At time 1200, agent 39 entered this location.
+At time 1200, agent 39 exited this location.
+At time 1200, agent 36 entered this location.
+At time 1200, agent 36 exited this location.
+Your agent didn't infect anyone at time 1200.
+At time 1260, agent 24 entered this location.
+At time 1260, agent 24 exited this location.
+At time 1260, agent 105 exited this location.
+At time 1260, agent 136 entered this location.
+At time 1260, agent 136 exited this location.
+At time 1260, agent 37 entered this location.
+At time 1260, agent 38 entered this location.
+At time 1260, agent 38 exited this location.
+At time 1260, agent 39 entered this location.
+At time 1260, agent 39 exited this location.
+At time 1260, agent 36 entered this location.
+At time 1260, agent 36 exited this location.
+At time 1260, agent 36 infected 37 with disease Deltaat your location.
+At time 1320, agent 27 entered this location.
+At time 1320, agent 38 entered this location.
+At time 1320, agent 38 exited this location.
+At time 1320, agent 37 entered this location.
+At time 1320, agent 37 exited this location.
+At time 1320, agent 24 exited this location.
+At time 1320, agent 20 entered this location.
+At time 1320, agent 136 exited this location.
+At time 1320, agent 36 entered this location.
+At time 1320, agent 36 exited this location.
+At time 1320, agent 39 entered this location.
+At time 1320, agent 39 exited this location.
+At time 1320, agent 36 infected 27 with disease Deltaat your location.
+At time 1380, agent 37 exited this location.
+At time 1380, agent 38 entered this location.
+At time 1380, agent 38 exited this location.
+At time 1380, agent 24 entered this location.
+At time 1380, agent 20 entered this location.
+At time 1380, agent 20 exited this location.
+At time 1380, agent 27 exited this location.
+At time 1380, agent 36 entered this location.
+At time 1380, agent 36 exited this location.
+At time 1380, agent 39 entered this location.
+At time 1380, agent 39 exited this location.
+Your agent didn't infect anyone at time 1380.
+At time 1440, agent 26 entered this location.
+At time 1440, agent 24 entered this location.
+At time 1440, agent 24 exited this location.
+At time 1440, agent 37 entered this location.
+At time 1440, agent 38 entered this location.
+At time 1440, agent 38 exited this location.
+At time 1440, agent 20 entered this location.
+At time 1440, agent 20 exited this location.
+At time 1440, agent 8 entered this location.
+At time 1440, agent 36 entered this location.
+At time 1440, agent 36 exited this location.
+At time 1440, agent 39 entered this location.
+At time 1440, agent 39 exited this location.
+At time 1440, agent 36 infected 24 with disease Deltaat your location.
+At time 1440, agent 36 infected 26 with disease Deltaat your location.
+In total, agents went to this location 131 time(s),
+left the location 127 time(s),
+and infected people here 23 time(s).

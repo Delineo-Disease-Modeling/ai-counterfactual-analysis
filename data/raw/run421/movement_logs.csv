@@ -43,7 +43,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 60,44,14,household,3,facility,normal,11,1,False,False,False,3,1,-1
 60,19,8,household,3,facility,normal,71,0,False,False,False,1,2,-1
 60,101,34,household,3,facility,normal,18,0,False,False,False,2,3,-1
-60,23,9,household,3,facility,normal,20,1,True,False,False,3,4,-1
+60,23,9,household,3,facility,normal,20,1,False,False,False,3,4,-1
 60,120,39,household,4,facility,normal,36,1,False,False,False,4,1,-1
 60,155,50,household,4,facility,normal,75,1,False,False,False,4,2,-1
 60,108,37,household,4,facility,normal,49,0,False,False,False,3,3,-1
@@ -62,7 +62,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 60,126,40,household,10,facility,normal,41,0,False,False,False,2,7,-1
 60,18,7,household,10,facility,normal,60,1,False,False,False,1,8,-1
 60,4,2,household,10,facility,normal,38,1,False,False,False,2,9,-1
-60,7,3,household,10,facility,normal,13,1,False,False,False,2,10,-1
+60,7,3,household,10,facility,normal,13,1,True,False,False,2,10,-1
 60,149,48,household,10,facility,normal,46,0,False,False,False,0,11,-1
 60,153,50,household,10,facility,normal,11,0,False,False,False,2,12,-1
 60,1,1,household,10,facility,normal,27,1,False,False,False,1,13,-1
@@ -86,7 +86,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 60,115,38,household,13,facility,normal,43,0,False,False,False,3,2,-1
 60,15,6,household,13,facility,normal,53,1,False,False,False,2,3,-1
 60,129,42,household,13,facility,normal,38,0,False,False,False,1,4,-1
-60,20,8,household,13,facility,normal,18,1,True,False,False,0,5,-1
+60,20,8,household,13,facility,normal,18,1,False,False,False,0,5,-1
 60,50,16,household,13,facility,normal,20,0,False,False,False,2,6,-1
 60,170,54,household,13,facility,normal,0,1,False,False,False,2,7,-1
 60,27,10,household,13,facility,normal,18,1,False,False,False,2,8,-1
@@ -99,7 +99,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 60,128,41,household,13,facility,normal,18,0,False,False,False,2,15,-1
 60,16,7,household,13,facility,normal,56,0,False,False,False,0,16,-1
 60,140,45,household,13,facility,normal,79,0,False,False,False,2,17,-1
-60,3,1,household,13,facility,normal,24,1,False,False,False,0,18,-1
+60,3,1,household,13,facility,normal,24,1,True,False,False,0,18,-1
 60,109,37,household,13,facility,normal,79,0,False,False,False,1,19,-1
 60,127,41,household,13,facility,normal,43,1,False,False,False,1,20,-1
 60,165,53,household,14,facility,normal,81,1,False,False,False,2,1,-1
@@ -212,7 +212,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 120,19,3,facility,3,facility,normal,71,0,False,False,False,5,5,-1
 120,142,72,household,3,facility,normal,0,1,False,False,False,6,6,-1
 120,101,3,facility,3,facility,normal,18,0,False,False,False,6,6,-1
-120,23,3,facility,3,facility,normal,20,1,True,False,False,6,6,-1
+120,23,3,facility,3,facility,normal,20,1,False,False,False,6,6,-1
 120,75,4,facility,4,facility,normal,45,0,False,False,False,8,8,-1
 120,25,4,facility,4,facility,normal,18,0,False,False,False,8,8,-1
 120,21,4,facility,4,facility,normal,67,0,False,False,False,8,8,-1
@@ -226,7 +226,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 120,115,13,facility,10,facility,normal,43,0,False,False,False,18,16,-1
 120,18,10,facility,10,facility,normal,60,1,False,False,False,16,16,-1
 120,4,10,facility,10,facility,normal,38,1,False,False,False,16,16,-1
-120,7,10,facility,10,facility,normal,13,1,False,False,False,16,16,-1
+120,7,10,facility,10,facility,normal,13,1,True,False,False,16,16,-1
 120,149,10,facility,10,facility,normal,46,0,False,False,False,16,16,-1
 120,153,10,facility,10,facility,normal,11,0,False,False,False,16,16,-1
 120,1,10,facility,10,facility,normal,27,1,False,False,False,16,16,-1
@@ -265,7 +265,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 120,128,13,facility,13,facility,normal,18,0,False,False,False,22,22,-1
 120,16,13,facility,13,facility,normal,56,0,False,False,False,22,22,-1
 120,140,13,facility,13,facility,normal,79,0,False,False,False,22,22,-1
-120,3,13,facility,13,facility,normal,24,1,False,False,False,22,22,-1
+120,3,13,facility,13,facility,normal,24,1,True,False,False,22,22,-1
 120,89,2,facility,13,facility,normal,37,0,False,False,False,15,23,-1
 120,109,13,facility,13,facility,normal,79,0,False,False,False,23,23,-1
 120,80,38,household,13,facility,normal,56,1,False,False,False,1,24,-1
@@ -305,7 +305,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 120,119,17,facility,17,facility,normal,18,0,False,False,False,1,1,-1
 120,161,89,household,18,facility,normal,31,1,False,False,False,2,1,-1
 120,26,22,facility,18,facility,normal,68,0,False,False,False,1,2,-1
-120,20,13,facility,20,facility,normal,18,1,True,False,False,24,2,-1
+120,20,13,facility,20,facility,normal,18,1,False,False,False,24,2,-1
 120,50,13,facility,20,facility,normal,20,0,False,False,False,23,3,-1
 120,39,4,facility,20,facility,normal,30,0,False,False,False,8,4,-1
 120,59,16,facility,20,facility,normal,43,0,False,False,False,7,5,-1
@@ -353,7 +353,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 120,175,37,facility,37,facility,normal,41,1,False,False,False,7,7,-1
 180,5,29,facility,3,household,normal,78,0,False,False,False,2,1,-1
 180,14,20,facility,7,household,normal,50,0,False,False,False,8,1,-1
-180,20,20,facility,10,household,normal,18,1,True,False,False,7,1,-1
+180,20,20,facility,10,household,normal,18,1,False,False,False,7,1,-1
 180,30,2,facility,14,household,normal,29,1,False,False,False,13,1,-1
 180,48,20,facility,23,household,normal,47,1,False,False,False,6,1,-1
 180,53,14,facility,25,household,normal,68,1,False,False,False,19,1,-1
@@ -393,7 +393,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 180,19,3,facility,3,facility,normal,71,0,False,False,False,4,4,-1
 180,142,3,facility,3,facility,normal,0,1,False,False,False,4,4,-1
 180,101,3,facility,3,facility,normal,18,0,False,False,False,4,4,-1
-180,23,3,facility,3,facility,normal,20,1,True,False,False,4,4,-1
+180,23,3,facility,3,facility,normal,20,1,False,False,False,4,4,-1
 180,115,10,facility,4,facility,normal,43,0,False,False,False,13,5,-1
 180,21,4,facility,4,facility,normal,67,0,False,False,False,5,5,-1
 180,98,2,facility,4,facility,normal,36,1,False,False,False,19,6,-1
@@ -404,7 +404,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 180,150,26,facility,10,facility,normal,47,0,False,False,False,0,15,-1
 180,119,17,facility,10,facility,normal,18,0,False,False,False,0,16,-1
 180,4,10,facility,10,facility,normal,38,1,False,False,False,16,16,-1
-180,7,10,facility,10,facility,normal,13,1,False,False,False,16,16,-1
+180,7,10,facility,10,facility,normal,13,1,True,False,False,16,16,-1
 180,71,13,facility,10,facility,normal,58,1,False,False,False,21,17,-1
 180,149,10,facility,10,facility,normal,46,0,False,False,False,17,17,-1
 180,153,10,facility,10,facility,normal,11,0,False,False,False,17,17,-1
@@ -441,7 +441,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 180,16,13,facility,13,facility,normal,56,0,False,False,False,23,23,-1
 180,84,40,household,13,facility,normal,35,1,False,False,False,0,24,-1
 180,140,13,facility,13,facility,normal,79,0,False,False,False,24,24,-1
-180,3,13,facility,13,facility,normal,24,1,False,False,False,24,24,-1
+180,3,13,facility,13,facility,normal,24,1,True,False,False,24,24,-1
 180,60,28,household,13,facility,normal,13,0,False,False,False,1,25,-1
 180,89,13,facility,13,facility,normal,37,0,False,False,False,25,25,-1
 180,129,60,household,13,facility,normal,38,0,False,False,False,4,26,-1
@@ -556,7 +556,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 240,58,2,facility,2,facility,normal,31,0,False,False,False,24,24,-1
 240,154,84,household,3,facility,normal,23,0,False,False,False,4,4,-1
 240,101,3,facility,3,facility,normal,18,0,False,False,False,4,4,-1
-240,23,3,facility,3,facility,normal,20,1,True,False,False,4,4,-1
+240,23,3,facility,3,facility,normal,20,1,False,False,False,4,4,-1
 240,151,81,household,4,facility,normal,31,0,False,False,False,7,6,-1
 240,41,25,facility,4,facility,normal,33,1,False,False,False,8,7,-1
 240,63,30,household,4,facility,normal,27,0,False,False,False,0,8,-1
@@ -565,7 +565,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 240,141,14,facility,10,facility,normal,70,1,False,False,False,19,17,-1
 240,4,10,facility,10,facility,normal,38,1,False,False,False,17,17,-1
 240,150,10,facility,10,facility,normal,47,0,False,False,False,17,17,-1
-240,7,10,facility,10,facility,normal,13,1,False,False,False,17,17,-1
+240,7,10,facility,10,facility,normal,13,1,True,False,False,17,17,-1
 240,71,10,facility,10,facility,normal,58,1,False,False,False,17,17,-1
 240,149,10,facility,10,facility,normal,46,0,False,False,False,17,17,-1
 240,153,10,facility,10,facility,normal,11,0,False,False,False,17,17,-1
@@ -605,7 +605,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 240,16,13,facility,13,facility,normal,56,0,False,False,False,22,22,-1
 240,84,13,facility,13,facility,normal,35,1,False,False,False,22,22,-1
 240,140,13,facility,13,facility,normal,79,0,False,False,False,22,22,-1
-240,3,13,facility,13,facility,normal,24,1,False,False,False,22,22,-1
+240,3,13,facility,13,facility,normal,24,1,True,False,False,22,22,-1
 240,60,13,facility,13,facility,normal,13,0,False,False,False,22,22,-1
 240,92,44,household,13,facility,normal,41,1,False,False,False,1,23,-1
 240,89,13,facility,13,facility,normal,37,0,False,False,False,23,23,-1
@@ -638,7 +638,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 240,162,14,facility,14,facility,normal,37,1,False,False,False,21,21,-1
 240,172,14,facility,14,facility,normal,37,0,False,False,False,21,21,-1
 240,135,14,facility,14,facility,normal,11,1,False,False,False,21,21,-1
-240,20,10,household,14,facility,normal,18,1,True,False,False,0,22,-1
+240,20,10,household,14,facility,normal,18,1,False,False,False,0,22,-1
 240,139,35,facility,14,facility,normal,20,0,False,False,False,1,23,-1
 240,62,29,household,14,facility,normal,20,0,False,False,False,0,24,-1
 240,82,15,facility,15,facility,normal,58,1,False,False,False,2,2,-1
@@ -704,7 +704,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 240,11,37,facility,37,facility,normal,23,0,False,False,False,5,5,-1
 240,175,37,facility,37,facility,normal,41,1,False,False,False,5,5,-1
 300,4,10,facility,3,household,normal,38,1,False,False,False,16,1,-1
-300,7,10,facility,4,household,normal,13,1,False,False,False,15,1,-1
+300,7,10,facility,4,household,normal,13,1,True,False,False,15,1,-1
 300,8,16,facility,5,household,normal,78,1,False,False,False,8,1,-1
 300,10,13,facility,6,household,normal,32,1,False,False,False,24,1,-1
 300,17,8,household,8,household,normal,20,1,False,False,False,1,1,-1
@@ -748,7 +748,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 300,2,2,facility,2,facility,normal,19,1,False,False,False,18,18,-1
 300,58,2,facility,2,facility,normal,31,0,False,False,False,18,18,-1
 300,101,3,facility,3,facility,normal,18,0,False,False,False,3,3,-1
-300,23,3,facility,3,facility,normal,20,1,True,False,False,3,3,-1
+300,23,3,facility,3,facility,normal,20,1,False,False,False,3,3,-1
 300,73,11,facility,4,facility,normal,12,1,False,False,False,1,4,-1
 300,29,13,household,4,facility,normal,31,0,False,False,False,0,5,-1
 300,137,67,household,4,facility,normal,10,0,False,False,False,3,6,-1
@@ -791,7 +791,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 300,16,13,facility,13,facility,normal,56,0,False,False,False,21,21,-1
 300,84,13,facility,13,facility,normal,35,1,False,False,False,21,21,-1
 300,140,13,facility,13,facility,normal,79,0,False,False,False,21,21,-1
-300,3,13,facility,13,facility,normal,24,1,False,False,False,21,21,-1
+300,3,13,facility,13,facility,normal,24,1,True,False,False,21,21,-1
 300,60,13,facility,13,facility,normal,13,0,False,False,False,21,21,-1
 300,92,13,facility,13,facility,normal,41,1,False,False,False,21,21,-1
 300,89,13,facility,13,facility,normal,37,0,False,False,False,21,21,-1
@@ -821,7 +821,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 300,162,14,facility,14,facility,normal,37,1,False,False,False,18,18,-1
 300,172,14,facility,14,facility,normal,37,0,False,False,False,18,18,-1
 300,135,14,facility,14,facility,normal,11,1,False,False,False,18,18,-1
-300,20,14,facility,14,facility,normal,18,1,True,False,False,18,18,-1
+300,20,14,facility,14,facility,normal,18,1,False,False,False,18,18,-1
 300,154,3,facility,14,facility,normal,23,0,False,False,False,2,19,-1
 300,139,14,facility,14,facility,normal,20,0,False,False,False,19,19,-1
 300,47,22,household,14,facility,normal,34,1,False,False,False,0,20,-1
@@ -880,7 +880,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 300,68,37,facility,37,facility,normal,43,0,False,False,False,2,2,-1
 300,175,37,facility,37,facility,normal,41,1,False,False,False,2,2,-1
 360,1,10,facility,1,household,normal,27,1,False,False,False,16,1,-1
-360,3,13,facility,2,household,normal,24,1,False,False,False,22,1,-1
+360,3,13,facility,2,household,normal,24,1,True,False,False,22,1,-1
 360,48,17,facility,23,household,normal,47,1,False,False,False,1,1,-1
 360,56,20,facility,26,household,normal,18,0,False,False,False,1,1,-1
 360,75,36,household,36,household,normal,45,0,False,False,False,1,1,-1
@@ -913,7 +913,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 360,58,2,facility,2,facility,normal,31,0,False,False,False,21,21,-1
 360,118,28,facility,2,facility,normal,0,1,False,False,False,2,22,-1
 360,21,36,facility,3,facility,normal,67,0,False,False,False,1,3,-1
-360,23,3,facility,3,facility,normal,20,1,True,False,False,3,3,-1
+360,23,3,facility,3,facility,normal,20,1,False,False,False,3,3,-1
 360,123,57,household,3,facility,normal,0,0,False,False,False,3,4,-1
 360,151,2,facility,4,facility,normal,31,0,False,False,False,21,6,-1
 360,59,28,household,4,facility,normal,43,0,False,False,False,0,7,-1
@@ -975,7 +975,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 360,33,15,household,13,facility,normal,3,0,False,False,False,0,20,-1
 360,29,4,facility,13,facility,normal,31,0,False,False,False,9,21,-1
 360,157,87,household,13,facility,normal,40,1,False,False,False,2,22,-1
-360,7,4,household,13,facility,normal,13,1,False,False,False,0,23,-1
+360,7,4,household,13,facility,normal,13,1,True,False,False,0,23,-1
 360,143,2,facility,13,facility,normal,9,0,False,False,False,19,24,-1
 360,76,14,facility,14,facility,normal,18,0,False,False,False,18,18,-1
 360,160,14,facility,14,facility,normal,55,1,False,False,False,18,18,-1
@@ -990,7 +990,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 360,162,14,facility,14,facility,normal,37,1,False,False,False,20,20,-1
 360,172,14,facility,14,facility,normal,37,0,False,False,False,20,20,-1
 360,135,14,facility,14,facility,normal,11,1,False,False,False,20,20,-1
-360,20,14,facility,14,facility,normal,18,1,True,False,False,20,20,-1
+360,20,14,facility,14,facility,normal,18,1,False,False,False,20,20,-1
 360,154,14,facility,14,facility,normal,23,0,False,False,False,20,20,-1
 360,139,14,facility,14,facility,normal,20,0,False,False,False,20,20,-1
 360,47,14,facility,14,facility,normal,34,1,False,False,False,20,20,-1
@@ -1055,7 +1055,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 360,4,3,household,36,facility,normal,38,1,False,False,False,0,3,-1
 360,148,10,facility,37,facility,normal,43,1,False,False,False,19,2,-1
 360,175,37,facility,37,facility,normal,41,1,False,False,False,2,2,-1
-420,3,2,household,2,household,normal,24,1,False,False,False,1,1,-1
+420,3,2,household,2,household,normal,24,1,True,False,False,1,1,-1
 420,42,20,facility,20,household,normal,65,1,False,False,False,6,1,-1
 420,45,12,facility,21,household,normal,76,0,False,False,False,7,1,-1
 420,46,12,facility,22,household,normal,83,0,False,False,False,6,1,-1
@@ -1088,7 +1088,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 420,151,4,facility,2,facility,normal,31,0,False,False,False,6,21,-1
 420,75,36,household,2,facility,normal,45,0,False,False,False,0,22,-1
 420,119,32,facility,3,facility,normal,18,0,False,False,False,1,4,-1
-420,23,3,facility,3,facility,normal,20,1,True,False,False,4,4,-1
+420,23,3,facility,3,facility,normal,20,1,False,False,False,4,4,-1
 420,123,3,facility,3,facility,normal,0,0,False,False,False,4,4,-1
 420,59,4,facility,4,facility,normal,43,0,False,False,False,6,6,-1
 420,79,4,facility,4,facility,normal,18,0,False,False,False,6,6,-1
@@ -1145,7 +1145,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 420,33,13,facility,13,facility,normal,3,0,False,False,False,21,21,-1
 420,29,13,facility,13,facility,normal,31,0,False,False,False,21,21,-1
 420,157,13,facility,13,facility,normal,40,1,False,False,False,21,21,-1
-420,7,13,facility,13,facility,normal,13,1,False,False,False,21,21,-1
+420,7,13,facility,13,facility,normal,13,1,True,False,False,21,21,-1
 420,143,13,facility,13,facility,normal,9,0,False,False,False,21,21,-1
 420,125,58,household,13,facility,normal,67,1,False,False,False,2,22,-1
 420,60,20,facility,13,facility,normal,13,0,False,False,False,3,23,-1
@@ -1162,7 +1162,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 420,172,14,facility,14,facility,normal,37,0,False,False,False,22,22,-1
 420,80,13,facility,14,facility,normal,56,1,False,False,False,23,23,-1
 420,135,14,facility,14,facility,normal,11,1,False,False,False,23,23,-1
-420,20,14,facility,14,facility,normal,18,1,True,False,False,23,23,-1
+420,20,14,facility,14,facility,normal,18,1,False,False,False,23,23,-1
 420,154,14,facility,14,facility,normal,23,0,False,False,False,23,23,-1
 420,139,14,facility,14,facility,normal,20,0,False,False,False,23,23,-1
 420,47,14,facility,14,facility,normal,34,1,False,False,False,23,23,-1
@@ -1268,7 +1268,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 480,151,2,facility,2,facility,normal,31,0,False,False,False,19,19,-1
 480,75,2,facility,2,facility,normal,45,0,False,False,False,19,19,-1
 480,45,21,household,2,facility,normal,76,0,False,False,False,0,20,-1
-480,23,3,facility,3,facility,normal,20,1,True,False,False,3,3,-1
+480,23,3,facility,3,facility,normal,20,1,False,False,False,3,3,-1
 480,123,3,facility,3,facility,normal,0,0,False,False,False,3,3,-1
 480,128,10,facility,3,facility,normal,18,0,False,False,False,13,4,-1
 480,46,22,household,4,facility,normal,83,0,False,False,False,0,10,-1
@@ -1322,17 +1322,17 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 480,33,13,facility,13,facility,normal,3,0,False,False,False,23,23,-1
 480,29,13,facility,13,facility,normal,31,0,False,False,False,23,23,-1
 480,157,13,facility,13,facility,normal,40,1,False,False,False,23,23,-1
-480,7,13,facility,13,facility,normal,13,1,False,False,False,23,23,-1
+480,7,13,facility,13,facility,normal,13,1,True,False,False,23,23,-1
 480,143,13,facility,13,facility,normal,9,0,False,False,False,23,23,-1
 480,158,88,household,13,facility,normal,81,0,False,False,False,3,24,-1
 480,125,13,facility,13,facility,normal,67,1,False,False,False,24,24,-1
-480,3,2,household,13,facility,normal,24,1,False,False,False,0,25,-1
+480,3,2,household,13,facility,normal,24,1,True,False,False,0,25,-1
 480,60,13,facility,13,facility,normal,13,0,False,False,False,25,25,-1
 480,163,13,facility,13,facility,normal,31,1,False,False,False,25,25,-1
 480,65,7,facility,13,facility,normal,54,0,False,False,False,0,26,-1
 480,59,4,facility,14,facility,normal,43,0,False,False,False,9,19,-1
 480,135,14,facility,14,facility,normal,11,1,False,False,False,19,19,-1
-480,20,14,facility,14,facility,normal,18,1,True,False,False,19,19,-1
+480,20,14,facility,14,facility,normal,18,1,False,False,False,19,19,-1
 480,154,14,facility,14,facility,normal,23,0,False,False,False,19,19,-1
 480,139,14,facility,14,facility,normal,20,0,False,False,False,19,19,-1
 480,47,14,facility,14,facility,normal,34,1,False,False,False,19,19,-1
@@ -1455,7 +1455,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 540,106,13,facility,4,facility,normal,18,0,False,False,False,22,14,-1
 540,56,26,household,6,facility,normal,18,0,False,False,False,0,1,-1
 540,164,8,facility,8,facility,normal,22,1,False,False,False,1,1,-1
-540,23,3,facility,10,facility,normal,20,1,True,False,False,3,18,-1
+540,23,3,facility,10,facility,normal,20,1,False,False,False,3,18,-1
 540,81,10,facility,10,facility,normal,58,0,False,False,False,18,18,-1
 540,76,10,facility,10,facility,normal,18,0,False,False,False,18,18,-1
 540,169,91,household,10,facility,normal,41,1,False,False,False,2,19,-1
@@ -1499,11 +1499,11 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 540,29,13,facility,13,facility,normal,31,0,False,False,False,21,21,-1
 540,41,19,household,13,facility,normal,33,1,False,False,False,0,22,-1
 540,157,13,facility,13,facility,normal,40,1,False,False,False,22,22,-1
-540,7,13,facility,13,facility,normal,13,1,False,False,False,22,22,-1
+540,7,13,facility,13,facility,normal,13,1,True,False,False,22,22,-1
 540,143,13,facility,13,facility,normal,9,0,False,False,False,22,22,-1
 540,158,13,facility,13,facility,normal,81,0,False,False,False,22,22,-1
 540,125,13,facility,13,facility,normal,67,1,False,False,False,22,22,-1
-540,3,13,facility,13,facility,normal,24,1,False,False,False,22,22,-1
+540,3,13,facility,13,facility,normal,24,1,True,False,False,22,22,-1
 540,60,13,facility,13,facility,normal,13,0,False,False,False,22,22,-1
 540,163,13,facility,13,facility,normal,31,1,False,False,False,22,22,-1
 540,65,13,facility,13,facility,normal,54,0,False,False,False,22,22,-1
@@ -1540,7 +1540,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 540,124,57,household,20,facility,normal,40,1,False,False,False,3,8,-1
 540,154,14,facility,20,facility,normal,23,0,False,False,False,16,9,-1
 540,97,46,household,20,facility,normal,75,0,False,False,False,0,10,-1
-540,20,14,facility,20,facility,normal,18,1,True,False,False,15,11,-1
+540,20,14,facility,20,facility,normal,18,1,False,False,False,15,11,-1
 540,82,21,facility,21,facility,normal,58,1,False,False,False,9,9,-1
 540,91,21,facility,21,facility,normal,18,0,False,False,False,9,9,-1
 540,89,42,household,21,facility,normal,37,0,False,False,False,0,10,-1
@@ -1676,11 +1676,11 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 600,130,3,facility,13,facility,normal,18,1,False,False,False,2,20,-1
 600,157,13,facility,13,facility,normal,40,1,False,False,False,20,20,-1
 600,59,35,facility,13,facility,normal,43,0,False,False,False,3,21,-1
-600,7,13,facility,13,facility,normal,13,1,False,False,False,21,21,-1
+600,7,13,facility,13,facility,normal,13,1,True,False,False,21,21,-1
 600,143,13,facility,13,facility,normal,9,0,False,False,False,21,21,-1
 600,158,13,facility,13,facility,normal,81,0,False,False,False,21,21,-1
 600,125,13,facility,13,facility,normal,67,1,False,False,False,21,21,-1
-600,3,13,facility,13,facility,normal,24,1,False,False,False,21,21,-1
+600,3,13,facility,13,facility,normal,24,1,True,False,False,21,21,-1
 600,60,13,facility,13,facility,normal,13,0,False,False,False,21,21,-1
 600,163,13,facility,13,facility,normal,31,1,False,False,False,21,21,-1
 600,65,13,facility,13,facility,normal,54,0,False,False,False,21,21,-1
@@ -1721,7 +1721,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 600,53,25,household,21,facility,normal,68,1,False,False,False,0,9,-1
 600,18,4,facility,21,facility,normal,60,1,False,False,False,13,10,-1
 600,19,21,facility,21,facility,normal,71,0,False,False,False,10,10,-1
-600,23,10,facility,21,facility,normal,20,1,True,False,False,16,11,-1
+600,23,10,facility,21,facility,normal,20,1,False,False,False,16,11,-1
 600,63,21,facility,21,facility,normal,27,0,False,False,False,11,11,-1
 600,168,10,facility,21,facility,normal,34,1,False,False,False,15,12,-1
 600,167,22,facility,22,facility,normal,57,0,False,False,False,3,3,-1
@@ -1756,7 +1756,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 600,64,35,facility,35,facility,normal,45,0,False,False,False,3,3,-1
 600,161,14,facility,36,facility,normal,31,1,False,False,False,12,1,-1
 600,39,20,facility,36,facility,normal,30,0,False,False,False,7,2,-1
-600,20,20,facility,37,facility,normal,18,1,True,False,False,6,1,-1
+600,20,20,facility,37,facility,normal,18,1,False,False,False,6,1,-1
 600,16,34,facility,37,facility,normal,56,0,False,False,False,3,2,-1
 600,2,2,facility,37,facility,normal,19,1,False,False,False,15,3,-1
 660,15,7,household,7,household,normal,53,1,False,False,False,2,2,-1
@@ -1848,11 +1848,11 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 660,130,13,facility,13,facility,normal,18,1,False,False,False,20,20,-1
 660,157,13,facility,13,facility,normal,40,1,False,False,False,20,20,-1
 660,59,13,facility,13,facility,normal,43,0,False,False,False,20,20,-1
-660,7,13,facility,13,facility,normal,13,1,False,False,False,20,20,-1
+660,7,13,facility,13,facility,normal,13,1,True,False,False,20,20,-1
 660,143,13,facility,13,facility,normal,9,0,False,False,False,20,20,-1
 660,158,13,facility,13,facility,normal,81,0,False,False,False,20,20,-1
 660,125,13,facility,13,facility,normal,67,1,False,False,False,20,20,-1
-660,3,13,facility,13,facility,normal,24,1,False,False,False,20,20,-1
+660,3,13,facility,13,facility,normal,24,1,True,False,False,20,20,-1
 660,60,13,facility,13,facility,normal,13,0,False,False,False,20,20,-1
 660,95,31,facility,13,facility,normal,30,1,False,False,False,3,21,-1
 660,163,13,facility,13,facility,normal,31,1,False,False,False,21,21,-1
@@ -1869,7 +1869,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 660,84,14,facility,14,facility,normal,35,1,False,False,False,11,11,-1
 660,83,14,facility,14,facility,normal,21,0,False,False,False,11,11,-1
 660,170,13,facility,14,facility,normal,0,1,False,False,False,22,12,-1
-660,20,37,facility,14,facility,normal,18,1,True,False,False,2,13,-1
+660,20,37,facility,14,facility,normal,18,1,False,False,False,2,13,-1
 660,165,14,facility,14,facility,normal,81,1,False,False,False,13,13,-1
 660,113,14,facility,14,facility,normal,37,0,False,False,False,13,13,-1
 660,37,15,facility,15,facility,normal,34,0,False,False,False,1,1,-1
@@ -1898,7 +1898,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 660,18,21,facility,21,facility,normal,60,1,False,False,False,8,8,-1
 660,19,21,facility,21,facility,normal,71,0,False,False,False,8,8,-1
 660,42,33,facility,21,facility,normal,65,1,False,False,False,0,9,-1
-660,23,21,facility,21,facility,normal,20,1,True,False,False,9,9,-1
+660,23,21,facility,21,facility,normal,20,1,False,False,False,9,9,-1
 660,63,21,facility,21,facility,normal,27,0,False,False,False,9,9,-1
 660,168,21,facility,21,facility,normal,34,1,False,False,False,9,9,-1
 660,147,21,facility,21,facility,normal,27,0,False,False,False,9,9,-1
@@ -2015,13 +2015,13 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 720,97,20,facility,12,facility,normal,75,0,False,False,False,6,7,-1
 720,22,12,facility,12,facility,normal,12,0,False,False,False,7,7,-1
 720,59,13,facility,13,facility,normal,43,0,False,False,False,18,18,-1
-720,7,13,facility,13,facility,normal,13,1,False,False,False,18,18,-1
+720,7,13,facility,13,facility,normal,13,1,True,False,False,18,18,-1
 720,61,13,facility,13,facility,normal,31,0,False,False,False,18,18,-1
 720,143,13,facility,13,facility,normal,9,0,False,False,False,18,18,-1
 720,158,13,facility,13,facility,normal,81,0,False,False,False,18,18,-1
 720,56,3,facility,13,facility,normal,18,0,False,False,False,6,19,-1
 720,125,13,facility,13,facility,normal,67,1,False,False,False,19,19,-1
-720,3,13,facility,13,facility,normal,24,1,False,False,False,19,19,-1
+720,3,13,facility,13,facility,normal,24,1,True,False,False,19,19,-1
 720,26,11,facility,13,facility,normal,68,0,False,False,False,8,20,-1
 720,60,13,facility,13,facility,normal,13,0,False,False,False,20,20,-1
 720,95,13,facility,13,facility,normal,30,1,False,False,False,20,20,-1
@@ -2037,7 +2037,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 720,84,14,facility,14,facility,normal,35,1,False,False,False,9,9,-1
 720,83,14,facility,14,facility,normal,21,0,False,False,False,9,9,-1
 720,170,14,facility,14,facility,normal,0,1,False,False,False,9,9,-1
-720,20,14,facility,14,facility,normal,18,1,True,False,False,9,9,-1
+720,20,14,facility,14,facility,normal,18,1,False,False,False,9,9,-1
 720,165,14,facility,14,facility,normal,81,1,False,False,False,9,9,-1
 720,103,31,facility,14,facility,normal,69,0,False,False,False,2,10,-1
 720,113,14,facility,14,facility,normal,37,0,False,False,False,10,10,-1
@@ -2066,7 +2066,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 720,19,21,facility,21,facility,normal,71,0,False,False,False,6,6,-1
 720,108,13,facility,21,facility,normal,49,0,False,False,False,19,7,-1
 720,42,21,facility,21,facility,normal,65,1,False,False,False,7,7,-1
-720,23,21,facility,21,facility,normal,20,1,True,False,False,7,7,-1
+720,23,21,facility,21,facility,normal,20,1,False,False,False,7,7,-1
 720,63,21,facility,21,facility,normal,27,0,False,False,False,7,7,-1
 720,168,21,facility,21,facility,normal,34,1,False,False,False,7,7,-1
 720,147,21,facility,21,facility,normal,27,0,False,False,False,7,7,-1
@@ -2188,7 +2188,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 780,91,43,household,12,facility,normal,18,0,False,False,False,0,5,-1
 780,56,13,facility,13,facility,normal,18,0,False,False,False,18,18,-1
 780,125,13,facility,13,facility,normal,67,1,False,False,False,18,18,-1
-780,3,13,facility,13,facility,normal,24,1,False,False,False,18,18,-1
+780,3,13,facility,13,facility,normal,24,1,True,False,False,18,18,-1
 780,26,13,facility,13,facility,normal,68,0,False,False,False,18,18,-1
 780,36,31,facility,13,facility,normal,50,1,False,False,False,0,19,-1
 780,60,13,facility,13,facility,normal,13,0,False,False,False,19,19,-1
@@ -2206,7 +2206,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 780,57,27,household,13,facility,normal,50,0,False,False,False,1,23,-1
 780,166,13,facility,13,facility,normal,18,1,False,False,False,23,23,-1
 780,170,14,facility,14,facility,normal,0,1,False,False,False,10,10,-1
-780,20,14,facility,14,facility,normal,18,1,True,False,False,10,10,-1
+780,20,14,facility,14,facility,normal,18,1,False,False,False,10,10,-1
 780,165,14,facility,14,facility,normal,81,1,False,False,False,10,10,-1
 780,103,14,facility,14,facility,normal,69,0,False,False,False,10,10,-1
 780,113,14,facility,14,facility,normal,37,0,False,False,False,10,10,-1
@@ -2236,7 +2236,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 780,62,29,household,20,facility,normal,20,0,False,False,False,0,6,-1
 780,133,36,facility,20,facility,normal,45,0,False,False,False,0,7,-1
 780,83,14,facility,20,facility,normal,21,0,False,False,False,12,8,-1
-780,23,21,facility,21,facility,normal,20,1,True,False,False,4,4,-1
+780,23,21,facility,21,facility,normal,20,1,False,False,False,4,4,-1
 780,63,21,facility,21,facility,normal,27,0,False,False,False,4,4,-1
 780,51,24,household,21,facility,normal,33,0,False,False,False,0,5,-1
 780,168,21,facility,21,facility,normal,34,1,False,False,False,5,5,-1
@@ -2270,7 +2270,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 780,76,32,facility,32,facility,normal,18,0,False,False,False,4,4,-1
 780,114,32,facility,32,facility,normal,73,1,False,False,False,4,4,-1
 780,68,32,facility,32,facility,normal,43,0,False,False,False,4,4,-1
-780,7,13,facility,33,facility,normal,13,1,False,False,False,21,1,-1
+780,7,13,facility,33,facility,normal,13,1,True,False,False,21,1,-1
 780,77,3,facility,33,facility,normal,54,0,False,False,False,3,2,-1
 780,145,75,household,34,facility,normal,27,0,False,False,False,2,2,-1
 780,94,34,facility,34,facility,normal,31,0,False,False,False,2,2,-1
@@ -2287,7 +2287,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 780,176,10,facility,37,facility,normal,28,1,False,False,False,16,2,-1
 780,129,11,facility,37,facility,normal,38,0,False,False,False,10,3,-1
 780,110,37,facility,37,facility,normal,77,1,False,False,False,3,3,-1
-840,7,33,facility,4,household,normal,13,1,False,False,False,1,1,-1
+840,7,33,facility,4,household,normal,13,1,True,False,False,1,1,-1
 840,8,4,facility,5,household,normal,78,1,False,False,False,4,1,-1
 840,27,35,facility,12,household,normal,18,1,False,False,False,2,2,-1
 840,26,13,facility,12,household,normal,68,0,False,False,False,18,3,-1
@@ -2342,7 +2342,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 840,87,10,facility,10,facility,normal,25,0,False,False,False,15,15,-1
 840,117,10,facility,10,facility,normal,45,1,False,False,False,15,15,-1
 840,153,10,facility,10,facility,normal,11,0,False,False,False,15,15,-1
-840,3,13,facility,10,facility,normal,24,1,False,False,False,17,16,-1
+840,3,13,facility,10,facility,normal,24,1,True,False,False,17,16,-1
 840,96,10,facility,10,facility,normal,14,1,False,False,False,16,16,-1
 840,159,10,facility,10,facility,normal,51,0,False,False,False,16,16,-1
 840,1,10,facility,10,facility,normal,27,1,False,False,False,16,16,-1
@@ -2412,7 +2412,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 840,101,2,facility,16,facility,normal,18,0,False,False,False,17,8,-1
 840,170,14,facility,17,facility,normal,0,1,False,False,False,13,3,-1
 840,82,17,facility,17,facility,normal,58,1,False,False,False,3,3,-1
-840,20,14,facility,17,facility,normal,18,1,True,False,False,12,4,-1
+840,20,14,facility,17,facility,normal,18,1,False,False,False,12,4,-1
 840,104,22,facility,18,facility,normal,50,0,False,False,False,5,6,-1
 840,9,18,facility,18,facility,normal,18,0,False,False,False,6,6,-1
 840,126,18,facility,18,facility,normal,41,0,False,False,False,6,6,-1
@@ -2442,7 +2442,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 840,49,28,facility,28,facility,normal,39,1,False,False,False,3,3,-1
 840,140,28,facility,28,facility,normal,79,0,False,False,False,3,3,-1
 840,37,28,facility,28,facility,normal,34,0,False,False,False,3,3,-1
-840,23,21,facility,30,facility,normal,20,1,True,False,False,3,5,-1
+840,23,21,facility,30,facility,normal,20,1,False,False,False,3,5,-1
 840,38,30,facility,30,facility,normal,41,1,False,False,False,5,5,-1
 840,69,30,facility,30,facility,normal,40,0,False,False,False,5,5,-1
 840,99,30,facility,30,facility,normal,60,1,False,False,False,5,5,-1
@@ -2501,7 +2501,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 900,67,32,household,3,facility,normal,62,1,False,False,False,0,7,-1
 900,160,3,facility,3,facility,normal,55,1,False,False,False,7,7,-1
 900,39,2,facility,4,facility,normal,30,0,False,False,False,16,9,-1
-900,7,4,household,4,facility,normal,13,1,False,False,False,0,10,-1
+900,7,4,household,4,facility,normal,13,1,True,False,False,0,10,-1
 900,34,4,facility,4,facility,normal,45,0,False,False,False,10,10,-1
 900,146,1,facility,4,facility,normal,70,0,False,False,False,0,11,-1
 900,170,17,facility,4,facility,normal,0,1,False,False,False,2,12,-1
@@ -2517,7 +2517,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 900,117,10,facility,10,facility,normal,45,1,False,False,False,13,13,-1
 900,153,10,facility,10,facility,normal,11,0,False,False,False,13,13,-1
 900,41,35,facility,10,facility,normal,33,1,False,False,False,2,14,-1
-900,3,10,facility,10,facility,normal,24,1,False,False,False,14,14,-1
+900,3,10,facility,10,facility,normal,24,1,True,False,False,14,14,-1
 900,96,10,facility,10,facility,normal,14,1,False,False,False,14,14,-1
 900,159,10,facility,10,facility,normal,51,0,False,False,False,14,14,-1
 900,47,22,household,10,facility,normal,34,1,False,False,False,0,15,-1
@@ -2581,7 +2581,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 900,127,2,facility,17,facility,normal,43,1,False,False,False,15,6,-1
 900,82,17,facility,17,facility,normal,58,1,False,False,False,6,6,-1
 900,8,5,household,17,facility,normal,78,1,False,False,False,0,7,-1
-900,20,17,facility,17,facility,normal,18,1,True,False,False,7,7,-1
+900,20,17,facility,17,facility,normal,18,1,False,False,False,7,7,-1
 900,115,18,facility,18,facility,normal,43,0,False,False,False,1,1,-1
 900,120,2,facility,18,facility,normal,36,1,False,False,False,14,2,-1
 900,65,13,facility,20,facility,normal,54,0,False,False,False,25,3,-1
@@ -2607,7 +2607,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 900,37,28,facility,28,facility,normal,34,0,False,False,False,3,3,-1
 900,100,20,facility,29,facility,normal,65,0,False,False,False,5,1,-1
 900,145,34,facility,30,facility,normal,27,0,False,False,False,2,5,-1
-900,23,30,facility,30,facility,normal,20,1,True,False,False,5,5,-1
+900,23,30,facility,30,facility,normal,20,1,False,False,False,5,5,-1
 900,78,35,facility,30,facility,normal,18,1,False,False,False,1,6,-1
 900,38,30,facility,30,facility,normal,41,1,False,False,False,6,6,-1
 900,76,32,facility,30,facility,normal,18,0,False,False,False,2,7,-1
@@ -2639,7 +2639,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 900,131,61,household,36,facility,normal,72,0,False,False,False,4,8,-1
 900,161,37,facility,37,facility,normal,31,1,False,False,False,2,2,-1
 900,110,37,facility,37,facility,normal,77,1,False,False,False,2,2,-1
-960,7,4,facility,4,household,normal,13,1,False,False,False,10,1,-1
+960,7,4,facility,4,household,normal,13,1,True,False,False,10,1,-1
 960,13,2,facility,7,household,normal,39,0,False,False,False,12,1,-1
 960,19,13,facility,9,household,normal,71,0,False,False,False,17,1,-1
 960,33,20,facility,15,household,normal,3,0,False,False,False,4,1,-1
@@ -2691,7 +2691,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 960,153,10,facility,10,facility,normal,11,0,False,False,False,16,16,-1
 960,41,10,facility,10,facility,normal,33,1,False,False,False,16,16,-1
 960,65,20,facility,10,facility,normal,54,0,False,False,False,2,17,-1
-960,3,10,facility,10,facility,normal,24,1,False,False,False,17,17,-1
+960,3,10,facility,10,facility,normal,24,1,True,False,False,17,17,-1
 960,96,10,facility,10,facility,normal,14,1,False,False,False,17,17,-1
 960,32,16,facility,10,facility,normal,41,0,False,False,False,5,18,-1
 960,159,10,facility,10,facility,normal,51,0,False,False,False,18,18,-1
@@ -2739,7 +2739,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 960,12,13,facility,13,facility,normal,49,0,False,False,False,19,19,-1
 960,35,13,facility,13,facility,normal,29,1,False,False,False,19,19,-1
 960,56,17,facility,13,facility,normal,18,0,False,False,False,5,20,-1
-960,23,30,facility,13,facility,normal,20,1,True,False,False,8,21,-1
+960,23,30,facility,13,facility,normal,20,1,False,False,False,8,21,-1
 960,18,13,facility,13,facility,normal,60,1,False,False,False,21,21,-1
 960,6,13,facility,13,facility,normal,53,1,False,False,False,21,21,-1
 960,86,14,facility,14,facility,normal,59,0,False,False,False,8,8,-1
@@ -2760,7 +2760,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 960,8,17,facility,17,facility,normal,78,1,False,False,False,4,4,-1
 960,62,36,facility,17,facility,normal,20,0,False,False,False,2,5,-1
 960,78,30,facility,17,facility,normal,18,1,False,False,False,7,6,-1
-960,20,17,facility,17,facility,normal,18,1,True,False,False,6,6,-1
+960,20,17,facility,17,facility,normal,18,1,False,False,False,6,6,-1
 960,115,18,facility,18,facility,normal,43,0,False,False,False,2,2,-1
 960,120,18,facility,18,facility,normal,36,1,False,False,False,2,2,-1
 960,28,32,facility,20,facility,normal,6,1,False,False,False,0,3,-1
@@ -2859,7 +2859,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1020,14,4,facility,4,facility,normal,50,0,False,False,False,10,10,-1
 1020,91,4,facility,4,facility,normal,18,0,False,False,False,10,10,-1
 1020,119,6,facility,6,facility,normal,18,0,False,False,False,2,2,-1
-1020,3,10,facility,10,facility,normal,24,1,False,False,False,18,18,-1
+1020,3,10,facility,10,facility,normal,24,1,True,False,False,18,18,-1
 1020,174,36,facility,10,facility,normal,43,1,False,False,False,2,19,-1
 1020,96,10,facility,10,facility,normal,14,1,False,False,False,19,19,-1
 1020,32,10,facility,10,facility,normal,41,0,False,False,False,19,19,-1
@@ -2909,7 +2909,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1020,35,13,facility,13,facility,normal,29,1,False,False,False,20,20,-1
 1020,79,38,household,13,facility,normal,18,0,False,False,False,1,21,-1
 1020,56,13,facility,13,facility,normal,18,0,False,False,False,21,21,-1
-1020,23,13,facility,13,facility,normal,20,1,True,False,False,21,21,-1
+1020,23,13,facility,13,facility,normal,20,1,False,False,False,21,21,-1
 1020,18,13,facility,13,facility,normal,60,1,False,False,False,21,21,-1
 1020,131,61,household,13,facility,normal,72,0,False,False,False,4,22,-1
 1020,6,13,facility,13,facility,normal,53,1,False,False,False,22,22,-1
@@ -2940,7 +2940,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1020,62,17,facility,17,facility,normal,20,0,False,False,False,4,4,-1
 1020,78,17,facility,17,facility,normal,18,1,False,False,False,4,4,-1
 1020,94,34,facility,17,facility,normal,31,0,False,False,False,0,5,-1
-1020,20,17,facility,17,facility,normal,18,1,True,False,False,5,5,-1
+1020,20,17,facility,17,facility,normal,18,1,False,False,False,5,5,-1
 1020,115,18,facility,18,facility,normal,43,0,False,False,False,2,2,-1
 1020,120,18,facility,18,facility,normal,36,1,False,False,False,2,2,-1
 1020,168,21,facility,20,facility,normal,34,1,False,False,False,3,3,-1
@@ -2978,7 +2978,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1020,147,21,facility,33,facility,normal,27,0,False,False,False,4,2,-1
 1020,8,17,facility,34,facility,normal,78,1,False,False,False,4,1,-1
 1020,104,33,facility,34,facility,normal,50,0,False,False,False,1,2,-1
-1020,7,4,household,35,facility,normal,13,1,False,False,False,0,2,-1
+1020,7,4,household,35,facility,normal,13,1,True,False,False,0,2,-1
 1020,21,35,facility,35,facility,normal,67,0,False,False,False,2,2,-1
 1020,137,2,facility,36,facility,normal,10,0,False,False,False,13,2,-1
 1020,22,4,facility,36,facility,normal,12,0,False,False,False,8,3,-1
@@ -3077,8 +3077,8 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1080,12,13,facility,13,facility,normal,49,0,False,False,False,21,21,-1
 1080,35,13,facility,13,facility,normal,29,1,False,False,False,21,21,-1
 1080,79,13,facility,13,facility,normal,18,0,False,False,False,21,21,-1
-1080,56,13,facility,13,facility,normal,18,0,False,False,False,21,21,-1
-1080,23,13,facility,13,facility,normal,20,1,True,False,False,21,21,-1
+1080,56,13,facility,13,facility,normal,18,0,True,False,False,21,21,-1
+1080,23,13,facility,13,facility,normal,20,1,False,False,False,21,21,-1
 1080,18,13,facility,13,facility,normal,60,1,False,False,False,21,21,-1
 1080,131,13,facility,13,facility,normal,72,0,False,False,False,21,21,-1
 1080,87,13,facility,13,facility,normal,25,0,False,False,False,21,21,-1
@@ -3091,7 +3091,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1080,49,23,household,14,facility,normal,39,1,False,False,False,0,11,-1
 1080,44,14,facility,14,facility,normal,11,1,False,False,False,11,11,-1
 1080,9,14,facility,14,facility,normal,18,0,False,False,False,11,11,-1
-1080,7,35,facility,14,facility,normal,13,1,False,False,False,1,12,-1
+1080,7,35,facility,14,facility,normal,13,1,True,False,False,1,12,-1
 1080,170,14,facility,14,facility,normal,0,1,False,False,False,12,12,-1
 1080,62,17,facility,14,facility,normal,20,0,False,False,False,3,13,-1
 1080,164,14,facility,14,facility,normal,22,1,False,False,False,13,13,-1
@@ -3112,7 +3112,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1080,78,17,facility,17,facility,normal,18,1,False,False,False,3,3,-1
 1080,94,17,facility,17,facility,normal,31,0,False,False,False,3,3,-1
 1080,68,32,household,17,facility,normal,43,0,False,False,False,0,4,-1
-1080,20,17,facility,17,facility,normal,18,1,True,False,False,4,4,-1
+1080,20,17,facility,17,facility,normal,18,1,False,False,False,4,4,-1
 1080,102,20,facility,17,facility,normal,33,1,False,False,False,0,5,-1
 1080,59,2,facility,17,facility,normal,43,0,False,False,False,15,6,-1
 1080,120,18,facility,18,facility,normal,36,1,False,False,False,1,1,-1
@@ -3125,11 +3125,11 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1080,48,21,facility,21,facility,normal,47,1,False,False,False,4,4,-1
 1080,163,90,household,21,facility,normal,31,1,False,False,False,4,5,-1
 1080,5,21,facility,21,facility,normal,78,0,False,False,False,5,5,-1
-1080,60,12,facility,21,facility,normal,13,0,False,False,False,9,6,-1
+1080,60,12,facility,21,facility,normal,13,0,True,False,False,9,6,-1
 1080,30,22,facility,21,facility,normal,29,1,False,False,False,2,7,-1
 1080,16,21,facility,21,facility,normal,56,0,False,False,False,7,7,-1
 1080,129,21,facility,21,facility,normal,38,0,False,False,False,7,7,-1
-1080,3,10,facility,22,facility,normal,24,1,False,False,False,19,3,-1
+1080,3,10,facility,22,facility,normal,24,1,True,False,False,19,3,-1
 1080,151,22,facility,22,facility,normal,31,0,False,False,False,3,3,-1
 1080,38,22,facility,22,facility,normal,41,1,False,False,False,3,3,-1
 1080,112,25,facility,25,facility,normal,28,1,False,False,False,4,4,-1
@@ -3195,7 +3195,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1140,19,2,facility,2,facility,normal,71,0,False,False,False,13,13,-1
 1140,155,2,facility,2,facility,normal,75,1,False,False,False,13,13,-1
 1140,17,2,facility,2,facility,normal,20,1,False,False,False,13,13,-1
-1140,7,14,facility,2,facility,normal,13,1,False,False,False,10,14,-1
+1140,7,14,facility,2,facility,normal,13,1,True,False,False,10,14,-1
 1140,96,3,facility,2,facility,normal,14,1,False,False,False,5,15,-1
 1140,144,2,facility,2,facility,normal,57,0,False,False,False,15,15,-1
 1140,128,2,facility,2,facility,normal,18,0,False,False,False,15,15,-1
@@ -3208,7 +3208,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1140,91,4,facility,4,facility,normal,18,0,False,False,False,4,4,-1
 1140,67,3,facility,4,facility,normal,62,1,False,False,False,4,5,-1
 1140,119,10,facility,4,facility,normal,18,0,False,False,False,16,6,-1
-1140,3,22,facility,4,facility,normal,24,1,False,False,False,2,7,-1
+1140,3,22,facility,4,facility,normal,24,1,True,False,False,2,7,-1
 1140,139,69,household,4,facility,normal,20,0,False,False,False,4,8,-1
 1140,41,19,household,6,facility,normal,33,1,False,False,False,0,1,-1
 1140,31,10,facility,10,facility,normal,39,1,False,False,False,16,16,-1
@@ -3251,8 +3251,8 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1140,44,14,facility,13,facility,normal,11,1,False,False,False,8,20,-1
 1140,35,13,facility,13,facility,normal,29,1,False,False,False,20,20,-1
 1140,79,13,facility,13,facility,normal,18,0,False,False,False,20,20,-1
-1140,56,13,facility,13,facility,normal,18,0,False,False,False,20,20,-1
-1140,23,13,facility,13,facility,normal,20,1,True,False,False,20,20,-1
+1140,56,13,facility,13,facility,normal,18,0,True,False,False,20,20,-1
+1140,23,13,facility,13,facility,normal,20,1,False,False,False,20,20,-1
 1140,18,13,facility,13,facility,normal,60,1,False,False,False,20,20,-1
 1140,131,13,facility,13,facility,normal,72,0,False,False,False,20,20,-1
 1140,127,30,facility,13,facility,normal,43,1,False,False,False,8,21,-1
@@ -3285,7 +3285,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1140,88,16,facility,16,facility,normal,26,0,False,False,False,9,9,-1
 1140,158,16,facility,16,facility,normal,81,0,False,False,False,9,9,-1
 1140,68,17,facility,17,facility,normal,43,0,False,False,False,6,6,-1
-1140,20,17,facility,17,facility,normal,18,1,True,False,False,6,6,-1
+1140,20,17,facility,17,facility,normal,18,1,False,False,False,6,6,-1
 1140,102,17,facility,17,facility,normal,33,1,False,False,False,6,6,-1
 1140,59,17,facility,17,facility,normal,43,0,False,False,False,6,6,-1
 1140,171,92,household,18,facility,normal,39,1,False,False,False,3,3,-1
@@ -3299,7 +3299,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1140,80,10,facility,20,facility,normal,56,1,False,False,False,18,7,-1
 1140,43,20,facility,20,facility,normal,12,1,False,False,False,7,7,-1
 1140,5,21,facility,21,facility,normal,78,0,False,False,False,5,5,-1
-1140,60,21,facility,21,facility,normal,13,0,False,False,False,5,5,-1
+1140,60,21,facility,21,facility,normal,13,0,True,False,False,5,5,-1
 1140,175,20,facility,21,facility,normal,41,1,False,False,False,6,6,-1
 1140,149,32,facility,21,facility,normal,46,0,False,False,False,0,7,-1
 1140,30,21,facility,21,facility,normal,29,1,False,False,False,7,7,-1
@@ -3371,7 +3371,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1200,155,2,facility,2,facility,normal,75,1,False,False,False,12,12,-1
 1200,62,29,household,2,facility,normal,20,0,False,False,False,1,13,-1
 1200,17,2,facility,2,facility,normal,20,1,False,False,False,13,13,-1
-1200,7,2,facility,2,facility,normal,13,1,False,False,False,13,13,-1
+1200,7,2,facility,2,facility,normal,13,1,True,False,False,13,13,-1
 1200,96,2,facility,2,facility,normal,14,1,False,False,False,13,13,-1
 1200,144,2,facility,2,facility,normal,57,0,False,False,False,13,13,-1
 1200,128,2,facility,2,facility,normal,18,0,False,False,False,13,13,-1
@@ -3381,7 +3381,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1200,45,36,facility,2,facility,normal,76,0,False,False,False,3,14,-1
 1200,160,3,facility,3,facility,normal,55,1,False,False,False,1,1,-1
 1200,119,4,facility,4,facility,normal,18,0,False,False,False,4,4,-1
-1200,3,4,facility,4,facility,normal,24,1,False,False,False,4,4,-1
+1200,3,4,facility,4,facility,normal,24,1,True,False,False,4,4,-1
 1200,139,4,facility,4,facility,normal,20,0,False,False,False,4,4,-1
 1200,41,6,facility,6,facility,normal,33,1,False,False,False,1,1,-1
 1200,103,49,household,6,facility,normal,69,0,False,False,False,1,2,-1
@@ -3393,7 +3393,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1200,14,2,facility,10,facility,normal,50,0,False,False,False,13,16,-1
 1200,13,10,facility,10,facility,normal,39,0,False,False,False,16,16,-1
 1200,174,93,household,10,facility,normal,43,1,False,False,False,6,17,-1
-1200,60,21,facility,10,facility,normal,13,0,False,False,False,7,18,-1
+1200,60,21,facility,10,facility,normal,13,0,True,False,False,7,18,-1
 1200,108,10,facility,10,facility,normal,49,0,False,False,False,18,18,-1
 1200,124,10,facility,10,facility,normal,40,1,False,False,False,18,18,-1
 1200,176,10,facility,10,facility,normal,28,1,False,False,False,18,18,-1
@@ -3421,8 +3421,8 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1200,30,21,facility,13,facility,normal,29,1,False,False,False,4,26,-1
 1200,35,13,facility,13,facility,normal,29,1,False,False,False,26,26,-1
 1200,79,13,facility,13,facility,normal,18,0,False,False,False,26,26,-1
-1200,56,13,facility,13,facility,normal,18,0,False,False,False,26,26,-1
-1200,23,13,facility,13,facility,normal,20,1,True,False,False,26,26,-1
+1200,56,13,facility,13,facility,normal,18,0,True,False,False,26,26,-1
+1200,23,13,facility,13,facility,normal,20,1,False,False,False,26,26,-1
 1200,18,13,facility,13,facility,normal,60,1,False,False,False,26,26,-1
 1200,131,13,facility,13,facility,normal,72,0,False,False,False,26,26,-1
 1200,127,13,facility,13,facility,normal,43,1,False,False,False,26,26,-1
@@ -3460,7 +3460,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1200,15,34,facility,16,facility,normal,53,1,False,False,False,0,9,-1
 1200,158,16,facility,16,facility,normal,81,0,False,False,False,9,9,-1
 1200,71,20,facility,16,facility,normal,58,1,False,False,False,1,10,-1
-1200,20,17,facility,17,facility,normal,18,1,True,False,False,3,3,-1
+1200,20,17,facility,17,facility,normal,18,1,False,False,False,3,3,-1
 1200,102,17,facility,17,facility,normal,33,1,False,False,False,3,3,-1
 1200,59,17,facility,17,facility,normal,43,0,False,False,False,3,3,-1
 1200,146,18,facility,18,facility,normal,70,0,False,False,False,3,3,-1
@@ -3537,7 +3537,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,160,3,facility,89,household,normal,55,1,False,False,False,0,3,-1
 1260,17,2,facility,2,facility,normal,20,1,False,False,False,11,11,-1
 1260,106,49,household,2,facility,normal,18,0,False,False,False,0,12,-1
-1260,7,2,facility,2,facility,normal,13,1,False,False,False,12,12,-1
+1260,7,2,facility,2,facility,normal,13,1,True,False,False,12,12,-1
 1260,96,2,facility,2,facility,normal,14,1,False,False,False,12,12,-1
 1260,144,2,facility,2,facility,normal,57,0,False,False,False,12,12,-1
 1260,128,2,facility,2,facility,normal,18,0,False,False,False,12,12,-1
@@ -3558,7 +3558,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,100,48,household,10,facility,normal,65,0,False,False,False,1,16,-1
 1260,13,10,facility,10,facility,normal,39,0,False,False,False,16,16,-1
 1260,174,10,facility,10,facility,normal,43,1,False,False,False,16,16,-1
-1260,60,10,facility,10,facility,normal,13,0,False,False,False,16,16,-1
+1260,60,10,facility,10,facility,normal,13,0,True,False,False,16,16,-1
 1260,108,10,facility,10,facility,normal,49,0,False,False,False,16,16,-1
 1260,124,10,facility,10,facility,normal,40,1,False,False,False,16,16,-1
 1260,176,10,facility,10,facility,normal,28,1,False,False,False,16,16,-1
@@ -3580,8 +3580,8 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,86,12,facility,12,facility,normal,59,0,False,False,False,7,7,-1
 1260,37,20,facility,12,facility,normal,34,0,False,False,False,3,8,-1
 1260,147,33,facility,12,facility,normal,27,0,False,False,False,0,9,-1
-1260,56,13,facility,13,facility,normal,18,0,False,False,False,24,24,-1
-1260,23,13,facility,13,facility,normal,20,1,True,False,False,24,24,-1
+1260,56,13,facility,13,facility,normal,18,0,True,False,False,24,24,-1
+1260,23,13,facility,13,facility,normal,20,1,False,False,False,24,24,-1
 1260,155,2,facility,13,facility,normal,75,1,False,False,False,13,25,-1
 1260,18,13,facility,13,facility,normal,60,1,False,False,False,25,25,-1
 1260,131,13,facility,13,facility,normal,72,0,False,False,False,25,25,-1
@@ -3627,7 +3627,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,53,36,facility,16,facility,normal,68,1,False,False,False,2,10,-1
 1260,71,16,facility,16,facility,normal,58,1,False,False,False,10,10,-1
 1260,12,22,facility,16,facility,normal,49,0,False,False,False,2,11,-1
-1260,20,17,facility,17,facility,normal,18,1,True,False,False,3,3,-1
+1260,20,17,facility,17,facility,normal,18,1,False,False,False,3,3,-1
 1260,102,17,facility,17,facility,normal,33,1,False,False,False,3,3,-1
 1260,59,17,facility,17,facility,normal,43,0,False,False,False,3,3,-1
 1260,146,18,facility,18,facility,normal,70,0,False,False,False,3,3,-1
@@ -3641,7 +3641,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,159,11,facility,20,facility,normal,51,0,False,False,False,5,8,-1
 1260,16,21,facility,21,facility,normal,56,0,False,False,False,4,4,-1
 1260,138,68,household,21,facility,normal,70,0,False,False,False,3,5,-1
-1260,3,4,facility,21,facility,normal,24,1,False,False,False,5,6,-1
+1260,3,4,facility,21,facility,normal,24,1,True,False,False,5,6,-1
 1260,129,21,facility,21,facility,normal,38,0,False,False,False,6,6,-1
 1260,68,32,household,21,facility,normal,43,0,False,False,False,1,7,-1
 1260,58,21,facility,21,facility,normal,31,0,False,False,False,7,7,-1
@@ -3695,12 +3695,12 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1260,47,20,facility,37,facility,normal,34,1,False,False,False,6,5,-1
 1260,40,37,facility,37,facility,normal,69,0,False,False,False,5,5,-1
 1260,123,37,facility,37,facility,normal,0,0,False,False,False,5,5,-1
-1320,7,2,facility,4,household,normal,13,1,False,False,False,11,1,-1
+1320,7,2,facility,4,household,normal,13,1,True,False,False,11,1,-1
 1320,10,25,facility,6,household,normal,32,1,False,False,False,9,1,-1
 1320,17,2,facility,8,household,normal,20,1,False,False,False,10,1,-1
 1320,27,34,facility,12,household,normal,18,1,False,False,False,3,2,-1
 1320,42,22,facility,20,household,normal,65,1,False,False,False,3,1,-1
-1320,56,13,facility,26,household,normal,18,0,False,False,False,24,1,-1
+1320,56,13,facility,26,household,normal,18,0,True,False,False,24,1,-1
 1320,55,16,facility,26,household,normal,58,1,False,False,False,9,2,-1
 1320,72,37,facility,34,household,normal,0,1,False,False,False,4,1,-1
 1320,83,12,facility,40,household,normal,21,0,False,False,False,4,1,-1
@@ -3767,7 +3767,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1320,26,14,facility,12,facility,normal,68,0,False,False,False,10,9,-1
 1320,24,12,household,12,facility,normal,8,1,False,False,False,1,10,-1
 1320,147,12,facility,12,facility,normal,27,0,False,False,False,10,10,-1
-1320,20,17,facility,12,facility,normal,18,1,True,False,False,2,11,-1
+1320,20,17,facility,12,facility,normal,18,1,False,False,False,2,11,-1
 1320,6,13,facility,13,facility,normal,53,1,False,False,False,24,24,-1
 1320,130,13,facility,13,facility,normal,18,1,False,False,False,24,24,-1
 1320,33,13,facility,13,facility,normal,3,0,False,False,False,24,24,-1
@@ -3811,17 +3811,17 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1320,71,16,facility,16,facility,normal,58,1,False,False,False,9,9,-1
 1320,12,16,facility,16,facility,normal,49,0,False,False,False,9,9,-1
 1320,11,14,facility,16,facility,normal,23,0,False,False,False,13,10,-1
-1320,60,10,facility,17,facility,normal,13,0,False,False,False,21,3,-1
+1320,60,10,facility,17,facility,normal,13,0,True,False,False,21,3,-1
 1320,137,67,household,17,facility,normal,10,0,False,False,False,3,4,-1
 1320,102,17,facility,17,facility,normal,33,1,False,False,False,4,4,-1
 1320,59,17,facility,17,facility,normal,43,0,False,False,False,4,4,-1
-1320,23,13,facility,17,facility,normal,20,1,True,False,False,25,5,-1
+1320,23,13,facility,17,facility,normal,20,1,False,False,False,25,5,-1
 1320,120,18,facility,18,facility,normal,36,1,False,False,False,3,3,-1
 1320,57,18,facility,18,facility,normal,50,0,False,False,False,3,3,-1
 1320,36,31,facility,20,facility,normal,50,1,False,False,False,1,1,-1
 1320,146,18,facility,20,facility,normal,70,0,False,False,False,2,2,-1
 1320,14,7,household,21,facility,normal,50,0,False,False,False,0,6,-1
-1320,3,21,facility,21,facility,normal,24,1,False,False,False,6,6,-1
+1320,3,21,facility,21,facility,normal,24,1,True,False,False,6,6,-1
 1320,129,21,facility,21,facility,normal,38,0,False,False,False,6,6,-1
 1320,68,21,facility,21,facility,normal,43,0,False,False,False,6,6,-1
 1320,58,21,facility,21,facility,normal,31,0,False,False,False,6,6,-1
@@ -3870,13 +3870,13 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1320,66,29,facility,37,facility,normal,15,1,False,False,False,0,6,-1
 1320,47,37,facility,37,facility,normal,34,1,False,False,False,6,6,-1
 1320,40,37,facility,37,facility,normal,69,0,False,False,False,6,6,-1
-1320,123,37,facility,37,facility,normal,0,0,False,False,False,6,6,-1
-1380,3,21,facility,2,household,normal,24,1,False,False,False,7,1,-1
+1320,123,37,facility,37,facility,normal,0,0,True,False,False,6,6,-1
+1380,3,21,facility,2,household,normal,24,1,True,False,False,7,1,-1
 1380,8,30,facility,5,household,normal,78,1,False,False,False,7,1,-1
 1380,10,6,household,6,household,normal,32,1,False,False,False,1,1,-1
 1380,37,12,facility,17,household,normal,34,0,False,False,False,8,1,-1
 1380,58,21,facility,27,household,normal,31,0,False,False,False,6,1,-1
-1380,60,17,facility,28,household,normal,13,0,False,False,False,4,1,-1
+1380,60,17,facility,28,household,normal,13,0,True,False,False,4,1,-1
 1380,62,14,facility,29,household,normal,20,0,False,False,False,12,1,-1
 1380,66,37,facility,31,household,normal,15,1,False,False,False,5,1,-1
 1380,70,30,facility,33,household,normal,25,0,False,False,False,6,1,-1
@@ -3947,7 +3947,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1380,26,12,facility,12,facility,normal,68,0,False,False,False,7,7,-1
 1380,24,12,facility,12,facility,normal,8,1,False,False,False,7,7,-1
 1380,147,12,facility,12,facility,normal,27,0,False,False,False,7,7,-1
-1380,20,12,facility,12,facility,normal,18,1,True,False,False,7,7,-1
+1380,20,12,facility,12,facility,normal,18,1,False,False,False,7,7,-1
 1380,27,12,household,12,facility,normal,18,1,False,False,False,0,8,-1
 1380,162,10,facility,12,facility,normal,37,1,False,False,False,20,9,-1
 1380,154,84,household,12,facility,normal,23,0,False,False,False,4,10,-1
@@ -3959,7 +3959,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1380,172,13,facility,13,facility,normal,37,0,False,False,False,21,21,-1
 1380,109,51,household,13,facility,normal,79,0,False,False,False,0,22,-1
 1380,155,13,facility,13,facility,normal,75,1,False,False,False,22,22,-1
-1380,56,26,household,13,facility,normal,18,0,False,False,False,1,23,-1
+1380,56,26,household,13,facility,normal,18,0,True,False,False,1,23,-1
 1380,50,13,facility,13,facility,normal,20,0,False,False,False,23,23,-1
 1380,135,13,facility,13,facility,normal,11,1,False,False,False,23,23,-1
 1380,44,36,facility,13,facility,normal,11,1,False,False,False,3,24,-1
@@ -3972,7 +3972,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1380,73,13,facility,13,facility,normal,12,1,False,False,False,24,24,-1
 1380,168,13,facility,13,facility,normal,34,1,False,False,False,24,24,-1
 1380,49,13,facility,13,facility,normal,39,1,False,False,False,24,24,-1
-1380,7,4,household,13,facility,normal,13,1,False,False,False,0,25,-1
+1380,7,4,household,13,facility,normal,13,1,True,False,False,0,25,-1
 1380,19,13,facility,13,facility,normal,71,0,False,False,False,25,25,-1
 1380,69,13,facility,13,facility,normal,40,0,False,False,False,25,25,-1
 1380,125,13,facility,13,facility,normal,67,1,False,False,False,25,25,-1
@@ -4001,7 +4001,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1380,102,17,facility,17,facility,normal,33,1,False,False,False,4,4,-1
 1380,87,36,facility,17,facility,normal,25,0,False,False,False,1,5,-1
 1380,59,17,facility,17,facility,normal,43,0,False,False,False,5,5,-1
-1380,23,17,facility,17,facility,normal,20,1,True,False,False,5,5,-1
+1380,23,17,facility,17,facility,normal,20,1,False,False,False,5,5,-1
 1380,57,18,facility,18,facility,normal,50,0,False,False,False,1,1,-1
 1380,141,14,facility,20,facility,normal,70,1,False,False,False,11,1,-1
 1380,134,64,household,20,facility,normal,56,1,False,False,False,2,2,-1
@@ -4046,12 +4046,12 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1380,159,88,household,36,facility,normal,51,0,False,False,False,2,1,-1
 1380,13,31,facility,37,facility,normal,39,0,False,False,False,0,3,-1
 1380,40,37,facility,37,facility,normal,69,0,False,False,False,3,3,-1
-1380,123,37,facility,37,facility,normal,0,0,False,False,False,3,3,-1
+1380,123,37,facility,37,facility,normal,0,0,True,False,False,3,3,-1
 1440,26,12,facility,12,household,normal,68,0,False,False,False,9,1,-1
 1440,24,12,facility,12,household,normal,8,1,False,False,False,8,2,-1
 1440,40,37,facility,19,household,normal,69,0,False,False,False,2,1,-1
 1440,58,27,household,27,household,normal,31,0,False,False,False,1,1,-1
-1440,60,28,household,28,household,normal,13,0,False,False,False,1,1,-1
+1440,60,28,household,28,household,normal,13,0,True,False,False,1,1,-1
 1440,63,11,facility,30,household,normal,27,0,False,False,False,5,1,-1
 1440,70,33,household,33,household,normal,25,0,False,False,False,1,1,-1
 1440,75,36,household,36,household,normal,45,0,False,False,False,1,1,-1
@@ -4059,7 +4059,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,89,32,facility,42,household,normal,37,0,False,False,False,2,1,-1
 1440,98,14,facility,47,household,normal,36,1,False,False,False,9,1,-1
 1440,102,17,facility,49,household,normal,33,1,False,False,False,4,1,-1
-1440,123,37,facility,57,household,normal,0,0,False,False,False,1,4,-1
+1440,123,37,facility,57,household,normal,0,0,True,False,False,1,4,-1
 1440,131,61,household,61,household,normal,72,0,False,False,False,5,5,-1
 1440,132,25,facility,62,household,normal,25,0,False,False,False,8,3,-1
 1440,152,11,facility,82,household,normal,48,0,False,False,False,4,3,-1
@@ -4077,7 +4077,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,45,2,facility,2,facility,normal,76,0,False,False,False,13,13,-1
 1440,133,30,facility,2,facility,normal,45,0,False,False,False,8,14,-1
 1440,145,75,household,2,facility,normal,27,0,False,False,False,2,15,-1
-1440,3,2,household,2,facility,normal,24,1,False,False,False,0,16,-1
+1440,3,2,household,2,facility,normal,24,1,True,False,False,0,16,-1
 1440,28,2,facility,2,facility,normal,6,1,False,False,False,16,16,-1
 1440,92,2,facility,2,facility,normal,41,1,False,False,False,16,16,-1
 1440,37,17,household,2,facility,normal,34,0,False,False,False,0,17,-1
@@ -4122,12 +4122,12 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,115,25,facility,11,facility,normal,43,0,False,False,False,6,3,-1
 1440,66,31,household,11,facility,normal,15,1,False,False,False,0,4,-1
 1440,147,12,facility,12,facility,normal,27,0,False,False,False,7,7,-1
-1440,20,12,facility,12,facility,normal,18,1,True,False,False,7,7,-1
+1440,20,12,facility,12,facility,normal,18,1,False,False,False,7,7,-1
 1440,27,12,facility,12,facility,normal,18,1,False,False,False,7,7,-1
 1440,162,12,facility,12,facility,normal,37,1,False,False,False,7,7,-1
 1440,8,5,household,12,facility,normal,78,1,False,False,False,0,8,-1
 1440,154,12,facility,12,facility,normal,23,0,False,False,False,8,8,-1
-1440,56,13,facility,13,facility,normal,18,0,False,False,False,26,26,-1
+1440,56,13,facility,13,facility,normal,18,0,True,False,False,26,26,-1
 1440,50,13,facility,13,facility,normal,20,0,False,False,False,26,26,-1
 1440,135,13,facility,13,facility,normal,11,1,False,False,False,26,26,-1
 1440,44,13,facility,13,facility,normal,11,1,False,False,False,26,26,-1
@@ -4142,7 +4142,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,73,13,facility,13,facility,normal,12,1,False,False,False,28,28,-1
 1440,168,13,facility,13,facility,normal,34,1,False,False,False,28,28,-1
 1440,49,13,facility,13,facility,normal,39,1,False,False,False,28,28,-1
-1440,7,13,facility,13,facility,normal,13,1,False,False,False,28,28,-1
+1440,7,13,facility,13,facility,normal,13,1,True,False,False,28,28,-1
 1440,19,13,facility,13,facility,normal,71,0,False,False,False,28,28,-1
 1440,33,13,facility,13,facility,normal,3,0,False,False,False,28,28,-1
 1440,97,13,facility,13,facility,normal,75,0,False,False,False,28,28,-1
@@ -4173,7 +4173,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,87,17,facility,17,facility,normal,25,0,False,False,False,4,4,-1
 1440,59,17,facility,17,facility,normal,43,0,False,False,False,4,4,-1
 1440,85,16,facility,17,facility,normal,25,1,False,False,False,11,5,-1
-1440,23,17,facility,17,facility,normal,20,1,True,False,False,5,5,-1
+1440,23,17,facility,17,facility,normal,20,1,False,False,False,5,5,-1
 1440,57,18,facility,18,facility,normal,50,0,False,False,False,1,1,-1
 1440,51,13,facility,20,facility,normal,33,0,False,False,False,28,2,-1
 1440,176,28,facility,20,facility,normal,28,1,False,False,False,4,3,-1
@@ -4208,7 +4208,7 @@ timestep,person_id,from_location_id,from_location_type,to_location_id,to_locatio
 1440,172,13,facility,30,facility,normal,37,0,False,False,False,27,7,-1
 1440,41,4,facility,30,facility,normal,33,1,False,False,False,7,8,-1
 1440,105,4,facility,30,facility,normal,36,1,False,False,False,6,9,-1
-1440,121,30,facility,30,facility,normal,18,0,False,False,False,9,9,-1
+1440,121,30,facility,30,facility,normal,18,0,True,False,False,9,9,-1
 1440,163,30,facility,30,facility,normal,31,1,False,False,False,9,9,-1
 1440,1,30,facility,30,facility,normal,27,1,False,False,False,9,9,-1
 1440,160,30,facility,30,facility,normal,55,1,False,False,False,9,9,-1

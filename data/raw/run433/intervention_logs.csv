@@ -4,7 +4,7 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,3,vaccine,received_1_doses,24,1,False,False,,,0,-1
 0,4,vaccine,received_2_doses,38,1,False,False,,,0,-1
 0,5,vaccine,received_1_doses,78,0,False,False,,,0,-1
-0,6,vaccine,received_1_doses,53,1,True,False,,,0,-1
+0,6,vaccine,received_1_doses,53,1,False,False,,,0,-1
 0,8,vaccine,received_2_doses,78,1,False,False,,,0,-1
 0,9,vaccine,received_1_doses,18,0,False,False,,,0,-1
 0,10,vaccine,received_2_doses,32,1,False,False,,,0,-1
@@ -23,7 +23,7 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,24,vaccine,received_1_doses,8,1,False,False,,,0,-1
 0,25,vaccine,received_1_doses,18,0,False,False,,,0,-1
 0,26,vaccine,received_2_doses,68,0,False,False,,,0,-1
-0,27,vaccine,received_2_doses,18,1,False,False,,,0,-1
+0,27,vaccine,received_2_doses,18,1,True,False,,,0,-1
 0,28,vaccine,received_1_doses,6,1,False,False,,,0,-1
 0,29,vaccine,received_2_doses,31,0,False,False,,,0,-1
 0,30,vaccine,received_1_doses,29,1,False,False,,,0,-1
@@ -43,7 +43,7 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,44,vaccine,received_2_doses,11,1,False,False,,,0,-1
 0,45,vaccine,received_2_doses,76,0,False,False,,,0,-1
 0,46,vaccine,received_1_doses,83,0,False,False,,,0,-1
-0,47,vaccine,received_2_doses,34,1,True,False,,,0,-1
+0,47,vaccine,received_2_doses,34,1,False,False,,,0,-1
 0,48,vaccine,received_1_doses,47,1,False,False,,,0,-1
 0,49,vaccine,received_1_doses,39,1,False,False,,,0,-1
 0,51,vaccine,received_2_doses,33,0,False,False,,,0,-1
@@ -152,7 +152,7 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,157,vaccine,received_2_doses,40,1,False,False,,,0,-1
 0,158,vaccine,received_1_doses,81,0,False,False,,,0,-1
 0,159,vaccine,received_1_doses,51,0,False,False,,,0,-1
-0,160,vaccine,received_2_doses,55,1,False,False,,,0,-1
+0,160,vaccine,received_2_doses,55,1,True,False,,,0,-1
 0,161,vaccine,received_1_doses,31,1,False,False,,,0,-1
 0,162,vaccine,received_1_doses,37,1,False,False,,,0,-1
 0,163,vaccine,received_1_doses,31,1,False,False,,,0,-1

@@ -6,7 +6,7 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,9,vaccine,received_2_doses,18,0,False,False,,,0,-1
 0,10,vaccine,received_1_doses,32,1,False,False,,,0,-1
 0,15,vaccine,received_1_doses,53,1,False,False,,,0,-1
-0,17,vaccine,received_1_doses,20,1,True,False,,,0,-1
+0,17,vaccine,received_1_doses,20,1,False,False,,,0,-1
 0,21,vaccine,received_1_doses,67,0,False,False,,,0,-1
 0,26,vaccine,received_1_doses,68,0,False,False,,,0,-1
 0,27,vaccine,received_1_doses,18,1,False,False,,,0,-1

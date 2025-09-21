@@ -1,6 +1,6 @@
 timestep,person_id,intervention_type,effect,person_age,person_sex,person_infectious,person_symptomatic,location_id,location_type,location_occupancy,location_capacity
 0,2,vaccine,received_2_doses,19,1,False,False,,,0,-1
-0,3,vaccine,received_1_doses,24,1,False,False,,,0,-1
+0,3,vaccine,received_1_doses,24,1,True,False,,,0,-1
 0,7,vaccine,received_2_doses,13,1,False,False,,,0,-1
 0,20,vaccine,received_2_doses,18,1,False,False,,,0,-1
 0,22,vaccine,received_1_doses,12,0,False,False,,,0,-1

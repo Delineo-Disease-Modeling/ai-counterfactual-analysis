@@ -2,11 +2,11 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,1,vaccine,received_1_doses,27,1,False,False,,,0,-1
 0,2,vaccine,received_1_doses,19,1,False,False,,,0,-1
 0,3,vaccine,received_1_doses,24,1,False,False,,,0,-1
-0,4,vaccine,received_2_doses,38,1,False,False,,,0,-1
+0,4,vaccine,received_2_doses,38,1,True,False,,,0,-1
 0,5,vaccine,received_1_doses,78,0,False,False,,,0,-1
 0,6,vaccine,received_1_doses,53,1,False,False,,,0,-1
 0,8,vaccine,received_2_doses,78,1,False,False,,,0,-1
-0,9,vaccine,received_1_doses,18,0,True,False,,,0,-1
+0,9,vaccine,received_1_doses,18,0,False,False,,,0,-1
 0,10,vaccine,received_2_doses,32,1,False,False,,,0,-1
 0,11,vaccine,received_1_doses,23,0,False,False,,,0,-1
 0,13,vaccine,received_1_doses,39,0,False,False,,,0,-1
@@ -17,11 +17,11 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,18,vaccine,received_1_doses,60,1,False,False,,,0,-1
 0,19,vaccine,received_2_doses,71,0,False,False,,,0,-1
 0,20,vaccine,received_1_doses,18,1,False,False,,,0,-1
-0,21,vaccine,received_1_doses,67,0,False,False,,,0,-1
+0,21,vaccine,received_1_doses,67,0,True,False,,,0,-1
 0,22,vaccine,received_1_doses,12,0,False,False,,,0,-1
 0,23,vaccine,received_1_doses,20,1,False,False,,,0,-1
 0,24,vaccine,received_1_doses,8,1,False,False,,,0,-1
-0,25,vaccine,received_1_doses,18,0,True,False,,,0,-1
+0,25,vaccine,received_1_doses,18,0,False,False,,,0,-1
 0,26,vaccine,received_2_doses,68,0,False,False,,,0,-1
 0,27,vaccine,received_2_doses,18,1,False,False,,,0,-1
 0,28,vaccine,received_1_doses,6,1,False,False,,,0,-1

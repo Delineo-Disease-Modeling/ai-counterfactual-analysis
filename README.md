@@ -64,6 +64,19 @@ Artificial intelligence is used to:
 `python src/data_pipeline/extractor.py --raw_dir data/raw --output_dir all_extracted_logs`
 `python src/data_pipeline/validate_extracted.py --base_dir all_extracted_logs`
 
+## Instructions to Run ACA
+From rerunner.py: 
+For generating logs for simulation with different parameters. 
+Steps to use this script: 
+1. Run the dmp (from the simulation repo by running `uvicorn api.dmp_api:app --reload`)
+2. Run simulator by running `python app.py` in the simulation repo
+3. Run this script, logs will be saved to data/raw/runX/ where X is the run number in the AI-counterfactual-analysis repo. 
+
+This AI calls the simulator when running! Please ensure that you have cloned both the the ai-counterfactual-analysis repo 
+and the Simulation repo, and they are both subdirectories of the same directory on your computer so they can find each other.
+
+Furthermore, please see Simulator/README.md for all instructions relevant to running the Simulator, as you need to ensure it works before you can run the ai-counterfactual-analysis.
+
 ## Future Work
 
 - Integrating trade-off analysis for policy interventions (e.g., public health vs. economic cost).

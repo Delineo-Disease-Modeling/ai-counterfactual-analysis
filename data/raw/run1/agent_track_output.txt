@@ -1,0 +1,82 @@
+Tracking of agent 54
+Your agent didn't move at time 0.
+Your agent didn't infect anyone at time 0.
+Your agent did not catch any new diseases at time 0.
+At time 60, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 60.
+Your agent did not catch any new diseases at time 60.
+At time 120, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 120.
+Your agent did not catch any new diseases at time 120.
+At time 180, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 180.
+Your agent did not catch any new diseases at time 180.
+At time 240, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 240.
+Your agent did not catch any new diseases at time 240.
+At time 300, your agent moved from household 17 to household 17.
+At time 300, your agent was infected with Delta by agent 36.
+Your agent didn't infect anyone at time 300.
+At time 360, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 360.
+Your agent did not catch any new diseases at time 360.
+At time 420, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 420.
+Your agent did not catch any new diseases at time 420.
+At time 480, your agent moved from household 17 to household 25.
+Your agent didn't infect anyone at time 480.
+Your agent did not catch any new diseases at time 480.
+At time 540, your agent moved from household 25 to household 17.
+At time 540, your agent infected agent 37 with disease Delta.
+Your agent did not catch any new diseases at time 540.
+At time 600, your agent moved from household 17 to household 17.
+At time 600, your agent infected agent 53 with disease Delta.
+Your agent did not catch any new diseases at time 600.
+At time 660, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 660.
+Your agent did not catch any new diseases at time 660.
+At time 720, your agent moved from household 17 to household 17.
+At time 720, your agent infected agent 53 with disease Delta.
+Your agent did not catch any new diseases at time 720.
+At time 780, your agent moved from household 17 to household 25.
+At time 780, your agent infected agent 77 with disease Delta.
+At time 780, your agent infected agent 78 with disease Delta.
+At time 780, your agent infected agent 79 with disease Delta.
+At time 780, your agent infected agent 80 with disease Delta.
+Your agent did not catch any new diseases at time 780.
+At time 840, your agent moved from household 25 to household 17.
+Your agent didn't infect anyone at time 840.
+Your agent did not catch any new diseases at time 840.
+At time 900, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 900.
+Your agent did not catch any new diseases at time 900.
+At time 960, your agent moved from household 17 to household 17.
+At time 960, your agent infected agent 53 with disease Delta.
+Your agent did not catch any new diseases at time 960.
+At time 1020, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 1020.
+Your agent did not catch any new diseases at time 1020.
+At time 1080, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 1080.
+Your agent did not catch any new diseases at time 1080.
+At time 1140, your agent moved from household 17 to household 25.
+Your agent didn't infect anyone at time 1140.
+Your agent did not catch any new diseases at time 1140.
+At time 1200, your agent moved from household 25 to household 17.
+Your agent didn't infect anyone at time 1200.
+Your agent did not catch any new diseases at time 1200.
+At time 1260, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 1260.
+Your agent did not catch any new diseases at time 1260.
+At time 1320, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 1320.
+Your agent did not catch any new diseases at time 1320.
+At time 1380, your agent moved from household 17 to household 17.
+At time 1380, your agent infected agent 53 with disease Delta.
+Your agent did not catch any new diseases at time 1380.
+At time 1440, your agent moved from household 17 to household 17.
+Your agent didn't infect anyone at time 1440.
+Your agent did not catch any new diseases at time 1440.
+In total, your agent moved 24 time(s),
+directly infected 9 person(s),
+and caught 1 disease(s).

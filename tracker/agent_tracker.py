@@ -128,14 +128,56 @@ def location_track(data_dir: str):
     output_file.close()
     return 0
 
+def deadliest_agent(data_dir: str):
+    deadliest_id = 0
+    curr_max = 0
+    deadliest_dict = dict({0: 0})
+    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
+        itable = csv.reader(ifile)
+        for row in itable:
+            if str(row[6]) != "infector_person_id" and str(row[6]) != "":
+                if deadliest_dict.get(row[6]) == None: 
+                    deadliest_dict[row[6]] = 1
+                else: 
+                    deadliest_dict[row[6]] += 1
+                if deadliest_dict[row[6]] > curr_max: 
+                    deadliest_id = int(row[6])
+                    curr_max = deadliest_dict[row[6]]
+
+    print("The deadliest agent is the one with ID " + str(deadliest_id) + ".\n") 
+    return 0
+
+def deadliest_location(data_dir: str):
+    deadliest_id = 0
+    curr_max = 0
+    deadliest_dict = dict({0: 0})
+    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
+        itable = csv.reader(ifile)
+        for row in itable:
+            if str(row[11]) != "infection_location_id" and str(row[11]) != "":
+                if deadliest_dict.get(row[11]) == None: 
+                    deadliest_dict[row[11]] = 1
+                else: 
+                    deadliest_dict[row[11]] += 1
+                if deadliest_dict[row[11]] > curr_max: 
+                    deadliest_id = int(row[11])
+                    curr_max = deadliest_dict[row[11]]
+
+    print("The deadliest location is the one with ID " + str(deadliest_id) + ".\n") 
+    return 0
+
 def main():
     data_dir = find_dir(input("Please type what run you want to analyze (int).\n"))
-    check_num = input("Please type 0 to track an agent or 1 to track a location.\n")
+    check_num = input("Please type 0 to track an agent or 1 to track a location. To find deadliest agent, type 2. To find deadliest location, type 3.\n")
     if int(check_num) == 0:
         agent_track(data_dir)
-    elif int(check_num) == 1:
+    if int(check_num) == 1:
         location_track(data_dir)
-    else:
+    if int(check_num) == 2:
+        deadliest_agent(data_dir)
+    if int(check_num) == 3:
+        deadliest_location(data_dir)
+    if int(check_num) > 3:
         print("Invalid number!\n")
 
     

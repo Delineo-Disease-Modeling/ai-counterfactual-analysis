@@ -10,8 +10,8 @@ timestep,person_id,intervention_type,effect,person_age,person_sex,person_infecti
 0,11,vaccine,received_2_doses,23,0,False,False,,,0,-1
 0,12,vaccine,received_1_doses,49,0,False,False,,,0,-1
 0,14,vaccine,received_1_doses,50,0,False,False,,,0,-1
-0,17,vaccine,received_2_doses,20,1,True,False,,,0,-1
-0,20,vaccine,received_2_doses,18,1,False,False,,,0,-1
+0,17,vaccine,received_2_doses,20,1,False,False,,,0,-1
+0,20,vaccine,received_2_doses,18,1,True,False,,,0,-1
 0,21,vaccine,received_2_doses,67,0,False,False,,,0,-1
 0,22,vaccine,received_1_doses,12,0,False,False,,,0,-1
 0,23,vaccine,received_2_doses,20,1,False,False,,,0,-1

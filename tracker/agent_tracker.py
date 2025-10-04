@@ -4,6 +4,8 @@
 
 import os
 import csv
+import math
+import scipy.stats as st
 
 def find_dir(run: int):
     run_name = "run"
@@ -166,9 +168,93 @@ def deadliest_location(data_dir: str):
     print("The deadliest location is the one with ID " + str(deadliest_id) + ".\n") 
     return 0
 
+def infectivity_ci(data_dir: str):
+    #get an alpha value
+    alpha = float(input("Please type an OPPOSITE decimal from 0 to 1 representing the confidence (ex. for a 95 percent CI, type 0.05).\n"))
+    #define the flags through which we will filter people
+    flag_vals = []
+    flag_vals.append(input("Please enter a minimum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter a maximum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter which sex to track as an integer, 0 for males, 1 otherwise. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please write Vaccinated or Unvaccinated (case-sensitive) to pick a vaccination status at start of run to track. Type -1 if irrelevant.\n"))
+    #verify parameters 
+    print("You have entered: alpha = %f, min age = %f, max age = %f, sex = %f, vaccination = %s" % (alpha, int(flag_vals[0]), int(flag_vals[1]), int(flag_vals[2]), flag_vals[3]))
+    #grab all the people from all the runs who we will be analyzing 
+    usable_ids = get_all_ids(data_dir, flag_vals)
+    print("We found %s people who fit your criteria.\n" % len(usable_ids))
+    if (len(usable_ids) == 0):
+        print("Since we didn't find anyone, we can't run a CI. Returning.\n")
+        return 0
+    #calculate the ci proper
+    zscore = st.norm.ppf(1.0 - (alpha / 2))
+    print("z-table value given alpha = %f" % zscore)
+    mean = infectivity_mean(data_dir, usable_ids)
+    print("mean = %f" % mean)
+    var = infectivity_var(data_dir, usable_ids, mean)
+    print("variance = %f" % var)
+    sd = math.sqrt(var)
+    rootn = math.sqrt(len(usable_ids))
+    hi = mean + (zscore * (sd / rootn))
+    lo = mean - (zscore * (sd / rootn))
+    print("Given the specified parameters, your CI is %f,%f" % (lo, hi))
+    return 0
+
+def check_person(row: list[str], flag_vals: list[str]):
+    inspect = True
+    if (int(flag_vals[0]) != -1) and (int(row[2]) < int(flag_vals[0])):
+        #print("%f smaller than %f\n" % (int(row[2]), int(flag_vals[0])))
+        inspect = False
+    if (int(flag_vals[1]) != -1) and (int(row[2]) > int(flag_vals[1])):
+        #print("%f larger than %f\n" % (int(row[2]), int(flag_vals[1])))
+        inspect = False
+    if (int(flag_vals[2]) != -1) and (int(row[3]) != int(flag_vals[2])):
+        #print("%f different from %f\n" % (int(row[3]), int(flag_vals[2])))
+        inspect = False
+    if ((flag_vals[3] == "Vaccinated") or (flag_vals[3] == "Unvaccinated")) and (str(row[11]) != str(flag_vals[3])):
+        #print("%s different from %s\n" % (str(row[11]), str(flag_vals[3])))
+        inspect = False
+    return inspect
+
+def get_all_ids(data_dir: str, flag_vals: list[str]): 
+    usable_ids = []
+    with open(os.path.join(data_dir, "person_logs.csv"), mode="r") as person_file:
+            person_table = csv.reader(person_file)
+            for row in person_table:
+                if((str(row[0]) != "timestep") and check_person(row, flag_vals)) and (row[1] not in usable_ids):
+                    usable_ids.append(row[1])
+    return usable_ids
+
+def infectivity_mean(data_dir: str, usable_ids: list[int]):
+    mean = float(0.0)
+    num_people = len(usable_ids)
+    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
+        itable = csv.reader(ifile)
+        for row in itable:
+            if (str(row[0]) != "timestep"):
+                if (row[6] in usable_ids): 
+                    mean += 1
+    mean = float(mean) / float(num_people)
+    return mean
+
+def infectivity_var(data_dir: str, usable_ids: list[int], mean: float):
+    var = float(0.0)
+    curr_count = 0
+    num_people = len(usable_ids)
+    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
+        itable = csv.reader(ifile)
+        for id in usable_ids:
+            for row in itable:
+                if (str(row[0]) != "timestep"):
+                    if (row[6] == int(id)): 
+                        curr_count += 1
+            var += pow(float(float(curr_count) - mean),2)
+            curr_count = 0
+    var = float(var) / float(num_people)
+    return var
+
 def main():
     data_dir = find_dir(input("Please type what run you want to analyze (int).\n"))
-    check_num = input("Please type 0 to track an agent or 1 to track a location. To find deadliest agent, type 2. To find deadliest location, type 3.\n")
+    check_num = input("Please type 0 to track an agent or 1 to track a location.\n To find deadliest agent, type 2.\n To find deadliest location, type 3.\n To gather a confidence interval, press 4.\n")
     if int(check_num) == 0:
         agent_track(data_dir)
     if int(check_num) == 1:
@@ -177,9 +263,10 @@ def main():
         deadliest_agent(data_dir)
     if int(check_num) == 3:
         deadliest_location(data_dir)
-    if int(check_num) > 3:
+    if int (check_num) == 4:
+        infectivity_ci(data_dir)
+    if int(check_num) > 4:
         print("Invalid number!\n")
-
     
     
 

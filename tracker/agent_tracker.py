@@ -169,6 +169,10 @@ def deadliest_location(data_dir: str):
     return 0
 
 def infectivity_ci(data_dir: str):
+    #check to see if we want a multi-run ci
+    multi_check = int(input("To perform the CI calculation with multiple runs, type 1. Otherwise, type 0.\n"))
+    if (multi_check == 1):
+        return infectivity_ci_multi()
     #get an alpha value
     alpha = float(input("Please type an OPPOSITE decimal from 0 to 1 representing the confidence (ex. for a 95 percent CI, type 0.05).\n"))
     #define the flags through which we will filter people
@@ -196,7 +200,53 @@ def infectivity_ci(data_dir: str):
     rootn = math.sqrt(len(usable_ids))
     hi = mean + (zscore * (sd / rootn))
     lo = mean - (zscore * (sd / rootn))
-    print("Given the specified parameters, your CI is %f,%f" % (lo, hi))
+    print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
+    return 0
+
+def infectivity_ci_multi():
+    runcount = int(input("Please type how many runs you would like to analyze.\n"))
+    runlist = []
+    i = 0
+    while (i < runcount):
+        runlist.append(int(input("Please type ONE of the runs you are using. Runs input so far: %f\n" % i)))
+        i += 1
+    #get an alpha value
+    alpha = float(input("Please type an OPPOSITE decimal from 0 to 1 representing the confidence (ex. for a 95 percent CI, type 0.05).\n"))
+    zscore = st.norm.ppf(1.0 - (alpha / 2))
+    #define the flags through which we will filter people
+    flag_vals = []
+    flag_vals.append(input("Please enter a minimum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter a maximum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter which sex to track as an integer, 0 for males, 1 otherwise. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please write Vaccinated or Unvaccinated (case-sensitive) to pick a vaccination status at start of run to track. Type -1 if irrelevant.\n"))
+    #verify parameters 
+    print("You have entered: alpha = %f, min age = %f, max age = %f, sex = %f, vaccination = %s" % (alpha, int(flag_vals[0]), int(flag_vals[1]), int(flag_vals[2]), flag_vals[3]))
+    n = 0
+    mean = float(0)
+    var = float(0)
+    #get the sample count and mean
+    for run in runlist: 
+        data_dir = find_dir(run)
+        usable_ids = get_all_ids(data_dir, flag_vals)
+        n += len(usable_ids)
+        if (len(usable_ids) > 0):
+            mean += (infectivity_mean(data_dir, usable_ids) * len(usable_ids))
+    if (n == 0):
+        print("Since we didn't find anyone, we can't run a CI. Returning.\n")
+        return 0
+    mean = float(mean) / float(n)
+    #now that we have our full sample mean, we can get the variance
+    for run in runlist:
+        data_dir = find_dir(run)
+        usable_ids = get_all_ids(data_dir, flag_vals)
+        if (len(usable_ids) > 0):
+            var += (infectivity_var(data_dir, usable_ids, mean) * len(usable_ids))
+    var = float(var) / float(n)
+    sd = math.sqrt(var)
+    rootn = math.sqrt(n)
+    hi = mean + (zscore * (sd / rootn))
+    lo = mean - (zscore * (sd / rootn))
+    print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
     return 0
 
 def check_person(row: list[str], flag_vals: list[str]):

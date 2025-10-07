@@ -247,6 +247,27 @@ def infectivity_ci_multi():
     hi = mean + (zscore * (sd / rootn))
     lo = mean - (zscore * (sd / rootn))
     print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
+    outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
+    if (outlier_flag > 0):
+        return outlier_check(mean, sd, n, alpha)
+    return 0
+
+def outlier_check(mean: float, sd: float, n: int, alpha: float):
+    run = int(input("Please type the run your outlier is located in.\n"))
+    person = int(input("Please type the ID of the person to analyze.\n"))
+    benchmark = st.t.ppf(1 - (alpha / 2), n - 1)
+    usable_ids = []
+    usable_ids.append(person)
+    data_dir = find_dir(run)
+    #print("directory %s, usable_id %f\n" % (data_dir, usable_ids[0]))
+    val = infectivity_mean(data_dir, usable_ids)
+    #print("Your individual infected %f people.\n" % (val))
+    test_stat = ((val - mean)/(sd / math.sqrt(n)))
+    if (math.fabs(test_stat) > benchmark):
+        print("Your individual has a statistically significant number of infections!\n")
+    else:
+        print("We have failed to find that your individual is a significant outlier.\n")
+    print("The test statistic is %f relative to a benchmark of %f.\n" % (math.fabs(test_stat), benchmark))
     return 0
 
 def check_person(row: list[str], flag_vals: list[str]):

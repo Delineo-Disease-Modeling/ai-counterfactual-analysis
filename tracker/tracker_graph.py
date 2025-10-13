@@ -41,45 +41,55 @@ class Node:
     
     def destructive_remove(self, target):
         if not target:
-            print("Target not a node: does not exist\n")
-            return
+            #print("Target not a node: does not exist\n")
+            return 1
         if not target.parent:
-            print("Target is head: cannot remove\n")
-            return
+            #print("Target is head: cannot remove\n")
+            return 2
+        if target not in (target.parent).victims:
+            return 3
         ((target.parent).victims).remove(target)
-        return
+        target.parent = None
+        return 0
     
     def destructive_remove_by_id(self, head, target_int: int):
         if (target_int < 1): 
-            print("Not a valid id: cannot remove\n")
-            return
+            #print("Not a valid id: cannot remove\n")
+            return 1
+        #print("rem check ")
         target = self.searchByID(head, target_int)
+        #print("search ")
         while target:
-            self.destructive_remove(target)
+            dummy = self.destructive_remove(target)
+            #print("destroy %d " % dummy)
             target = self.searchByID(head, target_int)
-        return
+            #print("target found %d" % target.id)
+        return 0
     
     def remove_and_rebuild(self, target):
         if not target:
-            print("Target not a node: does not exist\n")
-            return
+            #print("Target not a node: does not exist\n")
+            return 1
         if not target.parent:
-            print("Target is head: cannot remove\n")
-            return
+            #print("Target is head: cannot remove\n")
+            return 1
+        if target not in (target.parent).victims:
+            return 1
         for v in target.victims:
             ((target.parent).victims).append(v)
         ((target.parent).victims).remove(target)
-        return
+        target.parent = None
+        return 0 
     
     def remove_and_rebuild_by_id(self, head, target_int: int):
         if (target_int < 1): 
-            print("Not a valid id: cannot remove\n")
-            return
+            #print("Not a valid id: cannot remove\n")
+            return 1
         target = self.searchByID(head, target_int)
         while target:
             self.remove_and_rebuild(target)
             target = self.searchByID(head, target_int)
-        return
+        return 0
 
     
 def graph_test_1():
@@ -107,10 +117,18 @@ def graph_test_2():
     data_dir = agt.find_dir(run)
     start = Node(-1,-1,-1,None)
     build_agent_graph(start, data_dir)
-    print("with dupes: %d\n" % direct_infectivity(start, 15))
+    print("with dupes: \n")
+    print("direct 15: %d\n" % direct_infectivity(start, 15))
+    print("total 15: %d\n" % total_infectivity(start, 15))
+    print("direct 36: %d\n" % direct_infectivity(start, 36))
+    print("total 36: %d\n" % total_infectivity(start, 36))
     start2 = Node(-1,-1,-1,None)
     build_agent_graph_nodupes(start2, data_dir)
-    print("no dupes: %d\n" % direct_infectivity(start2, 15))
+    print("no dupes: \n")
+    print("direct 15: %d\n" % direct_infectivity(start2, 15))
+    print("total 15: %d\n" % total_infectivity(start2, 15))
+    print("direct 36: %d\n" % direct_infectivity(start2, 36))
+    print("total 36: %d\n" % total_infectivity(start2, 36))
     return 0
 
 def build_agent_graph(start: Node, data_dir: str):
@@ -169,6 +187,28 @@ def direct_infectivity(head: Node, target: int):
     if target_node:
         for v in target_node.victims:
             count += 1
+    return count
+
+def total_infectivity(head: Node, target_int: int):
+    count = 0
+    target = head.searchByID(head, target_int)
+    if not target:
+        return 0
+    #print("target %d has victim count %d\n" % (target.id, len(target.victims)))
+    while target:
+        count += direct_infectivity(target, target_int)
+        #print("dir infec ")
+        if len(target.victims) > 0:
+            for v in target.victims:
+                #print("checking victim %d\n" % v.id)
+                count += total_infectivity(target, v.id)
+        else: 
+            count += 1
+        #print("victims ")
+        dummy = head.destructive_remove_by_id(head, target_int)
+        #print("remove ")
+        target = head.searchByID(head, target_int)
+        #print("search ")
     return count
 
 def main():

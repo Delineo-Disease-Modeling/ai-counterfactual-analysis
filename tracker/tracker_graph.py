@@ -202,8 +202,6 @@ def total_infectivity(head: Node, target_int: int):
             for v in target.victims:
                 #print("checking victim %d\n" % v.id)
                 count += total_infectivity(target, v.id)
-        else: 
-            count += 1
         #print("victims ")
         dummy = head.destructive_remove_by_id(head, target_int)
         #print("remove ")

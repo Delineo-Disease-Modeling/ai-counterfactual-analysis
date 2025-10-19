@@ -7,6 +7,8 @@ import math
 import scipy.stats as st
 import agent_tracker as agt
 
+#Definition of Node class / linked list internal operations
+
 class Node:
     def __init__(self, id: int, time: int, pid: int, parent):
         self.id = id
@@ -90,21 +92,12 @@ class Node:
             self.remove_and_rebuild(target)
             target = self.searchByID(head, target_int)
         return 0
-
+    
+#Test functions
     
 def graph_test_1():
     run = int(input("Please type the run to test on.\n"))
     data_dir = agt.find_dir(run)
-    print("with dupes\n")
-    start = Node(-1, -1, -1, None)
-    build_agent_graph(start, data_dir)
-    start.printNodes(start)
-    print("\n")
-    print("without same-infector dupes\n")
-    start2 = Node(-1, -1, -1, None)
-    build_agent_graph_diffpeople(start2, data_dir)
-    start2.printNodes(start2)
-    print("\n")
     print("without dupes at all\n")
     start3 = Node(-1, -1, -1, None)
     build_agent_graph_nodupes(start3, data_dir)
@@ -115,35 +108,16 @@ def graph_test_1():
 def graph_test_2():
     run = int(input("Please type the run to test on.\n"))
     data_dir = agt.find_dir(run)
-    start = Node(-1,-1,-1,None)
-    build_agent_graph(start, data_dir)
-    print("with dupes: \n")
-    print("direct 15: %d\n" % direct_infectivity(start, 15))
-    print("total 15: %d\n" % total_infectivity(start, 15))
-    print("direct 36: %d\n" % direct_infectivity(start, 36))
-    print("total 36: %d\n" % total_infectivity(start, 36))
     start2 = Node(-1,-1,-1,None)
     build_agent_graph_nodupes(start2, data_dir)
     print("no dupes: \n")
     print("direct 15: %d\n" % direct_infectivity(start2, 15))
-    print("total 15: %d\n" % total_infectivity(start2, 15))
+    print("total 15: %d\n" % total_infectivity_nodupes(start2, 15))
     print("direct 36: %d\n" % direct_infectivity(start2, 36))
-    print("total 36: %d\n" % total_infectivity(start2, 36))
+    print("total 36: %d\n" % total_infectivity_nodupes(start2, 36))
     return 0
 
-def build_agent_graph(start: Node, data_dir: str):
-    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
-        itable = csv.reader(ifile)
-        for row in itable:
-            if str(row[6]) != "infector_person_id":
-                if str(row[6]) == "":
-                    new_node = Node(int(row[1]), 0, -1, start)
-                    start.victims.append(new_node)
-                else:
-                    infector = start.searchByID(start, int(row[6]))
-                    new_node = Node(int(row[1]), int(row[0]), int(row[6]), infector)
-                    infector.victims.append(new_node)
-    return 0
+#Construct graph, find the infectivity of one agent
 
 def build_agent_graph_nodupes(start: Node, data_dir: str):
     with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
@@ -161,26 +135,6 @@ def build_agent_graph_nodupes(start: Node, data_dir: str):
                         infector.victims.append(new_node)
     return 0
 
-def build_agent_graph_diffpeople(start: Node, data_dir: str):
-    with open(os.path.join(data_dir, "infection_logs.csv"), mode="r") as ifile: 
-        itable = csv.reader(ifile)
-        for row in itable:
-            if str(row[6]) != "infector_person_id":
-                if str(row[6]) == "":
-                    new_node = Node(int(row[1]), 0, -1, start)
-                    start.victims.append(new_node)
-                if str(row[6]) != "":
-                    infector = start.searchByID(start, int(row[6]))
-                    add_flag = True
-                    if infector and len(infector.victims) > 0:
-                        for v in infector.victims:
-                            if int(row[1]) == v.id:
-                                add_flag = False
-                    if add_flag == True:
-                        new_node = Node(int(row[1]), int(row[0]), int(row[6]), infector)
-                        infector.victims.append(new_node)
-    return 0
-
 def direct_infectivity(head: Node, target: int):
     count = 0
     target_node = head.searchByID(head, target)
@@ -189,25 +143,91 @@ def direct_infectivity(head: Node, target: int):
             count += 1
     return count
 
-def total_infectivity(head: Node, target_int: int):
+def total_infectivity_nodupes(head: Node, target_int: int): 
     count = 0
     target = head.searchByID(head, target_int)
     if not target:
         return 0
-    #print("target %d has victim count %d\n" % (target.id, len(target.victims)))
-    while target:
-        count += direct_infectivity(target, target_int)
-        #print("dir infec ")
-        if len(target.victims) > 0:
-            for v in target.victims:
-                #print("checking victim %d\n" % v.id)
-                count += total_infectivity(target, v.id)
-        #print("victims ")
-        dummy = head.destructive_remove_by_id(head, target_int)
-        #print("remove ")
-        target = head.searchByID(head, target_int)
-        #print("search ")
+    count += direct_infectivity(head, target_int)
+    if len(target.victims) > 0:
+        for v in target.victims:
+            count += total_infectivity_nodupes(head, v.id)
     return count
+
+#Calculating mean and variance
+
+def infectivity_mean(head: Node, usable_ids: list[int]):
+    mean = float(0.0)
+    num_people = len(usable_ids)
+    for target_id in usable_ids:
+        mean += total_infectivity_nodupes(head, target_id)
+    mean = float(mean) / float(num_people)
+    return mean
+
+def infectivity_var(head: Node, usable_ids: list[int], mean: float):
+    var = float(0.0)
+    curr_count = 0
+    num_people = len(usable_ids)
+    for target_id in usable_ids:
+        var += pow(total_infectivity_nodupes(head, target_id) - mean, 2)
+    var = float(var) / float(num_people)
+    return var
+
+def infectivity_ci_multi():
+    runcount = int(input("Please type how many runs you would like to analyze.\n"))
+    runlist = []
+    i = 0
+    while (i < runcount):
+        runlist.append(int(input("Please type ONE of the runs you are using. Runs input so far: %f\n" % i)))
+        i += 1
+    #get an alpha value
+    alpha = float(input("Please type an OPPOSITE decimal from 0 to 1 representing the confidence (ex. for a 95 percent CI, type 0.05).\n"))
+    zscore = st.norm.ppf(1.0 - (alpha / 2))
+    #define the flags through which we will filter people
+    flag_vals = []
+    flag_vals.append(input("Please enter a minimum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter a maximum age to observe, as an integer. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please enter which sex to track as an integer, 0 for males, 1 otherwise. Type -1 if irrelevant.\n"))
+    flag_vals.append(input("Please write Vaccinated or Unvaccinated (case-sensitive) to pick a vaccination status at start of run to track. Type -1 if irrelevant.\n"))
+    #verify parameters 
+    print("You have entered: alpha = %f, min age = %f, max age = %f, sex = %f, vaccination = %s" % (alpha, int(flag_vals[0]), int(flag_vals[1]), int(flag_vals[2]), flag_vals[3]))
+    n = 0
+    mean = float(0)
+    var = float(0)
+    #get the sample count and mean
+    for run in runlist: 
+        data_dir = agt.find_dir(run)
+        usable_ids = agt.get_all_ids(data_dir, flag_vals)
+        start1 = Node(-1, -1, -1, None)
+        build_agent_graph_nodupes(start1, data_dir)
+        n += len(usable_ids)
+        if (len(usable_ids) > 0):
+            mean += (infectivity_mean(start1, usable_ids) * len(usable_ids))
+    if (n == 0):
+        print("Since we didn't find anyone, we can't run a CI. Returning.\n")
+        return 0
+    mean = float(mean) / float(n)
+    #now that we have our full sample mean, we can get the variance
+    for run in runlist:
+        data_dir = agt.find_dir(run)
+        usable_ids = agt.get_all_ids(data_dir, flag_vals)
+        start2 = Node(-1, -1, -1, None)
+        build_agent_graph_nodupes(start2, data_dir)
+        if (len(usable_ids) > 0):
+            var += (infectivity_var(start2, usable_ids, mean) * len(usable_ids))
+    var = float(var) / float(n)
+    sd = math.sqrt(var)
+    rootn = math.sqrt(n)
+    hi = mean + (zscore * (sd / rootn))
+    lo = mean - (zscore * (sd / rootn))
+    print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
+    outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
+    if (outlier_flag > 0):
+        #return outlier_check(mean, sd, n, alpha) (outlier check unfinished!)
+        return 0
+    return 0
+
+#Main
 
 def main():
     start_flag = int(input("For testing graph features, type 0. For analysis work, type 1.\n"))

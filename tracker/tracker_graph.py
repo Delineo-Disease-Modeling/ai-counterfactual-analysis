@@ -224,6 +224,7 @@ def infectivity_ci_multi():
     outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
     if (outlier_flag > 0):
         #return outlier_check(mean, sd, n, alpha) (outlier check unfinished!)
+        print("Oops! I haven't implemented outlier check yet.\n")
         return 0
     return 0
 

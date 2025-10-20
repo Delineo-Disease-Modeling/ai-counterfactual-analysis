@@ -117,6 +117,20 @@ def graph_test_2():
     print("total 36: %d\n" % total_infectivity_nodupes(start2, 36))
     return 0
 
+def mean_var_test():
+    run = int(input("Please type the run to test on.\n"))
+    data_dir = agt.find_dir(run)
+    start2 = Node(-1,-1,-1,None)
+    build_agent_graph_nodupes(start2, data_dir)
+    id_fifteen = [15]
+    print("mean 15: %f\n" % infectivity_mean(start2, id_fifteen))
+    print("var 15: %f\n" % infectivity_var(start2, id_fifteen, infectivity_mean(start2, id_fifteen)))
+    flag_vals = [30, 99, 1, -1]
+    usable_ids = agt.get_all_ids(data_dir, flag_vals)
+    print("mean run1: %f\n" % infectivity_mean(start2, usable_ids))
+    print("var run1: %f\n" % infectivity_var(start2, usable_ids, infectivity_mean(start2, usable_ids)))
+    return 0
+
 #Construct graph, find the infectivity of one agent
 
 def build_agent_graph_nodupes(start: Node, data_dir: str):
@@ -160,16 +174,16 @@ def infectivity_mean(head: Node, usable_ids: list[int]):
     mean = float(0.0)
     num_people = len(usable_ids)
     for target_id in usable_ids:
-        mean += total_infectivity_nodupes(head, target_id)
+        added = total_infectivity_nodupes(head, int(target_id))
+        mean += added
     mean = float(mean) / float(num_people)
     return mean
 
 def infectivity_var(head: Node, usable_ids: list[int], mean: float):
     var = float(0.0)
-    curr_count = 0
     num_people = len(usable_ids)
     for target_id in usable_ids:
-        var += pow(total_infectivity_nodupes(head, target_id) - mean, 2)
+        var += pow(total_infectivity_nodupes(head, int(target_id)) - mean, 2)
     var = float(var) / float(num_people)
     return var
 
@@ -223,10 +237,40 @@ def infectivity_ci_multi():
     print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
     outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
     if (outlier_flag > 0):
-        #return outlier_check(mean, sd, n, alpha) (outlier check unfinished!)
-        print("Oops! I haven't implemented outlier check yet.\n")
-        return 0
+        return person_outlier_check(mean, sd, n, alpha)
     return 0
+
+def person_outlier_check(ci_min: float, ci_max: float):
+    run = int(input("Please type the run your outlier is located in.\n"))
+    person = int(input("Please type the ID of the person to analyze.\n"))
+    data_dir = agt.find_dir(run)
+    start1 = Node(-1, -1, -1, None)
+    build_agent_graph_nodupes(start1, data_dir)
+    val = total_infectivity_nodupes(start1, int(person))
+    if (val > ci_max) or (val < ci_min):
+        print("This individual is an outlier as per your CI.")
+    else: 
+        print("This person falls within the bounds of your CI.")
+    return 0
+
+def run_outlier_check(mean: float, sd: float, alpha: float, flag_vals: list[str]):
+    run = int(input("Please type the run your outlier is located in.\n"))
+    data_dir = agt.find_dir(run)
+    usable_ids = agt.get_all_ids(data_dir, flag_vals)
+    n = len(usable_ids)
+    benchmark = st.t.ppf(1 - (alpha / 2), n - 1)
+    data_dir = agt.find_dir(run)
+    start1 = Node(-1, -1, -1, None)
+    build_agent_graph_nodupes(start1, data_dir)
+    #print("directory %s, usable_id %f\n" % (data_dir, usable_ids[0]))
+    sample_mean = (infectivity_mean(start1, usable_ids) * len(usable_ids)) / float(n)
+    #print("Your individual infected %f people.\n" % (val))
+    test_stat = ((sample_mean - mean)/(sd / math.sqrt(n)))
+    if (math.fabs(test_stat) > benchmark):
+        print("This run is an outlier among the runs included in your study.\n")
+    else:
+        print("We have failed to find that this run is a significant outlier among runs included in your study.\n")
+    print("The test statistic is %f relative to a benchmark of %f.\n" % (math.fabs(test_stat), benchmark))
 
 #Main
 
@@ -238,8 +282,12 @@ def main():
             graph_test_1()
         elif (testnum == 2):
             graph_test_2()
+        elif (testnum == 3):
+            mean_var_test()
         else: 
-            print("Not implemented!\n")
+           print("Not implemented!\n")
+    if (start_flag == 1):
+        infectivity_ci_multi()
     else:
         print("Not implemented!\n")
     return 1

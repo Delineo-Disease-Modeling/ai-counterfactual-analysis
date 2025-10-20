@@ -235,9 +235,11 @@ def infectivity_ci_multi():
     hi = mean + (zscore * (sd / rootn))
     lo = mean - (zscore * (sd / rootn))
     print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
-    outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
-    if (outlier_flag > 0):
+    outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier, 2 to check if a specific run is an outlier, and 0 otherwise.\n"))
+    if (outlier_flag == 1):
         return person_outlier_check(mean, sd, n, alpha)
+    if (outlier_flag == 2):
+        return run_outlier_check(mean, sd, alpha, flag_vals)
     return 0
 
 def person_outlier_check(ci_min: float, ci_max: float):
@@ -254,16 +256,15 @@ def person_outlier_check(ci_min: float, ci_max: float):
     return 0
 
 def run_outlier_check(mean: float, sd: float, alpha: float, flag_vals: list[str]):
-    run = int(input("Please type the run your outlier is located in.\n"))
+    run = int(input("Please type the run you want to check.\n"))
     data_dir = agt.find_dir(run)
     usable_ids = agt.get_all_ids(data_dir, flag_vals)
     n = len(usable_ids)
     benchmark = st.t.ppf(1 - (alpha / 2), n - 1)
-    data_dir = agt.find_dir(run)
     start1 = Node(-1, -1, -1, None)
     build_agent_graph_nodupes(start1, data_dir)
     #print("directory %s, usable_id %f\n" % (data_dir, usable_ids[0]))
-    sample_mean = (infectivity_mean(start1, usable_ids) * len(usable_ids)) / float(n)
+    sample_mean = infectivity_mean(start1, usable_ids)
     #print("Your individual infected %f people.\n" % (val))
     test_stat = ((sample_mean - mean)/(sd / math.sqrt(n)))
     if (math.fabs(test_stat) > benchmark):

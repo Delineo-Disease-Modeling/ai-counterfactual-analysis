@@ -273,6 +273,66 @@ def run_outlier_check(mean: float, sd: float, alpha: float, flag_vals: list[str]
         print("We have failed to find that this run is a significant outlier among runs included in your study.\n")
     print("The test statistic is %f relative to a benchmark of %f.\n" % (math.fabs(test_stat), benchmark))
 
+#"Wonderful Life" analysis method for superspreaders
+
+#naive baseline implementation of infectivity quotient: just take the mean of EVERYONE in the sample
+def infectivity_quotient(runs: list[int]):
+    #get the mean of infectivity means of all people across all runs
+    iqu = float(0.0)
+    for r in runs:
+        data_dir = agt.find_dir(r)
+        start = Node(-1,-1,-1,None)
+        build_agent_graph_nodupes(start, data_dir)
+        no_flags = [-1, -1, 1, -1]
+        usable_ids = agt.get_all_ids(data_dir, no_flags)
+        iqu += float(infectivity_mean(start, usable_ids))
+    iqu /= float(len(runs))
+    #normalize onto the continuous [0,1)
+    if iqu > 1: 
+        normalizer = int(iqu) + 1
+        iqu /= float(normalizer)
+    return iqu
+
+#given iqu and the run, calculate likelihood someone would've been infected without their actual infector existing
+def reverse_estimator(victim_int: int, infector_int: int, iqu: float, data_dir: str):
+    final = float(1.0)
+    prob = float(1.0)
+    #use contact logs to see how many times our victim runs into a DIFFERENT infected person
+    with open(os.path.join(data_dir, "contact_logs.csv"), mode="r") as ifile: 
+        ctable = csv.reader(ifile)
+        for row in ctable:
+            if (str(row[0]) != "timestep"):
+                our_victim_position = 0
+                other_person_position = 0
+                other_person_infectious = 0
+                if (row[1] == victim_int):
+                    our_victim_position = 1
+                if (row[2] == victim_int):
+                    our_victim_position = 2
+                if (our_victim_position > 0):
+                    other_person_position = (our_victim_position % 2) + 1
+                    other_person_infectious = other_person_position + 5
+                    if (bool(row[other_person_infectious]) == True) and (int(row[other_person_position]) != infector_int):
+                        prob *= float(float(1.0) - iqu)
+    final = 1 - prob
+    return final
+
+#calculation for if any one individual in a sample is a superspreader
+def superspreader(head: Node, superspreader_int: int, curr_int: int, iqu: float, data_dir: str):
+    count = float(0.0)
+    target = head.searchByID(head, curr_int)
+    if not target:
+        return count
+    if len(target.victims) > 0:
+        for v in target.victims:
+            #find likelihood this victim would've been infected anyways
+            count += reverse_estimator(v.id, superspreader_int, iqu, data_dir)
+            #then apply the same logic to all of their victims etc
+            count += superspreader(head, superspreader_int, v.id, iqu, data_dir)
+    #normalize onto the continuous [0,1)
+    count /= total_infectivity_nodupes(head, superspreader_int)
+    return count
+
 #Main
 
 def main():

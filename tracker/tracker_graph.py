@@ -294,7 +294,7 @@ def infectivity_quotient(runs: list[int]):
     return iqu
 
 #given iqu and the run, calculate likelihood someone would've been infected without their actual infector existing
-def reverse_estimator(victim_int: int, infector_int: int, iqu: float, data_dir: str):
+def reverse_estimator(victim_int: int, infector_int: int, iqu: float, data_dir: str, victims: list[int]):
     final = float(1.0)
     prob = float(1.0)
     #use contact logs to see how many times our victim runs into a DIFFERENT infected person
@@ -305,16 +305,17 @@ def reverse_estimator(victim_int: int, infector_int: int, iqu: float, data_dir: 
                 our_victim_position = 0
                 other_person_position = 0
                 other_person_infectious = 0
-                if (row[1] == victim_int):
+                if (int(row[1]) == victim_int):
                     our_victim_position = 1
-                if (row[2] == victim_int):
+                if (int(row[2]) == victim_int):
                     our_victim_position = 2
                 if (our_victim_position > 0):
                     other_person_position = (our_victim_position % 2) + 1
                     other_person_infectious = other_person_position + 5
-                    if (bool(row[other_person_infectious]) == True) and (int(row[other_person_position]) != infector_int):
-                        prob *= float(float(1.0) - iqu)
-    final = 1 - prob
+                    if (bool(row[other_person_infectious]) == True):
+                        if (int(row[other_person_position]) != infector_int) and (int(row[other_person_position]) not in victims):
+                            prob *= float(float(1.0) - iqu)
+    final = float(1.0 - prob)
     return final
 
 #calculation for if any one individual in a sample is a superspreader
@@ -324,19 +325,40 @@ def superspreader(head: Node, superspreader_int: int, curr_int: int, iqu: float,
     if not target:
         return count
     if len(target.victims) > 0:
+        victim_id_list = []
+        for v in target.victims:
+            victim_id_list.append(int(v.id))
         for v in target.victims:
             #find likelihood this victim would've been infected anyways
-            count += reverse_estimator(v.id, superspreader_int, iqu, data_dir)
+            count += reverse_estimator(v.id, superspreader_int, iqu, data_dir, victim_id_list)
             #then apply the same logic to all of their victims etc
             count += superspreader(head, superspreader_int, v.id, iqu, data_dir)
-    #normalize onto the continuous [0,1)
-    count /= total_infectivity_nodupes(head, superspreader_int)
+    #result is on continuous [0,n) where n is the number of victims
     return count
+
+def run_superspreader_check():
+    runcount = int(input("Please type how many runs you would like to analyze to derive iqu.\n"))
+    runlist = []
+    i = 0
+    while (i < runcount):
+        runlist.append(int(input("Please type ONE of the runs you are using. Runs input so far: %f\n" % i)))
+        i += 1
+    iqu = infectivity_quotient(runlist)
+    print("Given the selected runs, your infectivity quotient estimate is %f.\n" % iqu)
+    target_run = int(input("Please type the run your suspected superspreader is in.\n"))
+    person = int(input("Please type the ID of the person to analyze.\n"))
+    data_dir = agt.find_dir(target_run)
+    start1 = Node(-1, -1, -1, None)
+    build_agent_graph_nodupes(start1, data_dir)
+    spread_count = superspreader(start1, person, person, iqu, data_dir)
+    spread_count /= total_infectivity_nodupes(start1, person)
+    print("Our estimated superspreader probability is %f.\n" % spread_count)
+    
 
 #Main
 
 def main():
-    start_flag = int(input("For testing graph features, type 0. For analysis work, type 1.\n"))
+    start_flag = int(input("For testing graph features, type 0. For CI, type 1. For superspreader check, type 2.\n"))
     if (start_flag == 0):
         testnum = int(input("Please select which test to run.\n"))
         if (testnum == 1):
@@ -349,6 +371,8 @@ def main():
            print("Not implemented!\n")
     if (start_flag == 1):
         infectivity_ci_multi()
+    if (start_flag == 2):
+        run_superspreader_check()
     else:
         print("Not implemented!\n")
     return 1

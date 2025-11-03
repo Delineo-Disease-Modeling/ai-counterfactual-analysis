@@ -351,7 +351,8 @@ def run_superspreader_check():
     start1 = Node(-1, -1, -1, None)
     build_agent_graph_nodupes(start1, data_dir)
     spread_count = superspreader(start1, person, person, iqu, data_dir)
-    spread_count /= total_infectivity_nodupes(start1, person)
+    if (total_infectivity_nodupes(start1, person) != 0):
+        spread_count /= total_infectivity_nodupes(start1, person)
     print("Our estimated superspreader probability is %f.\n" % spread_count)
     
 

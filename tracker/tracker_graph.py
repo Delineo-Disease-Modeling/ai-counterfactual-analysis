@@ -93,7 +93,137 @@ class Node:
             target = self.searchByID(head, target_int)
         return 0
     
-#Test functions
+
+#harmonic complexity analysis
+
+def is_descendant(st: Node, dst: Node, len: int):
+        #check if the current node is the target
+        if (st.id == dst.id): 
+            return len
+        
+        #check if any of this node's descendants  
+        #lead to the target
+        for v in st.victims:
+            dfs = is_descendant(v, dst, len + 1)
+            if dfs != -1: 
+                return dfs
+            
+        #we can't access the target from this node
+        return -1
+
+def dfs(st: Node, visited: set):
+    visited.add(st)
+    for v in st.victims:
+        if v not in visited:
+            dfs(v, visited)
+
+def harmonic_complexity(st: Node, trgt: Node):
+    count = float(0.0)
+
+    #DFS to grab every node
+    visited = set()
+    dfs(st, visited)
+
+    # test print to ensure dfs works (it works)
+    # for item in visited:
+    #     print(item.id, end = ' ')
+    # print('\n')
+
+    #find the harmonic complexity of the target
+    for v in visited:
+        if v.id != trgt.id: 
+            dummy = is_descendant(trgt, v, 0)
+            if dummy != -1:
+                count += float(1 / dummy)
+
+    #divide by normalizing constant
+    nminus1 = len(visited) - 1
+    count = float(count / nminus1)
+
+    return count
+
+def check_sse(st: Node):
+    visited = set()
+    dfs(st, visited)
+
+    #order every single node in the graph except start by harmonic complexity
+    targets = list()
+    for trgt in visited:
+        if trgt.id != -1:
+            pair = (trgt.id, harmonic_complexity(st, trgt))
+            targets.append(pair)
+    targets.sort(key=lambda x: x[1], reverse=True)
+
+    #check if top (< 20%) of agents account for at least 50% of infections
+    total_hc = float(0.0)
+    total_elements = 0
+    curr = 0
+    top20 = float(0.2 * len(targets))
+    while total_hc < 0.5:
+        total_hc += targets[curr][1]
+        curr += 1
+
+    if curr < top20:
+        print("Superspreader event detected! Potential superspreaders are: ")
+        for i in range(0, curr + 1): 
+            print(targets[curr][0], end = ' ')
+        print('\n')
+        return True
+
+    print("This run was not a superspreader event.\n")
+    return False
+
+#Test functions for harmonic complexity analysis
+
+def build_harmonic_test_graph(): 
+    #handmake test graph
+    start = Node(-1,-1,-1,None)
+    node_a = Node(1,0,-1,start)
+    node_b = Node(2,0,-1,start)
+    node_c = Node(3,0,-1,start)
+    start.addVictim(node_a)
+    start.addVictim(node_b)
+    start.addVictim(node_c)
+    node_d = Node(4,0,1,node_a)
+    node_e = Node(5,0,1,node_a)
+    node_a.addVictim(node_d)
+    node_a.addVictim(node_e)
+    node_f = Node(6,0,5,node_e)
+    node_e.addVictim(node_f)
+    node_g = Node(7,0,3,node_c)
+    node_c.addVictim(node_g)
+    #graph layout should be
+    #        Start
+    #        / | \
+    #      A   B   C
+    #    / |        \
+    #   D  E         G
+    #       \  
+    #        F
+    return start
+
+def test_descendant():
+    #test is_descendant
+    start = build_harmonic_test_graph()
+    node_a = start.searchByID(start, 1)
+    node_e = start.searchByID(start, 5)
+    node_f = start.searchByID(start, 6)
+    node_c = start.searchByID(start, 3)
+    print(len(node_a.victims))
+    dec_a = is_descendant(node_a, node_a, 0)
+    dec_b = is_descendant(node_a, node_e, 0)
+    dec_c = is_descendant(node_a, node_f, 0)
+    dec_d = is_descendant(start, node_f, 0)
+    dec_e = is_descendant(node_a, node_c, 0)
+    print("Expected: 0, 1, 2, 3, -1\n")
+    print("Got: %d, %d, %d, %d, %d\n" % (dec_a, dec_b, dec_c, dec_d, dec_e))
+
+    #test harmonic_complexity
+    print(harmonic_complexity(start, node_a), end = '\n')
+    print(harmonic_complexity(start, node_f), end = '\n')
+    return 0
+    
+#Test functions for basic graph functionality
     
 def graph_test_1():
     run = int(input("Please type the run to test on.\n"))
@@ -359,24 +489,27 @@ def run_superspreader_check():
 #Main
 
 def main():
-    start_flag = int(input("For testing graph features, type 0. For CI, type 1. For superspreader check, type 2.\n"))
-    if (start_flag == 0):
-        testnum = int(input("Please select which test to run.\n"))
-        if (testnum == 1):
-            graph_test_1()
-        elif (testnum == 2):
-            graph_test_2()
-        elif (testnum == 3):
-            mean_var_test()
-        else: 
-           print("Not implemented!\n")
-    if (start_flag == 1):
-        infectivity_ci_multi()
-    if (start_flag == 2):
-        run_superspreader_check()
-    else:
-        print("Not implemented!\n")
+    test_descendant()
     return 1
+    # code for testing stat analysis functions
+    # start_flag = int(input("For testing graph features, type 0. For CI, type 1. For superspreader check, type 2.\n"))
+    # if (start_flag == 0):
+    #     testnum = int(input("Please select which test to run.\n"))
+    #     if (testnum == 1):
+    #         graph_test_1()
+    #     elif (testnum == 2):
+    #         graph_test_2()
+    #     elif (testnum == 3):
+    #         mean_var_test()
+    #     else: 
+    #        print("Not implemented!\n")
+    # if (start_flag == 1):
+    #     infectivity_ci_multi()
+    # if (start_flag == 2):
+    #     run_superspreader_check()
+    # else:
+    #     print("Not implemented!\n")
+    # return 1
     
 if __name__ == "__main__":
     main()

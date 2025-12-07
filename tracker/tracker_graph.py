@@ -15,10 +15,15 @@ class Node:
         self.time = time
         self.pid = pid
         self.parent = parent
-        self.victims = []
-    
-    def addVictim(self, v):
-        self.victims.append(v)
+        self.fault = float(0.0)
+        self.edges = []
+
+    def addEdge(self, victim, location):
+        new = Edge(victim, location)
+        self.edges.append(new)
+
+    def setFault(self, val):
+        self.fault = val
 
     def searchByID(self, head, target: int):
         if (head):
@@ -28,71 +33,25 @@ class Node:
                 return None
             elif resultNode.id == target:
                 return resultNode
-            elif currentNode and (len(currentNode.victims) > 0):
-                for n in currentNode.victims: 
-                    resultNode = self.searchByID(n, target)
+            elif currentNode and (len(currentNode.edges) > 0):
+                for n in currentNode.edges: 
+                    resultNode = self.searchByID(n.victim, target)
                     if resultNode and resultNode.id == target:
                         return resultNode
         return None
     
     def printNodes(self, head):
         print("%d infected by %d at time %d ->" % (head.id, head.pid, head.time))
-        for v in head.victims:
-            self.printNodes(v)
+        for v in head.edges:
+            self.printNodes(v.victim)
         return
-    
-    def destructive_remove(self, target):
-        if not target:
-            #print("Target not a node: does not exist\n")
-            return 1
-        if not target.parent:
-            #print("Target is head: cannot remove\n")
-            return 2
-        if target not in (target.parent).victims:
-            return 3
-        ((target.parent).victims).remove(target)
-        target.parent = None
-        return 0
-    
-    def destructive_remove_by_id(self, head, target_int: int):
-        if (target_int < 1): 
-            #print("Not a valid id: cannot remove\n")
-            return 1
-        #print("rem check ")
-        target = self.searchByID(head, target_int)
-        #print("search ")
-        while target:
-            dummy = self.destructive_remove(target)
-            #print("destroy %d " % dummy)
-            target = self.searchByID(head, target_int)
-            #print("target found %d" % target.id)
-        return 0
-    
-    def remove_and_rebuild(self, target):
-        if not target:
-            #print("Target not a node: does not exist\n")
-            return 1
-        if not target.parent:
-            #print("Target is head: cannot remove\n")
-            return 1
-        if target not in (target.parent).victims:
-            return 1
-        for v in target.victims:
-            ((target.parent).victims).append(v)
-        ((target.parent).victims).remove(target)
-        target.parent = None
-        return 0 
-    
-    def remove_and_rebuild_by_id(self, head, target_int: int):
-        if (target_int < 1): 
-            #print("Not a valid id: cannot remove\n")
-            return 1
-        target = self.searchByID(head, target_int)
-        while target:
-            self.remove_and_rebuild(target)
-            target = self.searchByID(head, target_int)
-        return 0
-    
+
+#Definition of Edge class: stores victim as a node and location as an int
+
+class Edge:
+    def __init__(self, victim: Node, location: int):
+        self.victim = victim
+        self.location = location    
 
 #harmonic complexity analysis
 
@@ -103,8 +62,8 @@ def is_descendant(st: Node, dst: Node, len: int):
         
         #check if any of this node's descendants  
         #lead to the target
-        for v in st.victims:
-            dfs = is_descendant(v, dst, len + 1)
+        for v in st.edges:
+            dfs = is_descendant(v.victim, dst, len + 1)
             if dfs != -1: 
                 return dfs
             
@@ -113,9 +72,9 @@ def is_descendant(st: Node, dst: Node, len: int):
 
 def dfs(st: Node, visited: set):
     visited.add(st)
-    for v in st.victims:
-        if v not in visited:
-            dfs(v, visited)
+    for v in st.edges:
+        if v.victim not in visited:
+            dfs(v.victim, visited)
 
 def harmonic_complexity(st: Node, trgt: Node):
     count = float(0.0)
@@ -140,6 +99,8 @@ def harmonic_complexity(st: Node, trgt: Node):
     nminus1 = len(visited) - 1
     count = float(count / nminus1)
 
+    #update node's internal complexity then return
+    trgt.setFault(count)
     return count
 
 def check_sse(st: Node):
@@ -166,12 +127,40 @@ def check_sse(st: Node):
     if curr < top20:
         print("Superspreader event detected! Potential superspreaders are: ")
         for i in range(0, curr + 1): 
-            print(targets[curr][0], end = ' ')
+            print(targets[i][0], end = ' ')
         print('\n')
         return True
 
     print("This run was not a superspreader event.\n")
     return False
+
+def location_impact(st: Node):
+    visited = set()
+    dfs(st, visited)
+
+    #order every single location an infection occurred at by relative weight
+    weighted_locs = list()
+    for trgt in visited:
+        if trgt.id != -1:
+            harmonic_complexity(st, trgt)
+            for e in trgt.edges:
+                if any(e.location == x[0] for x in weighted_locs):
+                    for y in weighted_locs:
+                        if e.location == y[0]:
+                            y[1] += trgt.fault 
+                            break 
+                else: 
+                    pair = [e.location, trgt.fault]
+                    weighted_locs.append(pair)
+    weighted_locs.sort(key=lambda x: x[1], reverse=True)
+
+    count = min(len(weighted_locs), 5)
+    print("Top %d locations by relative weight: " % count)
+    for i in range(0, count):
+        print(weighted_locs[i][0], end = ' ')
+    print('\n')
+
+    return 0
 
 #Test functions for harmonic complexity analysis
 
@@ -181,25 +170,27 @@ def build_harmonic_test_graph():
     node_a = Node(1,0,-1,start)
     node_b = Node(2,0,-1,start)
     node_c = Node(3,0,-1,start)
-    start.addVictim(node_a)
-    start.addVictim(node_b)
-    start.addVictim(node_c)
+    start.addEdge(node_a, -1)
+    start.addEdge(node_b, -1)
+    start.addEdge(node_c, -1)
     node_d = Node(4,0,1,node_a)
     node_e = Node(5,0,1,node_a)
-    node_a.addVictim(node_d)
-    node_a.addVictim(node_e)
+    node_a.addEdge(node_d, 1)
+    node_a.addEdge(node_e, 2)
     node_f = Node(6,0,5,node_e)
-    node_e.addVictim(node_f)
+    node_e.addEdge(node_f, 2)
     node_g = Node(7,0,3,node_c)
-    node_c.addVictim(node_g)
+    node_c.addEdge(node_g, 2)
+    node_h = Node(8,0,7,node_c)
+    node_g.addEdge(node_h, 3)
     #graph layout should be
     #        Start
-    #        / | \
+    #       /  |  \
     #      A   B   C
-    #    / |        \
+    #    1 2        2
     #   D  E         G
-    #       \  
-    #        F
+    #       2       3 
+    #        F     H
     return start
 
 def test_descendant():
@@ -209,7 +200,11 @@ def test_descendant():
     node_e = start.searchByID(start, 5)
     node_f = start.searchByID(start, 6)
     node_c = start.searchByID(start, 3)
-    print(len(node_a.victims))
+    node_b = start.searchByID(start, 2)
+    node_d = start.searchByID(start, 4)
+    node_g = start.searchByID(start, 7)
+    node_h = start.searchByID(start, 8)
+    print(len(node_a.edges))
     dec_a = is_descendant(node_a, node_a, 0)
     dec_b = is_descendant(node_a, node_e, 0)
     dec_c = is_descendant(node_a, node_f, 0)
@@ -220,7 +215,19 @@ def test_descendant():
 
     #test harmonic_complexity
     print(harmonic_complexity(start, node_a), end = '\n')
+    print(harmonic_complexity(start, node_b), end = '\n')
+    print(harmonic_complexity(start, node_c), end = '\n')
+    print(harmonic_complexity(start, node_d), end = '\n')
+    print(harmonic_complexity(start, node_e), end = '\n')
     print(harmonic_complexity(start, node_f), end = '\n')
+    print(harmonic_complexity(start, node_g), end = '\n')
+    print(harmonic_complexity(start, node_h), end = '\n')
+
+    #test SSE checker
+    check_sse(start)
+
+    #test location impact checker
+    location_impact(start)
     return 0
     
 #Test functions for basic graph functionality
@@ -270,20 +277,20 @@ def build_agent_graph_nodupes(start: Node, data_dir: str):
             if str(row[6]) != "infector_person_id":
                 if str(row[6]) == "":
                     new_node = Node(int(row[1]), 0, -1, start)
-                    start.victims.append(new_node)
+                    start.edges.append(new_node, int(row[11]))
                 else:
                     infector = start.searchByID(start, int(row[6]))
                     infected = start.searchByID(start, int(row[1]))
                     if not infected:
                         new_node = Node(int(row[1]), int(row[0]), int(row[6]), infector)
-                        infector.victims.append(new_node)
+                        infector.edges.append(new_node, int(row[11]))
     return 0
 
 def direct_infectivity(head: Node, target: int):
     count = 0
     target_node = head.searchByID(head, target)
     if target_node:
-        for v in target_node.victims:
+        for v in target_node.edges:
             count += 1
     return count
 
@@ -293,9 +300,10 @@ def total_infectivity_nodupes(head: Node, target_int: int):
     if not target:
         return 0
     count += direct_infectivity(head, target_int)
-    if len(target.victims) > 0:
-        for v in target.victims:
-            count += total_infectivity_nodupes(head, v.id)
+    if len(target.edges) > 0:
+        for v in target.edges:
+            vic = v.victim
+            count += total_infectivity_nodupes(head, vic.id)
     return count
 
 #Calculating mean and variance
@@ -454,15 +462,17 @@ def superspreader(head: Node, superspreader_int: int, curr_int: int, iqu: float,
     target = head.searchByID(head, curr_int)
     if not target:
         return count
-    if len(target.victims) > 0:
+    if len(target.edges) > 0:
         victim_id_list = []
-        for v in target.victims:
-            victim_id_list.append(int(v.id))
-        for v in target.victims:
+        for v in target.edges:
+            vic = v.victim
+            victim_id_list.append(int(vic.id))
+        for v in target.edges:
+            vic = v.victim
             #find likelihood this victim would've been infected anyways
-            count += reverse_estimator(v.id, superspreader_int, iqu, data_dir, victim_id_list)
+            count += reverse_estimator(vic.id, superspreader_int, iqu, data_dir, victim_id_list)
             #then apply the same logic to all of their victims etc
-            count += superspreader(head, superspreader_int, v.id, iqu, data_dir)
+            count += superspreader(head, superspreader_int, vic.id, iqu, data_dir)
     #result is on continuous [0,n) where n is the number of victims
     return count
 

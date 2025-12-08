@@ -10,16 +10,15 @@ import agent_tracker as agt
 #Definition of Node class / linked list internal operations
 
 class Node:
-    def __init__(self, id: int, time: int, pid: int, parent):
+    def __init__(self, id: int, pid: int, parent):
         self.id = id
-        self.time = time
         self.pid = pid
         self.parent = parent
         self.fault = float(0.0)
         self.edges = []
 
-    def addEdge(self, victim, location):
-        new = Edge(victim, location)
+    def addEdge(self, victim, location, time):
+        new = Edge(victim, location, time)
         self.edges.append(new)
 
     def setFault(self, val):
@@ -49,9 +48,10 @@ class Node:
 #Definition of Edge class: stores victim as a node and location as an int
 
 class Edge:
-    def __init__(self, victim: Node, location: int):
+    def __init__(self, victim: Node, location: int, time: int):
         self.victim = victim
         self.location = location    
+        self.time = time
 
 #harmonic complexity analysis
 
@@ -166,23 +166,23 @@ def location_impact(st: Node):
 
 def build_harmonic_test_graph(): 
     #handmake test graph
-    start = Node(-1,-1,-1,None)
-    node_a = Node(1,0,-1,start)
-    node_b = Node(2,0,-1,start)
-    node_c = Node(3,0,-1,start)
-    start.addEdge(node_a, -1)
-    start.addEdge(node_b, -1)
-    start.addEdge(node_c, -1)
-    node_d = Node(4,0,1,node_a)
-    node_e = Node(5,0,1,node_a)
-    node_a.addEdge(node_d, 1)
-    node_a.addEdge(node_e, 2)
-    node_f = Node(6,0,5,node_e)
-    node_e.addEdge(node_f, 2)
-    node_g = Node(7,0,3,node_c)
-    node_c.addEdge(node_g, 2)
-    node_h = Node(8,0,7,node_c)
-    node_g.addEdge(node_h, 3)
+    start = Node(-1,-1,None)
+    node_a = Node(1,-1,start)
+    node_b = Node(2,-1,start)
+    node_c = Node(3,-1,start)
+    start.addEdge(node_a, -1, 0)
+    start.addEdge(node_b, -1, 0)
+    start.addEdge(node_c, -1, 0)
+    node_d = Node(4,1,node_a)
+    node_e = Node(5,1,node_a)
+    node_a.addEdge(node_d, 1, 1)
+    node_a.addEdge(node_e, 2, 1)
+    node_f = Node(6,5,node_e)
+    node_e.addEdge(node_f, 2, 2)
+    node_g = Node(7,3,node_c)
+    node_c.addEdge(node_g, 2, 1)
+    node_h = Node(8,7,node_c)
+    node_g.addEdge(node_h, 3, 2)
     #graph layout should be
     #        Start
     #       /  |  \
@@ -236,7 +236,7 @@ def graph_test_1():
     run = int(input("Please type the run to test on.\n"))
     data_dir = agt.find_dir(run)
     print("without dupes at all\n")
-    start3 = Node(-1, -1, -1, None)
+    start3 = Node(-1, -1, None)
     build_agent_graph_nodupes(start3, data_dir)
     start3.printNodes(start3)
     print("\n")
@@ -245,7 +245,7 @@ def graph_test_1():
 def graph_test_2():
     run = int(input("Please type the run to test on.\n"))
     data_dir = agt.find_dir(run)
-    start2 = Node(-1,-1,-1,None)
+    start2 = Node(-1,-1,None)
     build_agent_graph_nodupes(start2, data_dir)
     print("no dupes: \n")
     print("direct 15: %d\n" % direct_infectivity(start2, 15))
@@ -257,7 +257,7 @@ def graph_test_2():
 def mean_var_test():
     run = int(input("Please type the run to test on.\n"))
     data_dir = agt.find_dir(run)
-    start2 = Node(-1,-1,-1,None)
+    start2 = Node(-1,-1,None)
     build_agent_graph_nodupes(start2, data_dir)
     id_fifteen = [15]
     print("mean 15: %f\n" % infectivity_mean(start2, id_fifteen))
@@ -276,14 +276,14 @@ def build_agent_graph_nodupes(start: Node, data_dir: str):
         for row in itable:
             if str(row[6]) != "infector_person_id":
                 if str(row[6]) == "":
-                    new_node = Node(int(row[1]), 0, -1, start)
-                    start.edges.append(new_node, int(row[11]))
+                    new_node = Node(int(row[1]), -1, start)
+                    start.addEdge(new_node, int(row[11]), 0)
                 else:
                     infector = start.searchByID(start, int(row[6]))
                     infected = start.searchByID(start, int(row[1]))
                     if not infected:
-                        new_node = Node(int(row[1]), int(row[0]), int(row[6]), infector)
-                        infector.edges.append(new_node, int(row[11]))
+                        new_node = Node(int(row[1]), int(row[6]), infector)
+                        infector.addEdge(new_node, int(row[11]), int(row[0]))
     return 0
 
 def direct_infectivity(head: Node, target: int):
@@ -350,7 +350,7 @@ def infectivity_ci_multi():
     for run in runlist: 
         data_dir = agt.find_dir(run)
         usable_ids = agt.get_all_ids(data_dir, flag_vals)
-        start1 = Node(-1, -1, -1, None)
+        start1 = Node(-1, -1, None)
         build_agent_graph_nodupes(start1, data_dir)
         n += len(usable_ids)
         if (len(usable_ids) > 0):
@@ -363,7 +363,7 @@ def infectivity_ci_multi():
     for run in runlist:
         data_dir = agt.find_dir(run)
         usable_ids = agt.get_all_ids(data_dir, flag_vals)
-        start2 = Node(-1, -1, -1, None)
+        start2 = Node(-1, -1, None)
         build_agent_graph_nodupes(start2, data_dir)
         if (len(usable_ids) > 0):
             var += (infectivity_var(start2, usable_ids, mean) * len(usable_ids))
@@ -384,7 +384,7 @@ def person_outlier_check(ci_min: float, ci_max: float):
     run = int(input("Please type the run your outlier is located in.\n"))
     person = int(input("Please type the ID of the person to analyze.\n"))
     data_dir = agt.find_dir(run)
-    start1 = Node(-1, -1, -1, None)
+    start1 = Node(-1, -1, None)
     build_agent_graph_nodupes(start1, data_dir)
     val = total_infectivity_nodupes(start1, int(person))
     if (val > ci_max) or (val < ci_min):
@@ -399,7 +399,7 @@ def run_outlier_check(mean: float, sd: float, alpha: float, flag_vals: list[str]
     usable_ids = agt.get_all_ids(data_dir, flag_vals)
     n = len(usable_ids)
     benchmark = st.t.ppf(1 - (alpha / 2), n - 1)
-    start1 = Node(-1, -1, -1, None)
+    start1 = Node(-1, -1, None)
     build_agent_graph_nodupes(start1, data_dir)
     #print("directory %s, usable_id %f\n" % (data_dir, usable_ids[0]))
     sample_mean = infectivity_mean(start1, usable_ids)
@@ -419,7 +419,7 @@ def infectivity_quotient(runs: list[int]):
     iqu = float(0.0)
     for r in runs:
         data_dir = agt.find_dir(r)
-        start = Node(-1,-1,-1,None)
+        start = Node(-1,-1,None)
         build_agent_graph_nodupes(start, data_dir)
         no_flags = [-1, -1, 1, -1]
         usable_ids = agt.get_all_ids(data_dir, no_flags)
@@ -488,7 +488,7 @@ def run_superspreader_check():
     target_run = int(input("Please type the run your suspected superspreader is in.\n"))
     person = int(input("Please type the ID of the person to analyze.\n"))
     data_dir = agt.find_dir(target_run)
-    start1 = Node(-1, -1, -1, None)
+    start1 = Node(-1, -1, None)
     build_agent_graph_nodupes(start1, data_dir)
     spread_count = superspreader(start1, person, person, iqu, data_dir)
     if (total_infectivity_nodupes(start1, person) != 0):

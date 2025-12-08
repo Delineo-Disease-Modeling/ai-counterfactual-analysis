@@ -125,7 +125,7 @@ def location_track(data_dir: str):
         timestamp += 60
     last_str = "In total, agents went to this location " + str(total_visits) + " time(s),\n"
     last_str += "left the location " + str(total_exits) + " time(s),\n"
-    last_str += "and infected people here " + str(total_infections) + " time(s)."
+    last_str += "and got infected here " + str(total_infections) + " time(s)."
     output_file.write(last_str)
     output_file.close()
     return 0
@@ -246,7 +246,8 @@ def infectivity_ci_multi():
     rootn = math.sqrt(n)
     hi = mean + (zscore * (sd / rootn))
     lo = mean - (zscore * (sd / rootn))
-    print("Given the specified parameters, your CI is [%f,%f]" % (lo, hi))
+    print("The distribution containing the specified persons has %d samples, mean %f, and variance %f." % (n, mean, var))
+    print("Your a = %f CI is [%f,%f].\n" % (alpha, lo, hi))
     outlier_flag = int(input("Type 1 to check if a specific indivdual is an outlier and 0 otherwise.\n"))
     if (outlier_flag > 0):
         return outlier_check(mean, sd, n, alpha)

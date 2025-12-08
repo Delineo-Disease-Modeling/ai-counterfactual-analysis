@@ -116,10 +116,10 @@ def calculate_all_harmonic(st: Node):
             for e in trgt.edges:
                 cpx_total += harmonic_complexity(st, e.victim)
             for e in trgt.edges:
-                if cpx_total > 0:
-                    e.fault = (((e.victim).fault / cpx_total) * trgt.fault)
-                else: 
-                    e.fault = 0
+                if cpx_total > 0.0:
+                    e.fault = (float(1 / (2 * len(trgt.edges))) + (((e.victim).fault / cpx_total) / 2)) * trgt.fault
+                else:
+                    e.fault = trgt.fault
 
     return 0
 
@@ -235,14 +235,21 @@ def test_descendant():
     print("Got: %d, %d, %d, %d, %d\n" % (dec_a, dec_b, dec_c, dec_d, dec_e))
 
     #test harmonic_complexity
-    print(harmonic_complexity(start, node_a), end = '\n')
-    print(harmonic_complexity(start, node_b), end = '\n')
-    print(harmonic_complexity(start, node_c), end = '\n')
-    print(harmonic_complexity(start, node_d), end = '\n')
-    print(harmonic_complexity(start, node_e), end = '\n')
-    print(harmonic_complexity(start, node_f), end = '\n')
-    print(harmonic_complexity(start, node_g), end = '\n')
-    print(harmonic_complexity(start, node_h), end = '\n')
+    calculate_all_harmonic(start)
+
+    visited = set()
+    dfs(start, visited)
+
+    print("vertex fault: \n")
+    for item in visited:
+        if item.id != -1:
+            print("%d: %f " % (item.id, item.fault))
+            if len(item.edges) > 0:
+                print("with edge weights ")
+            for e in item.edges:
+                print("%f for edge to %d" % (e.fault, (e.victim).id))
+            print("\n")
+
 
     #test SSE checker
     check_sse(start)

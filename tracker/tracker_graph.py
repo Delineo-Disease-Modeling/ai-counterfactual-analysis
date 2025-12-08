@@ -143,14 +143,20 @@ def location_impact(st: Node):
     for trgt in visited:
         if trgt.id != -1:
             harmonic_complexity(st, trgt)
+            cpx_total = float(0.0)
+            for e in trgt.edges:
+                cpx_total += harmonic_complexity(st, e.victim)
             for e in trgt.edges:
                 if any(e.location == x[0] for x in weighted_locs):
                     for y in weighted_locs:
-                        if e.location == y[0]:
-                            y[1] += trgt.fault 
+                        if e.location == y[0] and cpx_total > 0:
+                            y[1] += (((e.victim).fault / cpx_total) * trgt.fault)
                             break 
                 else: 
-                    pair = [e.location, trgt.fault]
+                    if cpx_total > 0:
+                        pair = [e.location, (((e.victim).fault / cpx_total) * trgt.fault)]
+                    else: 
+                        pair = [e.location, 0.0]
                     weighted_locs.append(pair)
     weighted_locs.sort(key=lambda x: x[1], reverse=True)
 

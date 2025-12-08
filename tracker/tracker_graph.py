@@ -17,8 +17,8 @@ class Node:
         self.fault = float(0.0)
         self.edges = []
 
-    def addEdge(self, victim, location, time):
-        new = Edge(victim, location, time)
+    def addEdge(self, victim, location, time, fault):
+        new = Edge(victim, location, time, fault)
         self.edges.append(new)
 
     def setFault(self, val):
@@ -48,10 +48,11 @@ class Node:
 #Definition of Edge class: stores victim as a node and location as an int
 
 class Edge:
-    def __init__(self, victim: Node, location: int, time: int):
+    def __init__(self, victim: Node, location: int, time: int, fault: float):
         self.victim = victim
         self.location = location    
         self.time = time
+        self.fault = fault
 
 #harmonic complexity analysis
 
@@ -103,6 +104,25 @@ def harmonic_complexity(st: Node, trgt: Node):
     trgt.setFault(count)
     return count
 
+def calculate_all_harmonic(st: Node):
+    visited = set()
+    dfs(st, visited)
+
+    #order every single location an infection occurred at by relative weight
+    for trgt in visited:
+        if trgt.id != -1:
+            harmonic_complexity(st, trgt)
+            cpx_total = float(0.0)
+            for e in trgt.edges:
+                cpx_total += harmonic_complexity(st, e.victim)
+            for e in trgt.edges:
+                if cpx_total > 0:
+                    e.fault = (((e.victim).fault / cpx_total) * trgt.fault)
+                else: 
+                    e.fault = 0
+
+    return 0
+
 def check_sse(st: Node):
     visited = set()
     dfs(st, visited)
@@ -137,26 +157,21 @@ def check_sse(st: Node):
 def location_impact(st: Node):
     visited = set()
     dfs(st, visited)
+    calculate_all_harmonic(st)
 
     #order every single location an infection occurred at by relative weight
     weighted_locs = list()
     for trgt in visited:
         if trgt.id != -1:
             harmonic_complexity(st, trgt)
-            cpx_total = float(0.0)
-            for e in trgt.edges:
-                cpx_total += harmonic_complexity(st, e.victim)
             for e in trgt.edges:
                 if any(e.location == x[0] for x in weighted_locs):
                     for y in weighted_locs:
-                        if e.location == y[0] and cpx_total > 0:
-                            y[1] += (((e.victim).fault / cpx_total) * trgt.fault)
+                        if e.location == y[0]:
+                            y[1] += e.fault
                             break 
                 else: 
-                    if cpx_total > 0:
-                        pair = [e.location, (((e.victim).fault / cpx_total) * trgt.fault)]
-                    else: 
-                        pair = [e.location, 0.0]
+                    pair = [e.location, e.fault]
                     weighted_locs.append(pair)
     weighted_locs.sort(key=lambda x: x[1], reverse=True)
 
@@ -176,19 +191,19 @@ def build_harmonic_test_graph():
     node_a = Node(1,-1,start)
     node_b = Node(2,-1,start)
     node_c = Node(3,-1,start)
-    start.addEdge(node_a, -1, 0)
-    start.addEdge(node_b, -1, 0)
-    start.addEdge(node_c, -1, 0)
+    start.addEdge(node_a, -1, 0, 0)
+    start.addEdge(node_b, -1, 0, 0)
+    start.addEdge(node_c, -1, 0, 0)
     node_d = Node(4,1,node_a)
     node_e = Node(5,1,node_a)
-    node_a.addEdge(node_d, 1, 1)
-    node_a.addEdge(node_e, 2, 1)
+    node_a.addEdge(node_d, 1, 1, 0)
+    node_a.addEdge(node_e, 2, 1, 0)
     node_f = Node(6,5,node_e)
-    node_e.addEdge(node_f, 2, 2)
+    node_e.addEdge(node_f, 2, 2, 0)
     node_g = Node(7,3,node_c)
-    node_c.addEdge(node_g, 2, 1)
+    node_c.addEdge(node_g, 2, 1, 0)
     node_h = Node(8,7,node_c)
-    node_g.addEdge(node_h, 3, 2)
+    node_g.addEdge(node_h, 3, 2, 0)
     #graph layout should be
     #        Start
     #       /  |  \
@@ -283,13 +298,13 @@ def build_agent_graph_nodupes(start: Node, data_dir: str):
             if str(row[6]) != "infector_person_id":
                 if str(row[6]) == "":
                     new_node = Node(int(row[1]), -1, start)
-                    start.addEdge(new_node, int(row[11]), 0)
+                    start.addEdge(new_node, int(row[11]), 0, 0)
                 else:
                     infector = start.searchByID(start, int(row[6]))
                     infected = start.searchByID(start, int(row[1]))
                     if not infected:
                         new_node = Node(int(row[1]), int(row[6]), infector)
-                        infector.addEdge(new_node, int(row[11]), int(row[0]))
+                        infector.addEdge(new_node, int(row[11]), int(row[0]), 0)
     return 0
 
 def direct_infectivity(head: Node, target: int):

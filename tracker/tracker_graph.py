@@ -61,8 +61,7 @@ def is_descendant(st: Node, dst: Node, len: int):
         if (st.id == dst.id): 
             return len
         
-        #check if any of this node's descendants  
-        #lead to the target
+        #check if any of this node's descendants lead to the target
         for v in st.edges:
             dfs = is_descendant(v.victim, dst, len + 1)
             if dfs != -1: 

@@ -103,6 +103,26 @@ def harmonic_complexity(st: Node, trgt: Node):
     trgt.setFault(count)
     return count
 
+def normalize_all_harmonic(st: Node, visited: set):
+    edge_total = float(0.0)
+    node_total = float(0.0)
+
+    #get the total weight of every node and every edge
+    for trgt in visited:
+        if trgt.id != -1:
+            node_total += trgt.fault
+            for e in trgt.edges:
+                edge_total += e.fault
+
+    #now that we have the total weights, normalize every node and edge
+    for trgt in visited:
+        if trgt.id != -1:
+            trgt.fault *= (float(1.0) / node_total)
+            for e in trgt.edges:
+                e.fault *= (float(1.0) / edge_total)
+
+    return 0
+
 def calculate_all_harmonic(st: Node):
     visited = set()
     dfs(st, visited)
@@ -120,6 +140,8 @@ def calculate_all_harmonic(st: Node):
                 else:
                     e.fault = trgt.fault
 
+    normalize_all_harmonic(st, visited)
+
     return 0
 
 def check_sse(st: Node):
@@ -130,7 +152,7 @@ def check_sse(st: Node):
     targets = list()
     for trgt in visited:
         if trgt.id != -1:
-            pair = (trgt.id, harmonic_complexity(st, trgt))
+            pair = (trgt.id, trgt.fault)
             targets.append(pair)
     targets.sort(key=lambda x: x[1], reverse=True)
 
@@ -162,7 +184,6 @@ def location_impact(st: Node):
     weighted_locs = list()
     for trgt in visited:
         if trgt.id != -1:
-            harmonic_complexity(st, trgt)
             for e in trgt.edges:
                 if any(e.location == x[0] for x in weighted_locs):
                     for y in weighted_locs:
@@ -182,6 +203,56 @@ def location_impact(st: Node):
 
     return 0
 
+def time_weight_calc(st: Node): 
+    visited = set()
+    dfs(st, visited)
+    calculate_all_harmonic(st)
+
+    #order every single time an infection occurred at by relative weight
+    weighted_times = list()
+    for trgt in visited:
+        if trgt.id != -1:
+            for e in trgt.edges:
+                if any(e.time == x[0] for x in weighted_times):
+                    for y in weighted_times:
+                        if e.time == y[0]:
+                            y[1] += e.fault
+                            break 
+                else: 
+                    pair = [e.time, e.fault]
+                    weighted_times.append(pair)
+
+    return weighted_times
+
+def time_gates(st: Node):
+    weighted_times = time_weight_calc(st)
+    weighted_times.sort(key=lambda x: x[0], reverse=True)
+    curr_fault = float(0.0)
+
+    flag50 = False
+    for i in range(0,len(weighted_times)):
+        curr_fault += weighted_times[i][1]
+        if curr_fault >= 0.5 and not flag50:
+            print("50%% of the infection damage was done by time %d\n" % i)
+            flag50 = True
+        if curr_fault >= 0.8:
+            print("80%% of the infection damage was done by time %d\n" % i)
+            break
+    
+    return 0
+
+def time_impact(st: Node):
+    weighted_times = time_weight_calc(st)
+    weighted_times.sort(key=lambda x: x[1], reverse=True)
+
+    count = min(len(weighted_times), 5)
+    print("Top %d times by relative weight: " % count)
+    for i in range(0, count):
+        print(weighted_times[i][0], end = ' ')
+    print('\n')
+
+    return 0
+
 #Test functions for harmonic complexity analysis
 
 def build_harmonic_test_graph(): 
@@ -190,15 +261,15 @@ def build_harmonic_test_graph():
     node_a = Node(1,-1,start)
     node_b = Node(2,-1,start)
     node_c = Node(3,-1,start)
-    start.addEdge(node_a, -1, 0, 0)
-    start.addEdge(node_b, -1, 0, 0)
-    start.addEdge(node_c, -1, 0, 0)
+    start.addEdge(node_a, -1, -1, 0)
+    start.addEdge(node_b, -1, -1, 0)
+    start.addEdge(node_c, -1, -1, 0)
     node_d = Node(4,1,node_a)
     node_e = Node(5,1,node_a)
     node_a.addEdge(node_d, 1, 1, 0)
-    node_a.addEdge(node_e, 2, 1, 0)
+    node_a.addEdge(node_e, 2, 2, 0)
     node_f = Node(6,5,node_e)
-    node_e.addEdge(node_f, 2, 2, 0)
+    node_e.addEdge(node_f, 2, 3, 0)
     node_g = Node(7,3,node_c)
     node_c.addEdge(node_g, 2, 1, 0)
     node_h = Node(8,7,node_c)
@@ -233,6 +304,8 @@ def test_descendant():
     print("Expected: 0, 1, 2, 3, -1\n")
     print("Got: %d, %d, %d, %d, %d\n" % (dec_a, dec_b, dec_c, dec_d, dec_e))
 
+    #see if start is contributing fault 
+    print("Start fault = %f" % start.fault)
     #test harmonic_complexity
     calculate_all_harmonic(start)
 
@@ -255,6 +328,11 @@ def test_descendant():
 
     #test location impact checker
     location_impact(start)
+
+    #test time impact and time gates checker 
+    time_impact(start)
+    time_gates(start)
+
     return 0
     
 #Test functions for basic graph functionality
